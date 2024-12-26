@@ -570,14 +570,119 @@ img.pull-left {
 	color: #fff;
 }
 
-.header__inner {
-	margin-top: 3px;
-	border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-.header .logo {
+
+.slider-container {
+	position: relative; /* Establish a relative context for the slider */
+  }
+  
+  #sliderpro1 {
+	position: relative;
+	z-index: 1;
+  }
+  
+  .floating-buttons {
+	position: absolute; /* Position it relative to the slider container */
+	bottom: 0; /* Align it to the bottom of the slider */
+	left: 0;
+	width: 100%; /* Stretch across the entire slider width */
+	z-index: 10; /* Ensure it appears above the slider images */
+	background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+	padding: 10px 0;
+	text-align: center; /* Center-align content */
+  }
+  
+  .button-list {
+	list-style: none; /* Remove list styling */
+	margin: 0;
+	padding: 0;
+	display: flex; /* Flexbox for alignment */
+	justify-content: center; /* Center the buttons */
+	gap: 10px; /* Space between buttons */
+  }
+  
+  .button-list li a {
 	display: inline-block;
-	margin-top: 30px;
-}
+	padding: 10px 20px; /* Button dimensions */
+	font-size: 14px;
+	color: white; /* Text color */
+	background-color: #e00e0e; /* Button background color */
+	text-decoration: none; /* Remove underline */
+	border-radius: 5px; /* Rounded corners */
+	transition: background-color 0.3s, transform 0.2s; /* Interaction effects */
+  }
+  
+  .button-list li a:hover {
+	background-color: #e58b8b; /* Hover background color */
+	transform: scale(1.05); /* Hover zoom effect */
+  }
+
+
+  
+  /* Header Static */
+.header__static {
+	position: fixed; /* Fijo en la parte superior */
+	top: 0;
+	left: 0;
+	width: 100%; /* Ancho completo */
+	background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+	z-index: 1000; /* Asegura que esté encima de otros elementos */
+	padding: 10px 0;
+  }
+  
+  .header__static .container {
+	display: flex;
+	justify-content: space-between; /* Espacio entre logo y botones */
+	align-items: center; /* Centra el contenido verticalmente */
+  }
+  
+  .header__content {
+	display: flex;
+	align-items: center;
+	gap: 20px; /* Espaciado entre logo y navegación */
+  }
+  
+  .logo {
+	display: inline-block;
+  }
+  
+  .logo__img {
+	height: 50px;
+	width: auto;
+  }
+  
+  /* Navigation Buttons */
+  .nav-buttons {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 15px; /* Espaciado entre botones */
+  }
+  
+  .nav-btn {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #e00e0e; /* Color del botón */
+	color: #fff; /* Color del texto */
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: 12;
+	border-radius: 25px; /* Botones redondeados */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+	transition: all 0.3s ease; /* Animación de hover */
+  }
+  
+  .nav-btn:hover {
+	background-color: #a26565; /* Sombra más oscura al pasar el ratón */
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Evitar que el contenido quede detrás del header */
+  body {
+	margin-top: 80px; /* Ajustar según la altura del header */
+  }
+  
 
 
 
@@ -1865,4 +1970,6 @@ transform: rotate(360deg);
 }
 }
 
+
+/* ======= NEW IMPLEMENTATION ======= */
 

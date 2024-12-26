@@ -22,8 +22,7 @@ a,
 .nav-tabs > li.active > a:focus,
 .social-blog__item:before,
 blockquote:before,
-.comments-list .comment-datetime {color: #dc2d13;}
-
+.comments-list .comment-datetime {color: #e00e0e;} /* #dc2d13 */
 
 .bg-color_primary,
 .main-slider__link,
@@ -52,34 +51,34 @@ blockquote:before,
 .noUi-origin,
 .btn-skew-r,
 .list-tags__link:hover,
-.about-autor {background-color: #dc2d13;}
+.about-autor {background-color: #e00e0e;} /* #dc2d13 */
 
 .link-img__link,
 .owl-theme_mod-c .owl-controls .owl-page.active span,
 .owl-theme_mod-c .owl-controls.clickable .owl-page:hover span,
 .owl-theme_mod-d .owl-controls .owl-page.active span,
 .owl-theme_mod-d .owl-controls.clickable .owl-page:hover span,
-.list-type__link:hover {border-color: #dc2d13;}
+.list-type__link:hover {border-color: #e00e0e;} /* #dc2d13 */
 
 #iview div.iview-directionNav a.iview-nextNav:hover:before,
 .list-staff__item:nth-child(even):hover .list-staff__info:after,
-.reviews:hover .reviews__title {border-left-color: #dc2d13;}
+.reviews:hover .reviews__title {border-left-color: #e00e0e;} /* #dc2d13 */
 
 #iview div.iview-directionNav a.iview-prevNav:hover:before,
-.list-staff__item:nth-child(odd):hover .list-staff__info:after {border-right-color: #dc2d13;}
+.list-staff__item:nth-child(odd):hover .list-staff__info:after {border-right-color: #e00e0e;} /* #dc2d13 */
 
 .header.sticky .navbar,
-.form-control:focus {border-bottom-color: #DC2D13;}
+.form-control:focus {border-bottom-color: #e00e0e;} /* #dc2d13 */
 
 .btn-default,
-.btn-success {box-shadow: 5px 0 0 0 #dc2d13;}
+.btn-success {box-shadow: 5px 0 0 0 #e00e0e;} /* #dc2d13 */
 
-.yamm .nav > li > a:hover {box-shadow: 0 -5px 0 0 #dc2d13;}
+.yamm .nav > li > a:hover {box-shadow: 0 -5px 0 0 #e00e0e;} /* #dc2d13 */
 
 .link,
 .list-type__link,
 .main-slider__btn,
-.car-details__title {box-shadow: -4px 0 0 0 #dc2d13;}
+.car-details__title {box-shadow: -4px 0 0 0 #e00e0e;} /* #dc2d13 */
 
 .pagination > .active > a,
 .pagination > .active > span,
@@ -91,5 +90,5 @@ blockquote:before,
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-	box-shadow: 0 3px 0 0 #dc2d13;
+	box-shadow: 0 3px 0 0 #e00e0e;  /* #dc2d13 */
 }
