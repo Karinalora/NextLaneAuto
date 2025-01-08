@@ -1,752 +1,728 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-		<title>Next Lane Auto</title>
-
-		<style>
-			body {
-			  font-family: Nexa Heavy Italic, sans-serif;
-			  margin: 20px;
-			}
-			.form-container {
-			  max-width: 600px;
-			  width: 100%;
-			  padding: 20px;
-			  background-color: #ffffff;
-			  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			  border-radius: 8px;
-			  margin: 0 auto;
-			}
-			h1 {
-			  background-color: #e00e0e;
-			  color: #ffffff;
-			  text-align: center;
-			  padding: 10px;
-			  border-radius: 4px;
-			  margin-bottom: 20px;
-			}
-			.form-section {
-			  margin-bottom: 15px;
-			  padding: 10px;
-			  border: 1px solid #ffffff;
-			  border-radius: 5px;
-			}
-			.form-section h3 {
-			  background-color: #e00e0e;
-              color: #ffffff;
-              text-align: center;
-              padding: 5px;
-              border-radius: 3px;
-              margin-bottom: 8px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-			}
-
-			.form-sectionco {
-			  display: none; /* Initially hidden */
-			  margin-bottom: 15px;
-			  padding: 10px;
-			  border: 1px solid #ffffff;
-			  border-radius: 5px;
-			}
-			.form-sectionco h3 {
-			  background-color: #e00e0e;
-              color: #ffffff;
-              text-align: center;
-              padding: 5px;
-              border-radius: 3px;
-              margin-bottom: 8px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-			}
-
-			.form-group {
-			  margin-bottom: 10px;
-			  display: flex;
-			  align-items: center;
-			}
-			.form-group label {
-			  flex: 1;
-			  font-weight: bold;
-			  font-size: 0.9em;
-			}
-			.form-group input, .form-group select {
-			  flex: 2;
-			  padding: 6px;
-			  margin-left: 10px;
-			  border: 1px solid #000000;
-			  border-radius: 4px;
-			  font-size: 0.9em;
-			}
-			.form-group i {
-			  margin-right: 10px;
-			  color: #000000;
-			}
-			button {
-			  display: block;
-			  width: 100%;
-			  padding: 10px;
-			  background-color: #e00e0e;
-			  color: #ffffff;
-			  border: none;
-			  border-radius: 4px;
-			  cursor: pointer;
-			  font-size: 1em;
-			}
-			button:hover {
-			  background-color:#000000;
-			}
-			.form-footer button {
-				width: 100%;
-				padding: 10px 20px;
-				background-color: #e00e0e;
-				color: #fff;
-				border: none;
-				border-radius: 3px;
-				cursor: pointer;
-			}
-			.form-footer button:hover {
-				background-color: #000000;;
-			}
-			
-		  </style>
-
-		<link href="favicon.png" type="image/x-icon" rel="shortcut icon">
-		<link href="assets/css/master.css" rel="stylesheet">
-		<link href="assets/plugins/iview/css/iview.css" rel="stylesheet">
-		<link href="assets/plugins/iview/css/skin/style.css" rel="stylesheet">
-
-		<!-- SWITCHER -->
-	<!--	<link href="assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
-		<link href="assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
-		<link href="assets/plugins/switcher/css/color2.css" rel="alternate stylesheet" title="color2" media="all">
-		<link href="assets/plugins/switcher/css/color3.css" rel="alternate stylesheet" title="color3" media="all">
-		<link href="assets/plugins/switcher/css/color4.css" rel="alternate stylesheet" title="color4" media="all">
-		<link href="assets/plugins/switcher/css/color5.css" rel="alternate stylesheet" title="color5" media="all"> -->
-
-		<script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
-	</head>
-
-
-	<body>
-	<!--	<div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
-
-			 Start Switcher 
-			<div class="switcher-wrapper">
-				<div class="demo_changer">
-					<div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
-					<div class="form_holder">
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="predefined_styles">
-									<div class="skin-theme-switcher">
-										<h4>Color</h4>
-										<a href="javascript:void(0);" data-switchcolor="color1" class="styleswitch" style="background-color:#fe5656;"> </a>
-										<a href="javascript:void(0);" data-switchcolor="color2" class="styleswitch" style="background-color:#4fb0fd;"> </a>
-										<a href="javascript:void(0);" data-switchcolor="color3" class="styleswitch" style="background-color:#ffc73c;"> </a>
-										<a href="javascript:void(0);" data-switchcolor="color4" class="styleswitch" style="background-color:#ff8300;"> </a>
-										<a href="javascript:void(0);" data-switchcolor="color5" class="styleswitch" style="background-color:#02cc8b;"> </a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<script src="assets/plugins/switcher/js/bootstrap-select.js"></script>
-				<script src="assets/plugins/switcher/js/evol.colorpicker.min.js"></script>
-				<script src="assets/plugins/switcher/js/dmss.js"></script>
-			</div> -->
-			<!-- End Switcher -->
-
-			<div id="wrapper">
-
-				<!-- HEADER -->
-				<div class="header">
-					<div class="top-header">
-					   <div class="container">
-						  <div class="row">
-							 <div class="col-xs-12">
-								<div class="header-contacts">
-								   <span class="header-contacts__item"><i class="icon fa fa-phone"></i>+ 987 654 3210</span>
-								   <a class="header-contacts__item" href="mailto:autoz@zone.com"><i class="icon fa fa-envelope"></i>autoz (at) zone.com</a>
-								</div>
-								<ul class="social-links list-inline">
-								   <li><a class="icon fa fa-facebook" href="javascript:void(0);"></a></li>
-								   <li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li>
-								   <li><a class="icon fa fa-youtube-play" href="javascript:void(0);"></a></li>
-								   <li><a class="icon fa fa-instagram" href="javascript:void(0);"></a></li>
-								   <li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li>
-								</ul>
-							 </div>
-							 <!-- end col -->
-						  </div>
-						  <!-- end row -->
-					   </div>
-					   <!-- end container -->
-					</div>
-					<!-- end top-header -->
-					<div class="header__inner">
-					   <div class="container">
-						  <div class="row">
-							 <div class="col-md-12 col-xs-12">
-								<a href="home.html" class="logo"> <img class="logo__img img-responsive" src="assets/nla.png" height="50" width="111" alt="Logo"> </a>
-								<div class="navbar yamm">
-								   <div class="navbar-header hidden-md hidden-lg hidden-sm">
-									  <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-									  <a href="javascript:void(0);" class="navbar-brand"></a> 
-								   </div>
-								   <div id="navbar-collapse-1" class="navbar-collapse collapse">
-									  <ul class="nav navbar-nav">
-										 <li><a href="home.html">Vehicles</a></li>
-										 <li><a href="vehicle-listings.html">Trade or Sell Your Vehicle</a> </li>
-										 <li><a href="credit_application.html">Credit Application</a></li>
-										 <li><a href="get_pre_qualified.html">Get Pre-Qualified in Seconds</a></li>
-										 <li class="dropdown" >
-											<a href="news.html">Request a Free Quote</a>
-											<!--  <ul role="menu" class="dropdown-menu">
-											   <li> <a href="news-grid.html">DROPDOWN</a> </li>
-											   <li> <a href="news-details.html">DROPDOWN</a> </li>
-											   </ul> -->
-										 </li>
-										 <li><a href="about-us.html">About Us</a></li>
-										 <li><a href="news-details.html">Contact Us</a></li>
-									  </ul>
-								   </div>
-								</div>
-							 </div>
-						  </div>
-					   </div>
-					   <!-- end container --> 
-					</div>
-					<!-- end header__inner -->
-				 </div>
-				 <!-- end header -->
-
-				<div class="block-title">
-					<div class="block-title__inner section-bg section-bg_second">
-						<div class="bg-inner">
-							<h1 class="ui-title-page">credit application</h1>
-							<div class="decor-1 center-block"></div>
-							<ol class="breadcrumb">
-								<li><a href="home.html">HOME</a></li>
-								<li class="active">credit application</li>
-							</ol>
-						</div><!-- end bg-inner -->
-					</div><!-- end block-title__inner -->
-				</div><!-- end block-title -->
-
-				<!-- starts new block -->
-
-				<div class="form-container">
-					<form action="/send-email" method="POST">
-					  <div class="form-section">
-						<p style="text-align: center; font-size: 14px; color: #000000; margin-bottom: 20px;">
-							Please complete all those marked with <span style="color: #e00e0e;">*</span>
-						  </p>
-						<h3 class="fa fa-user fa-2x"> &nbsp; Primary Applicant</h3>
-						<div class="form-group">
-						  <label for="firstName"> First Name <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-user-md"></i>
-						  <input type="text" id="firstName" name="firstName" required>
-						</div>
-						<div class="form-group">
-						  <label for="middleName"> Middle Name</label>
-						  <i class="fa fa-arrows-h"></i>
-						  <input type="text" id="middleName" name="middleName">
-						</div>
-						<div class="form-group">
-						  <label for="lastName"> Last Name <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-arrows-h"></i>
-						  <input type="text" id="lastName" name="lastName" required>
-						</div>
-						<div class="form-group">
-						  <label for="ssn"> SSN / ITIN <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-eye-slash" aria-hidden="true"></i>
-						  <input type="password" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" title="SSN must be in the format XXX-XX-XXXX" required>
-						</div>
-						<div class="form-group">
-						  <label for="dob"> Date of Birth</label>
-						  <i class="fa fa-birthday-cake"></i>
-						  <input type="date" id="dob" name="dob">
-						</div>
-						<div class="form-group">
-						  <label for="driverLicense"> Driver License #</label>
-						  <i class="fa fa-file-text-o" aria-hidden="true"></i>
-						  <input type="text" id="driverLicense" name="driverLicense" pattern="^[A-Z0-9-]+$" title="Driver License must contain only uppercase letters, numbers, or hyphens.">
-						</div>
-						<div class="form-group">
-						  <label for="phone"> Phone <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-phone"></i>
-						  <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-						</div>
-						<div class="form-group">
-						  <label for="email"> Email Address <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-envelope"></i>
-						  <input type="email" id="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
-						</div>
-					  </div>
-				
-					  <div class="form-section">
-						<h3 class="fa fa-map-marker fa-2x">&nbsp;Address</h3>
-						<div class="form-group">
-						  <label for="address"> Address <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-location-arrow"></i>
-						  <input type="text" id="address" name="address" required>
-						</div>
-						<div class="form-group">
-						  <label for="aptUnit"> Apt/Unit</label>
-						  <i class="fa fa-building"></i>
-						  <input type="text" id="aptUnit" name="aptUnit">
-						</div>
-						<div class="form-group">
-						  <label for="city"> City <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-map-marker"></i> 
-						  <input type="text" id="city" name="city" required>
-						</div>
-						<div class="form-group">
-						  <label for="county"> County</label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="county" name="county">
-						</div>
-						<div class="form-group">
-						  <label for="state"> State <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-flag"></i>
-						  <input type="text" id="state" name="state" required>
-						</div>
-						<div class="form-group">
-						  <label for="zipCode"> Zip Code <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="zipCode" name="zipCode" required>
-						</div>
-						<div class="form-group">
-						  <label for="timeAtAddress"> Time At Current Address <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-clock-o"></i>
-						  <input type="text" id="timeAtAddress" name="timeAtAddress" required>
-						</div>
-						<div class="form-group">
-						  <label for="ownership"> Do you Own or Rent <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-question"></i>
-						  <select id="ownership" name="ownership" required>
-							<option value="">-- Select --</option>
-							<option value="Buying">Buying</option>
-							<option value="Own">Own</option>
-							<option value="Rent">Rent</option>
-							<option value="Other">Other</option>
-						  </select>
-						</div>
-						<div class="form-group">
-						  <label for="rentPayment"> Rent/Mortgage Payment <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-money"></i>
-						  <input type="number" id="rentPayment" name="rentPayment" required>
-						</div>
-					  </div>
-				
-					  <div class="form-section">
-						<h3 class="fa fa-male fa-2x">&nbsp;Employment</h3>
-						<div class="form-group">
-						  <label for="employmentType"> Type of Employment</label>
-						  <i class="fa fa-briefcase"></i> 
-						  <input type="text" id="employmentType" name="employmentType">
-						</div>
-						<div class="form-group">
-						  <label for="employer"> Employer Name</label>
-						  <i class="fa fa-building"></i>
-						  <input type="text" id="employer" name="employer">
-						</div>
-						<div class="form-group">
-						  <label for="occupation"> Occupation or Rank</label>
-						  <i class="fa fa-university"></i>
-						  <input type="text" id="occupation" name="occupation">
-						</div>
-						<div class="form-group">
-						  <label for="workPhone"> Work Phone</label>
-						  <i class="fa fa-phone"></i>
-						  <input type="tel" id="workPhone" name="workPhone">
-						</div>
-						<div class="form-group">
-						  <label for="extension"> Extension</label>
-						  <i class="fa fa-arrows-h"></i>
-						  <input type="text" id="extension" name="extension">
-						</div>
-						<div class="form-group">
-						  <label for="timeAtEmployment"> Time at Employment</label>
-						  <i class="fa fa-clock-o"></i>
-						  <input type="text" id="timeAtEmployment" name="timeAtEmployment">
-						</div>
-						<div class="form-group">
-						  <label for="employmentAddress"> Address</label>
-						  <i class="fa fa-location-arrow"></i>
-						  <input type="text" id="employmentAddress" name="employmentAddress">
-						</div>
-						<div class="form-group">
-						  <label for="employmentAptUnit"> Apt/Unit</label>
-						  <i class="fa fa-building"></i>
-						  <input type="text" id="employmentAptUnit" name="employmentAptUnit">
-						</div>
-						<div class="form-group">
-						  <label for="employmentCity">City</label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="employmentCity" name="employmentCity">
-						</div>
-						<div class="form-group">
-						  <label for="employmentState"> State</label>
-						  <i class="fa fa-flag"></i>
-						  <input type="text" id="employmentState" name="employmentState">
-						</div>
-						<div class="form-group">
-						  <label for="employmentZipCode"> Zip Code</label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="employmentZipCode" name="employmentZipCode">
-						</div>
-					  </div>
-				
-					  <div class="form-section">
-						<h3 class="fa fa-money fa-2x">&nbsp;Income</h3>
-						<div class="form-group">
-						  <label for="grossIncome"> Gross Monthly Income <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-money"></i>
-						  <input type="number" id="grossIncome" name="grossIncome" required>
-						</div>
-						<div class="form-group">
-						  <label for="otherIncome"> Other Monthly Income</label>
-						  <i class="fa fa-money"></i>
-						  <input type="number" id="otherIncome" name="otherIncome">
-						</div>
-						<div class="form-group">
-						  <label for="incomeDescription"> Description</label>
-						  <i class="fa fa-file-text-o"></i>
-						  <input type="text" id="incomeDescription" name="incomeDescription">
-						</div>
-					  </div>
-
-					  <div class="form-section">
-						<h3 class="fa fa-info-circle fa-2x">&nbsp; Other Information</h3>
-					  <label for="coBuyer">Do you want to add a Co-Buyer?</label>
-					  <select id="coBuyer" name="coBuyer" onchange="toggleSection()">
-						  <option value="no">No</option>
-						  <option value="yes">Yes</option>
-					  </select>
-					 </div>
-
-					 <div class="form-sectionco" id="yes">
-						<p style="text-align: center; font-size: 14px; color: #000000; margin-bottom: 20px;">
-							Please complete all those marked with <span style="color: #e00e0e;">*</span>
-						  </p>
-						<h3 class="fa fa-user fa-2x">&nbsp;Co-Buyer Applicant</h3>
-						<div class="form-group">
-						  <label for="cofirstName"> Co-Buyer First Name <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-user-md"></i>
-						  <input type="text" id="cofirstName" name="cofirstName" required>
-						</div>
-						<div class="form-group">
-						  <label for="comiddleName"> Co-Buyer Middle Name</label>
-						  <i class="fa fa-arrows-h"></i>
-						  <input type="text" id="comiddleName" name="comiddleName">
-						</div>
-						<div class="form-group">
-						  <label for="colastName"> Co-Buyer Last Name <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-arrows-h"></i>
-						  <input type="text" id="colastName" name="colastName" required>
-						</div>
-						<div class="form-group">
-						  <label for="cossn"> Co-Buyer SSN / ITIN <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-eye-slash" aria-hidden="true"></i>
-						  <input type="password" id="cossn" name="cossn" pattern="\d{3}-\d{2}-\d{4}" title="SSN must be in the format XXX-XX-XXXX" required>
-						</div>
-						<div class="form-group">
-						  <label for="codob"> Co-Buyer Date of Birth</label>
-						  <i class="fa fa-birthday-cake"></i>
-						  <input type="date" id="codob" name="codob">
-						</div>
-						<div class="form-group">
-						  <label for="codriverLicense"> Co-Buyer Driver License #</label>
-						  <i class="fa fa-file-text-o" aria-hidden="true"></i>
-						  <input type="text" id="codriverLicense" name="codriverLicense" pattern="^[A-Z0-9-]+$" title="Driver License must contain only uppercase letters, numbers, or hyphens.">
-						</div>
-						<div class="form-group">
-						  <label for="cophone"> Co-Buyer Phone <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-phone"></i>
-						  <input type="tel" id="cophone" name="cophone" placeholder="(123) 456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-						</div>
-						<div class="form-group">
-						  <label for="coemail"> Co-Buyer Email Address <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-envelope"></i>
-						  <input type="email" id="coemail" name="coemail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
-						</div>
-					  </div>
-				
-					  <div class="form-sectionco" id="yes-add">
-						<h3 class="fa fa-map-marker fa-2x">&nbsp;Co-Buyer Address</h3>
-						<div class="form-group">
-						  <label for="coaddress"> Co-Buyer Address <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-location-arrow"></i>
-						  <input type="text" id="coaddress" name="coaddress" required>
-						</div>
-						<div class="form-group">
-						  <label for="coaptUnit"> Co-Buyer Apt/Unit</label>
-						  <i class="fa fa-building"></i>
-						  <input type="text" id="coaptUnit" name="coaptUnit">
-						</div>
-						<div class="form-group">
-						  <label for="cocity"> Co-Buyer City <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-map-marker"></i> 
-						  <input type="text" id="cocity" name="cocity" required>
-						</div>
-						<div class="form-group">
-						  <label for="cocounty"> Co-Buyer County</label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="cocounty" name="cocounty">
-						</div>
-						<div class="form-group">
-						  <label for="costate"> Co-Buyer State <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-flag"></i>
-						  <input type="text" id="costate" name="costate" required>
-						</div>
-						<div class="form-group">
-						  <label for="cozipCode"> Co-Buyer Zip Code <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="cozipCode" name="cozipCode" required>
-						</div>
-						<div class="form-group">
-						  <label for="cotimeAtAddress"> Co-Buyer Time At Current Address <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-clock-o"></i>
-						  <input type="text" id="cotimeAtAddress" name="cotimeAtAddress" required>
-						</div>
-						<div class="form-group">
-						  <label for="ownership"> Co-Buyer Do you Own or Rent <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-question"></i>
-						  <select id="ownership" name="ownership" required>
-							<option value="">-- Select --</option>
-							<option value="Buying">Buying</option>
-							<option value="Own">Own</option>
-							<option value="Rent">Rent</option>
-							<option value="Other">Other</option>
-						  </select>
-						</div>
-						<div class="form-group">
-						  <label for="corentPayment"> Co-Buyer Rent/Mortgage Payment <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-money"></i>
-						  <input type="number" id="corentPayment" name="corentPayment" required>
-						</div>
-					  </div>
-				
-					  <div class="form-sectionco" id="yes-empl">
-						<h3 class="fa fa-male fa-2x">&nbsp;Co-Buyer Employment</h3>
-						<div class="form-group">
-						  <label for="coemploymentType"> Co-Buyer Type of Employment</label>
-						  <i class="fa fa-briefcase"></i> 
-						  <input type="text" id="coemploymentType" name="coemploymentType">
-						</div>
-						<div class="form-group">
-						  <label for="coemployer"> Co-Buyer Employer Name</label>
-						  <i class="fa fa-building"></i>
-						  <input type="text" id="coemployer" name="coemployer">
-						</div>
-						<div class="form-group">
-						  <label for="cooccupation"> Co-Buyer Occupation or Rank</label>
-						  <i class="fa fa-university"></i>
-						  <input type="text" id="cooccupation" name="cooccupation">
-						</div>
-						<div class="form-group">
-						  <label for="coworkPhone"> Co-Buyer Work Phone</label>
-						  <i class="fa fa-phone"></i>
-						  <input type="tel" id="coworkPhone" name="coworkPhone">
-						</div>
-						<div class="form-group">
-						  <label for="coextension"> Co-Buyer Extension</label>
-						  <i class="fa fa-arrows-h"></i>
-						  <input type="text" id="coextension" name="coextension">
-						</div>
-						<div class="form-group">
-						  <label for="cotimeAtEmployment"> Co-Buyer Time at Employment</label>
-						  <i class="fa fa-clock-o"></i>
-						  <input type="text" id="cotimeAtEmployment" name="cotimeAtEmployment">
-						</div>
-						<div class="form-group">
-						  <label for="coemploymentAddress"> Co-Buyer Address</label>
-						  <i class="fa fa-location-arrow"></i>
-						  <input type="text" id="coemploymentAddress" name="coemploymentAddress">
-						</div>
-						<div class="form-group">
-						  <label for="coemploymentAptUnit"> Co-Buyer Apt/Unit</label>
-						  <i class="fa fa-building"></i>
-						  <input type="text" id="coemploymentAptUnit" name="coemploymentAptUnit">
-						</div>
-						<div class="form-group">
-						  <label for="coemploymentCity"> Co-Buyer City</label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="coemploymentCity" name="coemploymentCity">
-						</div>
-						<div class="form-group">
-						  <label for="coemploymentState"> Co-Buyer State</label>
-						  <i class="fa fa-flag"></i>
-						  <input type="text" id="coemploymentState" name="coemploymentState">
-						</div>
-						<div class="form-group">
-						  <label for="coemploymentZipCode"> Co-Buyer Zip Code</label>
-						  <i class="fa fa-map-marker"></i>
-						  <input type="text" id="coemploymentZipCode" name="coemploymentZipCode">
-						</div>
-					  </div>
-				
-					  <div class="form-sectionco" id="yes-inc">
-						<h3 class="fa fa-money fa-2x">&nbsp; Co-Buyer Income</h3>
-						<div class="form-group">
-						  <label for="cogrossIncome"> Co-Buyer Gross Monthly Income <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-money"></i>
-						  <input type="number" id="cogrossIncome" name="cogrossIncome" required>
-						</div>
-						<div class="form-group">
-						  <label for="cootherIncome"> Co-Buyer Other Monthly Income</label>
-						  <i class="fa fa-money"></i>
-						  <input type="number" id="cootherIncome" name="cootherIncome">
-						</div>
-						<div class="form-group">
-						  <label for="coincomeDescription"> Co-Buyer Description</label>
-						  <i class="fa fa-file-text-o"></i>
-						  <input type="text" id="coincomeDescription" name="coincomeDescription">
-						</div>
-					  </div>
-
-					<!--  <div class="form-section">
-						<h3 class="fa fa-car fa-3x">Sales Agent</h3>
-						<div class="form-group">
-						  <label for="salesAgent"> Select Sales Agent <span style="color: #e00e0e;">*</span></label>
-						  <i class="fa fa-car"></i>
-						  <select id="salesAgent" name="salesAgent" required>
-							<option value="">-- Select an Agent --</option>
-							<option value="agent1@example.com">Agent 1</option>
-							<option value="agent2@example.com">Agent 2</option>
-							<option value="agent3@example.com">Agent 3</option>
-						  </select>
-						</div>
-					  </div> -->
-				
-					  <div class="form-section">
-						<label>
-						  <input type="checkbox" name="agree" required>
-						  I have read the Privacy Policy, agree with the consent statement above, and authorize you to contact me via phone, text and/or email.
-						</label>
-					  </div>
-					  <div class="form-footer">
-						<button type="submit">SUBMIT APPLICATION</button>
-					</div>
-					</form>
-				</div>
-
-				<!-- end new block -->
-
-
-
-				<footer class="footer">
-					<div class="wrap-section-border">
-						<section class="section_mod-h section-bg section-bg_second">
-							<div class="bg-inner border-section-top border-section-top_mod-b">
-								<div class="container">
-									<div class="row">
-										<div class="col-xs-12">
-											<h2 class="footer-title">NextLane <span class="footer-title__inner">Auto</span></h2>
-											<div class="decor-1 decor-1_mod-b"></div>
-										</div><!-- end col -->
-									</div><!-- end row -->
-
-									<div class="row">
-										<div class="col-xs-12">
-											<div class="footer__name">: SHOWROOM LOCATION :</div>
-											<div class="footer__text">32 Market St.128, Deeja Town, Florida, CA 12345</div>
-										</div><!-- end col -->
-									</div><!-- end row -->
-									<div class="row">
-										<div class="col-xs-12">
-											<div class="footer__item">
-												<span class="footer__name">Phone:</span>
-												<span class="footer__text">+1 (234) 567 8900</span>
-											</div>
-											<div class="footer__item">
-												<span class="footer__name">Fax:</span>
-												<span class="footer__text">+1 (234) 567 8998</span>
-											</div>
-											<div class="footer__item">
-												<span class="footer__name">email:</span>
-												<span class="footer__text">info@autozone.com</span>
-											</div>
-											<div class="footer__item">
-												<span class="footer__name">Hours:</span>
-												<span class="footer__text">Mon - Fri :: 9am - 6pm</span>
-											</div>
-										</div><!-- end col -->
-									</div><!-- end row -->
-									<div class="row">
-										<div class="col-xs-12">
-											<ul class="social-links list-inline">
-												<li><a class="icon fa fa-facebook" href="javascript:void(0);"></a></li>
-												<li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li>
-												<li><a class="icon fa fa-youtube-play" href="javascript:void(0);"></a></li>
-												<li><a class="icon fa fa-instagram" href="javascript:void(0);"></a></li>
-												<li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li>
-											</ul>
-										</div><!-- end col -->
-									</div><!-- end row -->
-								</div><!-- end container -->
-							</div><!-- end bg-inner -->
-						</section><!-- end section_mod-b -->
-					</div><!-- end wrap-section-border -->
-					<div class="footer__wrap-btn"> <a class="footer__btn scroll" href="#this-top">top</a> </div>
-
-					<div class="copyright">Copyrights 2024 - 2025 <a class="copyright__link" href="#">Next Lane Auto</a> : : All rights reserved</div>
-				</footer>
-
-			</div><!-- end #wrapper -->
-		</div><!-- end layout-theme -->
-
-		<span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
-
-
-
-
-		<!-- SCRIPTS -->
-        <script src="assets/js/jquery-migrate-1.2.1.js"></script>
-		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/js/modernizr.custom.js"></script>
-		<script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
-		<script src="assets/js/waypoints.min.js"></script>
-		<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-		<script src="assets/plugins/jelect/jquery.jelect.js"></script>
-		<script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
-		<script src="assets/plugins/flexslider/jquery.flexslider.js"></script>
-
-
-		<!--THEME-->
-		<script src="assets/js/cssua.min.js"></script>
-		<script src="assets/js/wow.min.js"></script>
-		<script src="assets/js/custom.js"></script>
-
-		<script>
-			function toggleSection() {
-				const dropdown = document.getElementById('coBuyer');
-				const formSection = document.getElementById('yes');
-				const formSectionadd = document.getElementById('yes-add');
-				const formSectionempl = document.getElementById('yes-empl');
-				const formSectioninc = document.getElementById('yes-inc');
-				
-				if (dropdown.value === 'yes') { 
-					formSection.style.display = 'block'; // Show the div
-					formSectionadd.style.display = 'block'; // Show the div
-					formSectionempl.style.display = 'block'; // Show the div
-					formSectioninc.style.display = 'block'; // Show the div
-				} else {
-					formSection.style.display = 'none'; // Hide the div
-					formSectionadd.style.display = 'none'; // Show the div
-					formSectionempl.style.display = 'none'; // Show the div
-					formSectioninc.style.display = 'none'; // Show the div
-				}
-			}
-		</script>
-	</body>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+      <title>Next Lane Auto</title>
+      <style>
+         body {
+         font-family: Nexa Heavy Italic, sans-serif;
+         margin: 20px;
+         }
+         .form-container {
+         max-width: 600px;
+         width: 100%;
+         padding: 20px;
+         background-color: #ffffff;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         border-radius: 8px;
+         margin: 0 auto;
+         }
+         h1 {
+         background-color: #e00e0e;
+         color: #ffffff;
+         text-align: center;
+         padding: 10px;
+         border-radius: 4px;
+         margin-bottom: 20px;
+         }
+         .form-section {
+         margin-bottom: 15px;
+         padding: 10px;
+         border: 1px solid #ffffff;
+         border-radius: 5px;
+         }
+         .form-section h3 {
+         background-color: #e00e0e;
+         color: #ffffff;
+         text-align: center;
+         padding: 5px;
+         border-radius: 3px;
+         margin-bottom: 8px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .form-sectionco {
+         display: none; /* Initially hidden */
+         margin-bottom: 15px;
+         padding: 10px;
+         border: 1px solid #ffffff;
+         border-radius: 5px;
+         }
+         .form-sectionco h3 {
+         background-color: #e00e0e;
+         color: #ffffff;
+         text-align: center;
+         padding: 5px;
+         border-radius: 3px;
+         margin-bottom: 8px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .form-group {
+         margin-bottom: 10px;
+         display: flex;
+         align-items: center;
+         }
+         .form-group label {
+         flex: 1;
+         font-weight: bold;
+         font-size: 0.9em;
+         }
+         .form-group input, .form-group select {
+         flex: 2;
+         padding: 6px;
+         margin-left: 10px;
+         border: 1px solid #000000;
+         border-radius: 4px;
+         font-size: 0.9em;
+         }
+         .form-group i {
+         margin-right: 10px;
+         color: #000000;
+         }
+         button {
+         display: block;
+         width: 100%;
+         padding: 10px;
+         background-color: #e00e0e;
+         color: #ffffff;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+         font-size: 1em;
+         }
+         button:hover {
+         background-color:#000000;
+         }
+         .form-footer button {
+         width: 100%;
+         padding: 10px 20px;
+         background-color: #e00e0e;
+         color: #fff;
+         border: none;
+         border-radius: 3px;
+         cursor: pointer;
+         }
+         .form-footer button:hover {
+         background-color: #000000;;
+         }
+      </style>
+      <link href="favicon.png" type="image/x-icon" rel="shortcut icon">
+      <link href="assets/css/master.css" rel="stylesheet">
+      <link href="assets/plugins/iview/css/iview.css" rel="stylesheet">
+      <link href="assets/plugins/iview/css/skin/style.css" rel="stylesheet">
+      <!-- SWITCHER -->
+      <!--	<link href="assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
+         <link href="assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
+         <link href="assets/plugins/switcher/css/color2.css" rel="alternate stylesheet" title="color2" media="all">
+         <link href="assets/plugins/switcher/css/color3.css" rel="alternate stylesheet" title="color3" media="all">
+         <link href="assets/plugins/switcher/css/color4.css" rel="alternate stylesheet" title="color4" media="all">
+         <link href="assets/plugins/switcher/css/color5.css" rel="alternate stylesheet" title="color5" media="all"> -->
+      <script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+   </head>
+   <body>
+      <!--	<div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
+         Start Switcher 
+         <div class="switcher-wrapper">
+         <div class="demo_changer">
+         	<div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+         	<div class="form_holder">
+         		<div class="row">
+         			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         				<div class="predefined_styles">
+         					<div class="skin-theme-switcher">
+         						<h4>Color</h4>
+         						<a href="javascript:void(0);" data-switchcolor="color1" class="styleswitch" style="background-color:#fe5656;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color2" class="styleswitch" style="background-color:#4fb0fd;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color3" class="styleswitch" style="background-color:#ffc73c;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color4" class="styleswitch" style="background-color:#ff8300;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color5" class="styleswitch" style="background-color:#02cc8b;"> </a>
+         					</div>
+         				</div>
+         			</div>
+         		</div>
+         	</div>
+         </div>
+         
+         <script src="assets/plugins/switcher/js/bootstrap-select.js"></script>
+         <script src="assets/plugins/switcher/js/evol.colorpicker.min.js"></script>
+         <script src="assets/plugins/switcher/js/dmss.js"></script>
+         </div> -->
+      <!-- End Switcher -->
+      <div id="wrapper">
+         <!-- HEADER -->
+         <div class="header">
+            <div class="top-header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xs-12">
+                        <div class="header-contacts">
+                           <span class="header-contacts__item"><i class="icon fa fa-phone"></i>+ 987 654 3210</span>
+                           <a class="header-contacts__item" href="mailto:autoz@zone.com"><i class="icon fa fa-envelope"></i>autoz (at) zone.com</a>
+                        </div>
+                        <ul class="social-links list-inline">
+                           <li><a class="icon fa fa-facebook" href="javascript:void(0);"></a></li>
+                           <li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li>
+                           <li><a class="icon fa fa-youtube-play" href="javascript:void(0);"></a></li>
+                           <li><a class="icon fa fa-instagram" href="javascript:void(0);"></a></li>
+                           <li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li>
+                        </ul>
+                     </div>
+                     <!-- end col -->
+                  </div>
+                  <!-- end row -->
+               </div>
+               <!-- end container -->
+            </div>
+            <!-- end top-header -->
+            <div class="header__inner">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12 col-xs-12">
+                        <a href="home.html" class="logo"> <img class="logo__img img-responsive" src="assets/nla.png" height="50" width="111" alt="Logo"> </a>
+                        <div class="navbar yamm">
+                           <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                              <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                              <a href="javascript:void(0);" class="navbar-brand"></a> 
+                           </div>
+                           <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                              <ul class="nav navbar-nav">
+                                 <li><a href="home.html">Vehicles</a></li>
+                                 <li><a href="trade_or_sell_your_vehicle.html">Trade or Sell Your Vehicle</a> </li>
+                                 <li><a href="credit_application.html">Credit Application</a></li>
+                                 <li><a href="get_pre_qualified.html">Get Pre-Qualified in Seconds</a></li>
+                                 <li class="dropdown" >
+                                    <a href="request_a_free_quote.html">Request a Free Quote</a>
+                                    <!--  <ul role="menu" class="dropdown-menu">
+                                       <li> <a href="news-grid.html">DROPDOWN</a> </li>
+                                       <li> <a href="news-details.html">DROPDOWN</a> </li>
+                                       </ul> -->
+                                 </li>
+                                 <li><a href="about-us.html">About Us</a></li>
+                                 <li><a href="contact_us.html">Contact Us</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- end container --> 
+            </div>
+            <!-- end header__inner -->
+         </div>
+         <!-- end header -->
+         <div class="block-title">
+            <div class="block-title__inner section-bg section-bg_second">
+               <div class="bg-inner">
+                  <h1 class="ui-title-page">credit application</h1>
+                  <div class="decor-1 center-block"></div>
+                  <ol class="breadcrumb">
+                     <li><a href="home.html">HOME</a></li>
+                     <li class="active">credit application</li>
+                  </ol>
+               </div>
+               <!-- end bg-inner -->
+            </div>
+            <!-- end block-title__inner -->
+         </div>
+         <!-- end block-title -->
+         <!-- starts new block -->
+         <div class="form-container">
+            <form action="/send-email" method="POST">
+               <div class="form-section">
+                  <p style="text-align: center; font-size: 14px; color: #000000; margin-bottom: 20px;">
+                     Please complete all those marked with <span style="color: #e00e0e;">*</span>
+                  </p>
+                  <h3 class="fa fa-user fa-2x"> &nbsp; Primary Applicant</h3>
+                  <div class="form-group">
+                     <label for="firstName"> First Name <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-user-md"></i>
+                     <input type="text" id="firstName" name="firstName" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="middleName"> Middle Name</label>
+                     <i class="fa fa-arrows-h"></i>
+                     <input type="text" id="middleName" name="middleName">
+                  </div>
+                  <div class="form-group">
+                     <label for="lastName"> Last Name <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-arrows-h"></i>
+                     <input type="text" id="lastName" name="lastName" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="ssn"> SSN / ITIN <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                     <input type="password" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" title="SSN must be in the format XXX-XX-XXXX" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="dob"> Date of Birth</label>
+                     <i class="fa fa-birthday-cake"></i>
+                     <input type="date" id="dob" name="dob">
+                  </div>
+                  <div class="form-group">
+                     <label for="driverLicense"> Driver License #</label>
+                     <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                     <input type="text" id="driverLicense" name="driverLicense" pattern="^[A-Z0-9-]+$" title="Driver License must contain only uppercase letters, numbers, or hyphens.">
+                  </div>
+                  <div class="form-group">
+                     <label for="phone"> Phone <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-phone"></i>
+                     <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="email"> Email Address <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-envelope"></i>
+                     <input type="email" id="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+                  </div>
+               </div>
+               <div class="form-section">
+                  <h3 class="fa fa-map-marker fa-2x">&nbsp;Address</h3>
+                  <div class="form-group">
+                     <label for="address"> Address <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-location-arrow"></i>
+                     <input type="text" id="address" name="address" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="aptUnit"> Apt/Unit</label>
+                     <i class="fa fa-building"></i>
+                     <input type="text" id="aptUnit" name="aptUnit">
+                  </div>
+                  <div class="form-group">
+                     <label for="city"> City <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-map-marker"></i> 
+                     <input type="text" id="city" name="city" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="county"> County</label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="county" name="county">
+                  </div>
+                  <div class="form-group">
+                     <label for="state"> State <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-flag"></i>
+                     <input type="text" id="state" name="state" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="zipCode"> Zip Code <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="zipCode" name="zipCode" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="timeAtAddress"> Time At Current Address <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-clock-o"></i>
+                     <input type="text" id="timeAtAddress" name="timeAtAddress" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="ownership"> Do you Own or Rent <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-question"></i>
+                     <select id="ownership" name="ownership" required>
+                        <option value="">-- Select --</option>
+                        <option value="Buying">Buying</option>
+                        <option value="Own">Own</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Other">Other</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="rentPayment"> Rent/Mortgage Payment <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-money"></i>
+                     <input type="number" id="rentPayment" name="rentPayment" required>
+                  </div>
+               </div>
+               <div class="form-section">
+                  <h3 class="fa fa-male fa-2x">&nbsp;Employment</h3>
+                  <div class="form-group">
+                     <label for="employmentType"> Type of Employment</label>
+                     <i class="fa fa-briefcase"></i> 
+                     <input type="text" id="employmentType" name="employmentType">
+                  </div>
+                  <div class="form-group">
+                     <label for="employer"> Employer Name</label>
+                     <i class="fa fa-building"></i>
+                     <input type="text" id="employer" name="employer">
+                  </div>
+                  <div class="form-group">
+                     <label for="occupation"> Occupation or Rank</label>
+                     <i class="fa fa-university"></i>
+                     <input type="text" id="occupation" name="occupation">
+                  </div>
+                  <div class="form-group">
+                     <label for="workPhone"> Work Phone</label>
+                     <i class="fa fa-phone"></i>
+                     <input type="tel" id="workPhone" name="workPhone">
+                  </div>
+                  <div class="form-group">
+                     <label for="extension"> Extension</label>
+                     <i class="fa fa-arrows-h"></i>
+                     <input type="text" id="extension" name="extension">
+                  </div>
+                  <div class="form-group">
+                     <label for="timeAtEmployment"> Time at Employment</label>
+                     <i class="fa fa-clock-o"></i>
+                     <input type="text" id="timeAtEmployment" name="timeAtEmployment">
+                  </div>
+                  <div class="form-group">
+                     <label for="employmentAddress"> Address</label>
+                     <i class="fa fa-location-arrow"></i>
+                     <input type="text" id="employmentAddress" name="employmentAddress">
+                  </div>
+                  <div class="form-group">
+                     <label for="employmentAptUnit"> Apt/Unit</label>
+                     <i class="fa fa-building"></i>
+                     <input type="text" id="employmentAptUnit" name="employmentAptUnit">
+                  </div>
+                  <div class="form-group">
+                     <label for="employmentCity">City</label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="employmentCity" name="employmentCity">
+                  </div>
+                  <div class="form-group">
+                     <label for="employmentState"> State</label>
+                     <i class="fa fa-flag"></i>
+                     <input type="text" id="employmentState" name="employmentState">
+                  </div>
+                  <div class="form-group">
+                     <label for="employmentZipCode"> Zip Code</label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="employmentZipCode" name="employmentZipCode">
+                  </div>
+               </div>
+               <div class="form-section">
+                  <h3 class="fa fa-money fa-2x">&nbsp;Income</h3>
+                  <div class="form-group">
+                     <label for="grossIncome"> Gross Monthly Income <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-money"></i>
+                     <input type="number" id="grossIncome" name="grossIncome" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="otherIncome"> Other Monthly Income</label>
+                     <i class="fa fa-money"></i>
+                     <input type="number" id="otherIncome" name="otherIncome">
+                  </div>
+                  <div class="form-group">
+                     <label for="incomeDescription"> Description</label>
+                     <i class="fa fa-file-text-o"></i>
+                     <input type="text" id="incomeDescription" name="incomeDescription">
+                  </div>
+               </div>
+               <div class="form-section">
+                  <h3 class="fa fa-info-circle fa-2x">&nbsp; Other Information</h3>
+                  <label for="coBuyer">Do you want to add a Co-Buyer?</label>
+                  <select id="coBuyer" name="coBuyer" onchange="toggleSection()">
+                     <option value="no">No</option>
+                     <option value="yes">Yes</option>
+                  </select>
+               </div>
+               <div class="form-sectionco" id="yes">
+                  <p style="text-align: center; font-size: 14px; color: #000000; margin-bottom: 20px;">
+                     Please complete all those marked with <span style="color: #e00e0e;">*</span>
+                  </p>
+                  <h3 class="fa fa-user fa-2x">&nbsp;Co-Buyer Applicant</h3>
+                  <div class="form-group">
+                     <label for="cofirstName"> Co-Buyer First Name <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-user-md"></i>
+                     <input type="text" id="cofirstName" name="cofirstName" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="comiddleName"> Co-Buyer Middle Name</label>
+                     <i class="fa fa-arrows-h"></i>
+                     <input type="text" id="comiddleName" name="comiddleName">
+                  </div>
+                  <div class="form-group">
+                     <label for="colastName"> Co-Buyer Last Name <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-arrows-h"></i>
+                     <input type="text" id="colastName" name="colastName" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="cossn"> Co-Buyer SSN / ITIN <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                     <input type="password" id="cossn" name="cossn" pattern="\d{3}-\d{2}-\d{4}" title="SSN must be in the format XXX-XX-XXXX" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="codob"> Co-Buyer Date of Birth</label>
+                     <i class="fa fa-birthday-cake"></i>
+                     <input type="date" id="codob" name="codob">
+                  </div>
+                  <div class="form-group">
+                     <label for="codriverLicense"> Co-Buyer Driver License #</label>
+                     <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                     <input type="text" id="codriverLicense" name="codriverLicense" pattern="^[A-Z0-9-]+$" title="Driver License must contain only uppercase letters, numbers, or hyphens.">
+                  </div>
+                  <div class="form-group">
+                     <label for="cophone"> Co-Buyer Phone <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-phone"></i>
+                     <input type="tel" id="cophone" name="cophone" placeholder="(123) 456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="coemail"> Co-Buyer Email Address <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-envelope"></i>
+                     <input type="email" id="coemail" name="coemail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+                  </div>
+               </div>
+               <div class="form-sectionco" id="yes-add">
+                  <h3 class="fa fa-map-marker fa-2x">&nbsp;Co-Buyer Address</h3>
+                  <div class="form-group">
+                     <label for="coaddress"> Co-Buyer Address <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-location-arrow"></i>
+                     <input type="text" id="coaddress" name="coaddress" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="coaptUnit"> Co-Buyer Apt/Unit</label>
+                     <i class="fa fa-building"></i>
+                     <input type="text" id="coaptUnit" name="coaptUnit">
+                  </div>
+                  <div class="form-group">
+                     <label for="cocity"> Co-Buyer City <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-map-marker"></i> 
+                     <input type="text" id="cocity" name="cocity" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="cocounty"> Co-Buyer County</label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="cocounty" name="cocounty">
+                  </div>
+                  <div class="form-group">
+                     <label for="costate"> Co-Buyer State <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-flag"></i>
+                     <input type="text" id="costate" name="costate" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="cozipCode"> Co-Buyer Zip Code <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="cozipCode" name="cozipCode" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="cotimeAtAddress"> Co-Buyer Time At Current Address <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-clock-o"></i>
+                     <input type="text" id="cotimeAtAddress" name="cotimeAtAddress" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="ownership"> Co-Buyer Do you Own or Rent <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-question"></i>
+                     <select id="ownership" name="ownership" required>
+                        <option value="">-- Select --</option>
+                        <option value="Buying">Buying</option>
+                        <option value="Own">Own</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Other">Other</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="corentPayment"> Co-Buyer Rent/Mortgage Payment <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-money"></i>
+                     <input type="number" id="corentPayment" name="corentPayment" required>
+                  </div>
+               </div>
+               <div class="form-sectionco" id="yes-empl">
+                  <h3 class="fa fa-male fa-2x">&nbsp;Co-Buyer Employment</h3>
+                  <div class="form-group">
+                     <label for="coemploymentType"> Co-Buyer Type of Employment</label>
+                     <i class="fa fa-briefcase"></i> 
+                     <input type="text" id="coemploymentType" name="coemploymentType">
+                  </div>
+                  <div class="form-group">
+                     <label for="coemployer"> Co-Buyer Employer Name</label>
+                     <i class="fa fa-building"></i>
+                     <input type="text" id="coemployer" name="coemployer">
+                  </div>
+                  <div class="form-group">
+                     <label for="cooccupation"> Co-Buyer Occupation or Rank</label>
+                     <i class="fa fa-university"></i>
+                     <input type="text" id="cooccupation" name="cooccupation">
+                  </div>
+                  <div class="form-group">
+                     <label for="coworkPhone"> Co-Buyer Work Phone</label>
+                     <i class="fa fa-phone"></i>
+                     <input type="tel" id="coworkPhone" name="coworkPhone">
+                  </div>
+                  <div class="form-group">
+                     <label for="coextension"> Co-Buyer Extension</label>
+                     <i class="fa fa-arrows-h"></i>
+                     <input type="text" id="coextension" name="coextension">
+                  </div>
+                  <div class="form-group">
+                     <label for="cotimeAtEmployment"> Co-Buyer Time at Employment</label>
+                     <i class="fa fa-clock-o"></i>
+                     <input type="text" id="cotimeAtEmployment" name="cotimeAtEmployment">
+                  </div>
+                  <div class="form-group">
+                     <label for="coemploymentAddress"> Co-Buyer Address</label>
+                     <i class="fa fa-location-arrow"></i>
+                     <input type="text" id="coemploymentAddress" name="coemploymentAddress">
+                  </div>
+                  <div class="form-group">
+                     <label for="coemploymentAptUnit"> Co-Buyer Apt/Unit</label>
+                     <i class="fa fa-building"></i>
+                     <input type="text" id="coemploymentAptUnit" name="coemploymentAptUnit">
+                  </div>
+                  <div class="form-group">
+                     <label for="coemploymentCity"> Co-Buyer City</label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="coemploymentCity" name="coemploymentCity">
+                  </div>
+                  <div class="form-group">
+                     <label for="coemploymentState"> Co-Buyer State</label>
+                     <i class="fa fa-flag"></i>
+                     <input type="text" id="coemploymentState" name="coemploymentState">
+                  </div>
+                  <div class="form-group">
+                     <label for="coemploymentZipCode"> Co-Buyer Zip Code</label>
+                     <i class="fa fa-map-marker"></i>
+                     <input type="text" id="coemploymentZipCode" name="coemploymentZipCode">
+                  </div>
+               </div>
+               <div class="form-sectionco" id="yes-inc">
+                  <h3 class="fa fa-money fa-2x">&nbsp; Co-Buyer Income</h3>
+                  <div class="form-group">
+                     <label for="cogrossIncome"> Co-Buyer Gross Monthly Income <span style="color: #e00e0e;">*</span></label>
+                     <i class="fa fa-money"></i>
+                     <input type="number" id="cogrossIncome" name="cogrossIncome" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="cootherIncome"> Co-Buyer Other Monthly Income</label>
+                     <i class="fa fa-money"></i>
+                     <input type="number" id="cootherIncome" name="cootherIncome">
+                  </div>
+                  <div class="form-group">
+                     <label for="coincomeDescription"> Co-Buyer Description</label>
+                     <i class="fa fa-file-text-o"></i>
+                     <input type="text" id="coincomeDescription" name="coincomeDescription">
+                  </div>
+               </div>
+               <!--  <div class="form-section">
+                  <h3 class="fa fa-car fa-3x">Sales Agent</h3>
+                  <div class="form-group">
+                    <label for="salesAgent"> Select Sales Agent <span style="color: #e00e0e;">*</span></label>
+                    <i class="fa fa-car"></i>
+                    <select id="salesAgent" name="salesAgent" required>
+                  	<option value="">-- Select an Agent --</option>
+                  	<option value="agent1@example.com">Agent 1</option>
+                  	<option value="agent2@example.com">Agent 2</option>
+                  	<option value="agent3@example.com">Agent 3</option>
+                    </select>
+                  </div>
+                   </div> -->
+               <div class="form-section">
+                  <label>
+                  <input type="checkbox" name="agree" required>
+                  I have read the Privacy Policy, agree with the consent statement above, and authorize you to contact me via phone, text and/or email.
+                  </label>
+               </div>
+               <div class="form-footer">
+                  <button type="submit">SUBMIT APPLICATION</button>
+               </div>
+            </form>
+         </div>
+         <!-- end new block -->
+         <footer class="footer">
+            <div class="wrap-section-border">
+               <section class="section_mod-h section-bg section-bg_second">
+                  <div class="bg-inner border-section-top border-section-top_mod-b">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <h2 class="footer-title">NextLane <span class="footer-title__inner">Auto</span></h2>
+                              <div class="decor-1 decor-1_mod-b"></div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <div class="footer__name">: SHOWROOM LOCATION :</div>
+                              <div class="footer__text">32 Market St.128, Deeja Town, Florida, CA 12345</div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <div class="footer__item">
+                                 <span class="footer__name">Phone:</span>
+                                 <span class="footer__text">+1 (234) 567 8900</span>
+                              </div>
+                              <div class="footer__item">
+                                 <span class="footer__name">Fax:</span>
+                                 <span class="footer__text">+1 (234) 567 8998</span>
+                              </div>
+                              <div class="footer__item">
+                                 <span class="footer__name">email:</span>
+                                 <span class="footer__text">info@autozone.com</span>
+                              </div>
+                              <div class="footer__item">
+                                 <span class="footer__name">Hours:</span>
+                                 <span class="footer__text">Mon - Fri :: 9am - 6pm</span>
+                              </div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <ul class="social-links list-inline">
+                                 <li><a class="icon fa fa-facebook" href="javascript:void(0);"></a></li>
+                                 <li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li>
+                                 <li><a class="icon fa fa-youtube-play" href="javascript:void(0);"></a></li>
+                                 <li><a class="icon fa fa-instagram" href="javascript:void(0);"></a></li>
+                                 <li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li>
+                              </ul>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                     </div>
+                     <!-- end container -->
+                  </div>
+                  <!-- end bg-inner -->
+               </section>
+               <!-- end section_mod-b -->
+            </div>
+            <!-- end wrap-section-border -->
+            <div class="footer__wrap-btn"> <a class="footer__btn scroll" href="#this-top">top</a> </div>
+            <div class="copyright">Copyrights 2024 - 2025 <a class="copyright__link" href="#">Next Lane Auto</a> : : All rights reserved</div>
+         </footer>
+      </div>
+      <!-- end #wrapper -->
+      </div><!-- end layout-theme -->
+      <span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
+      <!-- SCRIPTS -->
+      <script src="assets/js/jquery-migrate-1.2.1.js"></script>
+      <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/js/modernizr.custom.js"></script>
+      <script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+      <script src="assets/js/waypoints.min.js"></script>
+      <script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+      <script src="assets/plugins/jelect/jquery.jelect.js"></script>
+      <script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
+      <script src="assets/plugins/flexslider/jquery.flexslider.js"></script>
+      <!--THEME-->
+      <script src="assets/js/cssua.min.js"></script>
+      <script src="assets/js/wow.min.js"></script>
+      <script src="assets/js/custom.js"></script>
+      <script>
+         function toggleSection() {
+         	const dropdown = document.getElementById('coBuyer');
+         	const formSection = document.getElementById('yes');
+         	const formSectionadd = document.getElementById('yes-add');
+         	const formSectionempl = document.getElementById('yes-empl');
+         	const formSectioninc = document.getElementById('yes-inc');
+         	
+         	if (dropdown.value === 'yes') { 
+         		formSection.style.display = 'block'; // Show the div
+         		formSectionadd.style.display = 'block'; // Show the div
+         		formSectionempl.style.display = 'block'; // Show the div
+         		formSectioninc.style.display = 'block'; // Show the div
+         	} else {
+         		formSection.style.display = 'none'; // Hide the div
+         		formSectionadd.style.display = 'none'; // Show the div
+         		formSectionempl.style.display = 'none'; // Show the div
+         		formSectioninc.style.display = 'none'; // Show the div
+         	}
+         }
+      </script>
+   </body>
 </html>
