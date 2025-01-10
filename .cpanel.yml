@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/frr9h5cnqn98/public_html/
-    - /bin/rsync -av /home/frr9h5cnqn98/repositories/NextLaneAuto/ $DEPLOYPATH
+    - export DEPLOYPATH=/home/pd0kcfzjsoci/public_html/
+    - /bin/rsync -av /home/pd0kcfzjsoci/repositories/NextLaneAuto/ $DEPLOYPATH
     
