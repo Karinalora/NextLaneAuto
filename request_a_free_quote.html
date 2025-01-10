@@ -3,7 +3,7 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-      <title>NextLane Auto</title>
+      <title>Next Lane Auto</title>
       <style>
          body {
          font-family: Arial, sans-serif;
@@ -186,11 +186,11 @@
          <div class="block-title">
             <div class="block-title__inner section-bg section-bg_second">
                <div class="bg-inner">
-                  <h1 class="ui-title-page">Request A Free Quote</h1>
+                  <h1 class="ui-title-page">Request a Free Quote</h1>
                   <div class="decor-1 center-block"></div>
                   <ol class="breadcrumb">
                      <li><a href="home.html">HOME</a></li>
-                     <li class="active">Request A Free Quote</li>
+                     <li class="active">Request a Free Quote</li>
                   </ol>
                </div>
                <!-- end bg-inner -->
@@ -198,8 +198,38 @@
             <!-- end block-title__inner -->
          </div>
          <!-- end block-title -->
-         
          <!-- starts new block -->
+         <h3><span style="color: #e00e0e;">CLAIM</span> THIS OFFER!</h3>
+         <p>FILL OUT THE FORM BELOW AND ONE OF OUR TEAM MEMBERS WILL CONTACT YOU SHORTLY!</p>
+         <form action="process_form.php" method="POST">
+            <label for="first_name">First Name <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+            <label for="last_name">Last Name <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+            <label for="phone">Phone<span style="color: #e00e0e;">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+            <label for="email">Email <span style="color: #e00e0e;">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <label for="vehicle">Vehicle Make/Model/Year <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="vehicle" name="vehicle" placeholder="Vehicle Make/Model/Year" required>
+            <label for="comments">Additional Comments</label>
+            <textarea id="comments" name="comments" placeholder="Additional Comments"></textarea>
+            <label for="lease_or_finance">Lease or Finance? <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="lease_or_finance" name="lease_or_finance" placeholder="Lease or Finance?" required>
+            <div class="checkbox-label">
+               <input type="checkbox" id="agree" name="agree" required>
+               <label for="agree">I agree to receiving future communications from Familia Motor Group and/or Familia Affiliates, terms of use, & privacy policy. <a href="#" target="_blank">View Privacy Policy</a></label>
+            </div>
+            <div class="captcha-container">
+               <!-- Include your CAPTCHA widget here -->
+               <div class="g-recaptcha" data-sitekey="your-site-key"></div>
+            </div>
+            <div class="form-footer">
+               <button type="submit">SUBMIT</button>
+            </div>
+         </form>
+         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+         <!-- end new block -->
          <footer class="footer">
             <div class="wrap-section-border">
                <section class="section_mod-h section-bg section-bg_second">
