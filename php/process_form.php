@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Process the data (e.g., save to database or send email)
-    $to = "contact@nextlaneauto.com";
+    $to = "sales@nextlaneauto.com";
     $subject = "New Claim Form Submission";
     $message = "
         First Name: $first_name\n
