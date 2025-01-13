@@ -585,82 +585,84 @@ img.pull-left {
 	z-index: 1;
   }
   
-  .floating-buttons {
-	position: relative; /* Position it relative to the parent container */
-	bottom: 0; /* Align it to the bottom */
-	left: 0;
-	width: 100%; /* Stretch across the container width */
-	z-index: 10; /* Ensure it appears above other elements */
-	background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-	padding: 10px 0;
-	text-align: center; /* Center-align content */
-	overflow: hidden; /* Prevent overflow */
-	box-sizing: border-box; /* Include padding and border in width calculation */
+ /* Common Styles */
+.floating-buttons {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .button-list {
-	list-style: none; /* Remove list styling */
-	margin: 0 auto; /* Center the list horizontally */
-	padding: 0;
-	display: flex; /* Flexbox for alignment */
-	justify-content: space-evenly; /* Space buttons evenly */
-	flex-wrap: wrap; /* Wrap buttons to the next line if needed */
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .button-list li {
-	flex: 1 1 auto; /* Allow items to shrink and grow dynamically */
-	max-width: 200px; /* Limit button width to avoid excessive size */
+    flex: 1 1 auto;
+    max-width: 200px;
 }
 
 .button-list li a {
-	display: block;
-	padding: 8px 12px; /* Adjust padding for better fit */
-	font-size: 13px; /* Adjust font size */
-	color: white; /* Text color */
-	background-color: #e00e0e; /* Button background color */
-	text-decoration: none; /* Remove underline */
-	border-radius: 5px; /* Rounded corners */
-	text-align: center;
-	transition: background-color 0.3s, transform 0.2s; /* Interaction effects */
-	overflow: hidden; /* Prevent text overflow */
-	white-space: nowrap; /* Prevent text wrapping */
+    display: block;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: white;
+    background-color: #e00e0e;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .button-list li a:hover {
-	background-color: #e58b8b; /* Hover background color */
-	transform: scale(1.05); /* Hover zoom effect */
+    background-color: #e58b8b;
+    transform: scale(1.05);
+}
+/* Hide both menus by default */
+.mobile-menu,
+.desktop-menu {
+    display: none !important;
 }
 
-/* Responsive Design for Tablets */
-@media (max-width: 768px) {
-	.button-list {
-		gap: 10px; /* Add space between rows */
-	}
+/* Show the mobile menu only on screens smaller than 784px */
+@media screen and (max-width: 780px) {
+    .mobile-menu {
+        display: block !important; /* Force show the mobile menu */
+    }
 
-	.button-list li a {
-		padding: 6px 10px; /* Smaller padding */
-		font-size: 12px; /* Smaller font size */
-	}
+    .desktop-menu {
+        display: none !important; /* Ensure desktop menu is hidden */
+    }
 }
 
-/* Responsive Design for Phones */
-@media (max-width: 480px) {
-	.button-list {
-		flex-direction: column; /* Stack buttons vertically */
-		align-items: center; /* Center-align buttons */
-		gap: 8px; /* Add space between buttons */
-	}
+/* Show the desktop menu only on screens 784px or larger */
+@media screen and (min-width: 784px) {
+    .desktop-menu {
+        display: block !important; /* Force show the desktop menu */
+    }
 
-	.button-list li {
-		width: 90%; /* Stretch buttons to fit 90% of the screen width */
-	}
-
-	.button-list li a {
-		padding: 8px 14px; /* Adjust padding for readability */
-		font-size: 12px; /* Smaller font size for mobile */
-		text-align: center; /* Center text */
-	}
+    #navbar-collapse-1.mobile-menu {
+        display: none !important; /* Ensure mobile menu is hidden */
+    }
 }
+
+
+
+
+
 
 
 
