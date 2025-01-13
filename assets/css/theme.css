@@ -658,6 +658,29 @@ img.pull-left {
         display: none !important; /* Ensure mobile menu is hidden */
     }
 }
+
+/* Safari-specific Fix: Add fallback for Safari handling */
+@supports (-webkit-touch-callout: none) {
+    @media screen and (min-width: 784px) {
+        .desktop-menu {
+            display: block !important;
+        }
+
+        .mobile-menu {
+            display: none !important;
+        }
+    }
+
+    @media screen and (max-width: 783px) {
+        .mobile-menu {
+            display: block !important;
+        }
+
+        .desktop-menu {
+            display: none !important;
+        }
+    }
+}
   
   /* Header Static */
 .header__static {
