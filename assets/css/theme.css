@@ -586,40 +586,84 @@ img.pull-left {
   }
   
   .floating-buttons {
-	position: absolute; /* Position it relative to the slider container */
-	bottom: 0; /* Align it to the bottom of the slider */
+	position: relative; /* Position it relative to the parent container */
+	bottom: 0; /* Align it to the bottom */
 	left: 0;
-	width: 100%; /* Stretch across the entire slider width */
-	z-index: 10; /* Ensure it appears above the slider images */
+	width: 100%; /* Stretch across the container width */
+	z-index: 10; /* Ensure it appears above other elements */
 	background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
 	padding: 10px 0;
 	text-align: center; /* Center-align content */
-  }
-  
-  .button-list {
+	overflow: hidden; /* Prevent overflow */
+	box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.button-list {
 	list-style: none; /* Remove list styling */
-	margin: 0;
+	margin: 0 auto; /* Center the list horizontally */
 	padding: 0;
 	display: flex; /* Flexbox for alignment */
-	justify-content: center; /* Center the buttons */
-	gap: 10px; /* Space between buttons */
-  }
-  
-  .button-list li a {
-	display: inline-block;
-	padding: 10px 20px; /* Button dimensions */
-	font-size: 14px;
+	justify-content: space-evenly; /* Space buttons evenly */
+	flex-wrap: wrap; /* Wrap buttons to the next line if needed */
+}
+
+.button-list li {
+	flex: 1 1 auto; /* Allow items to shrink and grow dynamically */
+	max-width: 200px; /* Limit button width to avoid excessive size */
+}
+
+.button-list li a {
+	display: block;
+	padding: 8px 12px; /* Adjust padding for better fit */
+	font-size: 13px; /* Adjust font size */
 	color: white; /* Text color */
 	background-color: #e00e0e; /* Button background color */
 	text-decoration: none; /* Remove underline */
 	border-radius: 5px; /* Rounded corners */
+	text-align: center;
 	transition: background-color 0.3s, transform 0.2s; /* Interaction effects */
-  }
-  
-  .button-list li a:hover {
+	overflow: hidden; /* Prevent text overflow */
+	white-space: nowrap; /* Prevent text wrapping */
+}
+
+.button-list li a:hover {
 	background-color: #e58b8b; /* Hover background color */
 	transform: scale(1.05); /* Hover zoom effect */
-  }
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 768px) {
+	.button-list {
+		gap: 10px; /* Add space between rows */
+	}
+
+	.button-list li a {
+		padding: 6px 10px; /* Smaller padding */
+		font-size: 12px; /* Smaller font size */
+	}
+}
+
+/* Responsive Design for Phones */
+@media (max-width: 480px) {
+	.button-list {
+		flex-direction: column; /* Stack buttons vertically */
+		align-items: center; /* Center-align buttons */
+		gap: 8px; /* Add space between buttons */
+	}
+
+	.button-list li {
+		width: 90%; /* Stretch buttons to fit 90% of the screen width */
+	}
+
+	.button-list li a {
+		padding: 8px 14px; /* Adjust padding for readability */
+		font-size: 12px; /* Smaller font size for mobile */
+		text-align: center; /* Center text */
+	}
+}
+
+
+
 
 
   
