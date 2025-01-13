@@ -26,6 +26,30 @@
          border-radius: 4px;
          margin-bottom: 20px;
          }
+
+          /* Contenedor para hacer el iframe responsivo */
+  .responsive-iframe-container {
+    position: relative;
+    width: 100%; /* Siempre ocupa el 100% del ancho del contenedor */
+    padding-top: 56.25%; /* Relación de aspecto 16:9 (altura/ancho) */
+  }
+
+  /* Estilo del iframe */
+  .responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ancho completo del contenedor */
+    height: 100%; /* Altura completa basada en la proporción */
+    border: 0;
+  }
+
+  /* Opcional: Ajustes adicionales para pantallas más pequeñas */
+  @media (max-width: 768px) { /* Teléfonos y tablets */
+    .responsive-iframe-container {
+      padding-top: 75%; /* Relación de aspecto 4:3 para pantallas más pequeñas */
+    }
+  }
       </style>
       <link href="favicon.png" type="image/x-icon" rel="shortcut icon">
       <link href="assets/css/master.css" rel="stylesheet">
@@ -159,7 +183,18 @@
                <!-- end row --> 
             </div>
             <!-- end container -->
-            <div class="map"><img class="img-responsive" src="assets/img/map.jpg" height="520" width="1600" alt="map"></div>
+           <!-- <div class="map"><img class="img-responsive" src="assets/img/map.jpg" height="520" width="1600" alt="map"></div> -->
+          <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.3686058465787!2d-73.98899222376812!3d40.753916835048244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259ab1ba3a06d%3A0xcb67368f7de0b14c!2s1430%20Broadway%20%23%201200%2C%20New%20York%2C%20NY%2010018!5e0!3m2!1sen!2sus!4v1736730205280!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+
+          <div class="responsive-iframe-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.3686058465787!2d-73.98899222376812!3d40.753916835048244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259ab1ba3a06d%3A0xcb67368f7de0b14c!2s1430%20Broadway%20%23%201200%2C%20New%20York%2C%20NY%2010018!5e0!3m2!1sen!2sus!4v1736730205280!5m2!1sen!2sus" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
             <div class="container text-center">
                <div class="row">
                   <div class="col-xs-12">
@@ -174,7 +209,7 @@
                <!-- end row -->
                <div class="row">
                   <div class="col-sm-10 col-sm-offset-1">
-                     <form class="form-contact" action="php/process_form.php" method="POST">
+                     <form class="form-contact" action="php/free_quote.php" method="POST">
                         <div class="row">
                            <div class="col-sm-6">
                               <input class="form-control" type="text" placeholder="First Name" required>
