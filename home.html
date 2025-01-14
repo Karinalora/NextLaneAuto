@@ -50,7 +50,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-xs-12">
-                        <a href="home.html" class="logo"> <img class="logo__img img-responsive" src="assets/nla.png" height="50" width="111" alt="Logo"> </a>
+                      <!--  <a href="home.html" class="logo"> <img class="logo__img img-responsive" src="assets/nla.png" height="50" width="111" alt="Logo"> </a> -->
                         <div class="header-contacts"> <span class="header-contacts__item"><i class="icon fa fa-phone"></i>(516) 912-6413 </span> <a class="header-contacts__item" href="mailto:sales@nextlaneauto.com"><i class="icon fa fa-envelope"></i>sales@nextlaneauto.com</a> </div>
                         <ul class="social-links list-inline">
                            <li><a class="icon fa fa-facebook" href="https://www.facebook.com/share/1BQfSxZhQk/?mibextid=wwXIfr"></a></li>
@@ -152,19 +152,49 @@
             </div>
             <!-- Floating Buttons Section -->
             <!-- Mobile Navigation -->
-            <div id="navbar-collapse-1" class="navbar-collapse collapse mobile-menu">
-               <ul class="nav navbar-nav">
-                  <li><a href="new_vehicle.html">Vehicles</a></li>
-                  <li><a href="trade_or_sell_your_vehicle.html">Trade or Sell Your Vehicle</a></li>
-                  <li><a href="credit_application.html">Credit Application</a></li>
-                  <li><a href="get_pre_qualified.html">Get Pre-Qualified in Seconds</a></li>
-                  <li class="dropdown">
-                     <a href="request_a_free_quote.html">Request a Free Quote</a>
-                  </li>
-                  <li><a href="about-us.html">About Us</a></li>
-                  <li><a href="contact_us.html">Contact Us</a></li>
-               </ul>
-            </div>
+            <div class="header__inner">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-md-12 col-xs-12">
+                           <a href="home.html" class="logo">
+                               <img class="logo__img img-responsive" src="assets/nla.png" height="50" width="111" alt="Logo">
+                           </a>
+                           <div class="navbar yamm">
+                               <!-- Navbar header for mobile toggle button -->
+                               <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                                   <button
+                                       type="button"
+                                       data-toggle="collapse"
+                                       data-target="#navbar-collapse-1"
+                                       class="navbar-toggle"
+                                   >
+                                       <span class="icon-bar"></span>
+                                       <span class="icon-bar"></span>
+                                       <span class="icon-bar"></span>
+                                   </button>
+                               </div>
+           
+                               <!-- Collapsible Mobile Menu -->
+                               <div id="navbar-collapse-1" class="navbar-collapse collapse mobile-menu">
+                                   <ul class="nav navbar-nav">
+                                       <li><a href="new_vehicle.html">Vehicles</a></li>
+                                       <li><a href="trade_or_sell_your_vehicle.html">Trade or Sell Your Vehicle</a></li>
+                                       <li><a href="credit_application.html">Credit Application</a></li>
+                                       <li><a href="get_pre_qualified.html">Get Pre-Qualified in Seconds</a></li>
+                                       <li class="dropdown">
+                                           <a href="request_a_free_quote.html">Request a Free Quote</a>
+                                       </li>
+                                       <li><a href="about-us.html">About Us</a></li>
+                                       <li><a href="contact_us.html">Contact Us</a></li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <!-- end container -->
+           </div>
+           
             <!-- Floating Buttons Section -->
             <div class="floating-buttons desktop-menu">
                <div class="header__inner">
@@ -201,13 +231,13 @@
                         <div class="wrap-link-img">
                            <ul class="link-img link-img_mod-a list-inline wow bounceInLeft" data-wow-duration="2s">
                               <li class="link-img__item">
-                                 <a class="link-img__link" href="new_vehicle.html">
+                                 <a class="link-img__link" href="#brands">
                                     <img class="img-responsive" src="assets/media/link-img/1.png" height="250" width="170" alt="Foto">
                                     <div class="link-img__wrap-title"><span class="link-img__title">all brands</span></div>
                                  </a>
                               </li>
                               <li class="link-img__item">
-                                 <a class="link-img__link" href="javascript:void(0);">
+                                 <a class="link-img__link" href="contact_us.html">
                                     <img class="img-responsive" src="assets/media/link-img/2.png" height="250" width="170" alt="Foto">
                                     <div class="link-img__wrap-title"><span class="link-img__title">FREE SUPPORT</span></div>
                                  </a>
@@ -252,7 +282,7 @@
                   <!-- end row -->
                   <div class="row">
                      <div class="col-xs-12">
-                        <a class="brand-link text-center wow bounceInUp" data-wow-duration="2s" data-wow-delay="1s" href="javascript:void(0);">
+                        <a class="brand-link text-center wow bounceInUp" data-wow-duration="2s" data-wow-delay="1s" href="new_vehicle.html">
                            <i class="icon fa fa-caret-right"></i>SEE LISTED VEHICLES<i class="icon fa fa-caret-left"></i><span class="br"></span>
                            <div class="decor-1 decor-1_mod-b"></div>
                         </a>
@@ -645,7 +675,7 @@
                   <!-- end container --> 
             </section>
             <!-- end section_mod-d -->
-            <section class="section_brands text-center wow bounceInUp" data-wow-duration="2s">
+            <section id="brands" class="section_brands text-center wow bounceInUp" data-wow-duration="2s">
             <div class="container">
             <div class="row">
             <div class="col-xs-12">
@@ -654,19 +684,34 @@
             <div class="decor-1 decor-1_mod-b"></div>
             <ul class="list-brands list-inline">
             <li class="list-brands__item">
-            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/brand-8.jpg" height="57" width="250" alt="Brand"></div>
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/acura-car.png" height="57" width="250" alt="Brand"></div>
             </li>
             <li class="list-brands__item">
-            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/brand-4.jpg" height="57" width="250" alt="Brand"></div>
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/honda-car.png" height="57" width="250" alt="Brand"></div>
             </li>
             <li class="list-brands__item">
-            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/brand-7.jpg" height="57" width="250" alt="Brand"></div>
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/hyundai-car.png" height="57" width="250" alt="Brand"></div>
             </li>
             <li class="list-brands__item">
-            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/brand-1.jpg" height="57" width="250" alt="Brand"></div>
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/kia-car.png" height="57" width="250" alt="Brand"></div>
             </li>
             <li class="list-brands__item">
-            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/brand-5.jpg" height="57" width="250" alt="Brand"></div>
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/Toyota-car.png" height="57" width="250" alt="Brand"></div>
+            </li>
+            <li class="list-brands__item">
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/lexus-car.png" height="57" width="250" alt="Brand"></div>
+            </li>
+            <li class="list-brands__item">
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/mercedes-car.png" height="57" width="250" alt="Brand"></div>
+            </li>
+            <li class="list-brands__item">
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/nissan-car.png" height="57" width="250" alt="Brand"></div>
+            </li>
+            <li class="list-brands__item">
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/infiniti-car.png" height="57" width="250" alt="Brand"></div>
+            </li>
+            <li class="list-brands__item">
+            <div class="list-brands__inner"><img class="list-brands__img img-responsive" src="assets/media/brands/bmw-car.png" height="57" width="250" alt="Brand"></div>
             </li>
             </ul>
             </div>
@@ -1228,7 +1273,7 @@
       </div>
       <!-- end layout-theme --> 
       <span class="scroll-top"> <i class="fa fa-angle-up"> </i></span> 
-      <!-- SCRIPTS --> 
+      <!-- SCRIPTS -->
       <script src="assets/js/jquery-migrate-1.2.1.js"></script> 
       <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
       <script src="assets/js/modernizr.custom.js"></script> 
@@ -1237,6 +1282,7 @@
       <script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script> 
       <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> 
       <script src="assets/plugins/jelect/jquery.jelect.js"></script> 
+      
       <!--HOME SLIDER--> 
       <script  src="assets/plugins/sliderpro/js/jquery.sliderPro.min.js"></script> 
       <!--THEME--> 
