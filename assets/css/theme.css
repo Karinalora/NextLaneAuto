@@ -640,7 +640,14 @@ img.pull-left {
 /* Show the mobile menu only on screens smaller than 784px */
 @media screen and (max-width: 780px) {
     .mobile-menu {
-        display: block !important; /* Force show the mobile menu */
+        display: none !important; /* Force show the mobile menu */
+    }
+	.mobile-menu.collapse.in {
+        display: block !important; /* Show when toggled */
+    }
+
+    .navbar-toggle {
+        display: block;
     }
 
     .desktop-menu {
@@ -673,7 +680,7 @@ img.pull-left {
 
     @media screen and (max-width: 783px) {
         .mobile-menu {
-            display: block !important;
+            display: none !important;
         }
 
         .desktop-menu {
@@ -744,7 +751,7 @@ img.pull-left {
   
   /* Evitar que el contenido quede detrás del header */
   body {
-	margin-top: 80px; /* Ajustar según la altura del header */
+	/* margin-top: 80px; /* Ajustar según la altura del header */
   }
   
 
