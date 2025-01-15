@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message_details = htmlspecialchars(trim($_POST['message']));
 
     // Validate required fields
-    if (empty($first_name) || empty($last_name) || empty($phone_no) || empty($subject) || empty($message_details)) {
+    if (empty($first_name) || empty($last_name) || empty($phone_no) || empty($subject) || empty($message_details) || empty($email)  ||!filter_var($email, FILTER_VALIDATE_EMAIL)  ||!preg_match('/^\d{10}$/', $phone_no)  ||!preg_match('/^[a-zA-Z ]+$/', $first_name)  ||!preg_match('/^[a-zA-Z ]+$/', $last_name)) {
         die('All fields are required.');
     }
 
