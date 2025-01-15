@@ -3,6 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Collect and sanitize form data
     $first_name = htmlspecialchars(trim($_POST['firstName']));
     $last_name = htmlspecialchars(trim($_POST['lastName']));
+    $email = htmlspecialchars($_POST['email']);
     $phone_no = htmlspecialchars(trim($_POST['phoneNo']));
     $subject = htmlspecialchars(trim($_POST['subject']));
     $message_details = htmlspecialchars(trim($_POST['message']));
@@ -26,10 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ";
 
     // Email headers
-    $headers = "From:  sales@nextlaneauto.com\r\n"; // Replace with a valid "from" email
-    //$headers .= "Reply-To: no-reply@example.com\r\n"; // Replace as needed
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $headers = "From: " . $email . "\r\n" .
+                   "Reply-To: " . $email . "\r\n" .
+                   "Content-Type: text/html; charset=UTF-8";
 
     // Send the email
     if (mail($to, $email_subject, $email_body, $headers)) {
