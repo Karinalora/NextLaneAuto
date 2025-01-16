@@ -588,7 +588,7 @@ img.pull-left {
  /* Common Styles */
 .floating-buttons {
     position: relative;
-    bottom: 0;
+    bottom: 43px;
     left: 0;
     width: 100%;
     z-index: 10;
@@ -606,6 +606,7 @@ img.pull-left {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+	gap: 16px; /* Espacio entre los botones */
 }
 
 .button-list li {
@@ -616,7 +617,7 @@ img.pull-left {
 .button-list li a {
     display: block;
     padding: 8px 12px;
-    font-size: 13px;
+    font-size: 16px;
     color: white;
     background-color: #e00e0e;
     text-decoration: none;
