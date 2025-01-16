@@ -4,6 +4,28 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui">
       <title>NextLane Auto</title>
+      <style>
+         .diamond {
+             position: relative; /* Permite posicionar el número dentro */
+             display: inline-block; /* Para que el diamante se ajuste al contenido */
+             width: 40px; /* Ancho del diamante */
+             height: 40px; /* Altura del diamante */
+             background-color: #e00e0e; /* Color del diamante */
+             transform: rotate(45deg); /* Gira el cuadrado para formar un diamante */
+             margin: 10px; /* Espacio alrededor */
+         }
+ 
+         .diamond span {
+             position: absolute; /* Posiciona el número dentro del diamante */
+             top: 50%; /* Centra verticalmente */
+             left: 50%; /* Centra horizontalmente */
+             transform: translate(-50%, -50%) rotate(-45deg); /* Ajusta posición y rota el número */
+             color: white; /* Color del número */
+             font-size: 14px; /* Tamaño del número */
+             font-weight: bold; /* Negrita */
+         }
+     </style>
+      
       <link href="favicon.png" type="image/x-icon" rel="shortcut icon">
       <link href="assets/css/master.css" rel="stylesheet">
       <link href="assets/plugins/iview/css/iview.css" rel="stylesheet">
@@ -594,20 +616,26 @@
                            </div> 
                            <p>Integer tortor bibendum est faucibus gravida aliquam nul lectus lacinia eget pulvinar mattis inl risus. Quisque sagittis lorem acdua er pharetral interdum quisque convallis nulla id ipsum vamus aliquam arcu arcu.</p>
                            <p>Etiam imperdiet aliquam eriat volutpat mauris consecteta. Aliquam enisem pretium vitae posuere ac mats vitae arcu.</p> -->
-                        <a class="link" href=""><strong>We are understanding.</strong> We know you might be working, have kids, families,
+                           <div class="diamond">
+                              <span>1</span>
+                          </div><strong>We are understanding.</strong> We know you might be working, have kids, families,
                         friends, things to do. We want to make this whole process stress-free and
                         convenient, so we do all the legwork for you. We will find the perfect vehicle that
                         fits your needs, handle the negotiation process, and deliver it to you at the comfort
-                        of your very home.</a>
+                        of your very home.
                         <div class="decor-1">  </div>
-                        <a class="link" href=""><strong>Unlike a standard dealership</strong> where you’re just a number, we strive for a
+                        <div class="diamond">
+                           <span>2</span>
+                       </div><strong>Unlike a standard dealership</strong> where you’re just a number, we strive for a
                         personalized relationship with you and offer 1-1 support to tailor your specific
-                        needs</a>
+                        needs.
                         <div class="decor-1"></div>
-                        <a class="link" href=""><strong>We are car-lovers</strong> and we love caring about you. We want
+                        <div class="diamond">
+                           <span>3</span>
+                       </div><strong>We are car-lovers</strong> and we love caring about you. We want
                         to make your purchase experience as smooth and enjoyable as possible. We will
                         ensure that you have a car that meets your needs, handles the negotiation
-                        process, and delivers it to you at the comfort of your very home.</a> 
+                        process, and delivers it to you at the comfort of your very home.
                         <div class="decor-1"> 
                         </div>
                         <!-- end col --> 
@@ -676,7 +704,7 @@
                               <div class="ui-subtitle-block_mod-a">that we are currently dealing</div>
                               <ul class="list-type">
                                  <li class="list-type__item">
-                                    <a class="list-type__link" href="">
+                                    <a class="list-type__link">
                                        <div class="list-type__inner">
                                           <i class="icon auto12"></i>
                                           <div class="decor-1 center-block"></div>
@@ -686,7 +714,7 @@
                                     </a>
                                  </li>
                                  <li class="list-type__item">
-                                    <a class="list-type__link" href="javascript:void(0);">
+                                    <a class="list-type__link">
                                        <div class="list-type__inner">
                                           <i class="icon auto15"></i>
                                           <div class="decor-1 center-block"></div>
@@ -696,7 +724,7 @@
                                     </a>
                                  </li>
                                  <li class="list-type__item">
-                                    <a class="list-type__link" href="javascript:void(0);">
+                                    <a class="list-type__link">
                                        <div class="list-type__inner">
                                           <i class="icon auto13"></i>
                                           <div class="decor-1 center-block"></div>
@@ -706,7 +734,7 @@
                                     </a>
                                  </li>
                                  <li class="list-type__item">
-                                    <a class="list-type__link" href="javascript:void(0);">
+                                    <a class="list-type__link">
                                        <div class="list-type__inner">
                                           <i class="icon auto13"></i>
                                           <div class="decor-1 center-block"></div>
@@ -716,7 +744,7 @@
                                     </a>
                                  </li>
                                  <li class="list-type__item">
-                                    <a class="list-type__link" href="javascript:void(0);">
+                                    <a class="list-type__link">
                                        <div class="list-type__inner">
                                           <i class="icon auto14"></i>
                                           <div class="decor-1 center-block"></div>
@@ -726,7 +754,7 @@
                                     </a>
                                  </li>
                                  <li class="list-type__item">
-                                    <a class="list-type__link" href="javascript:void(0);">
+                                    <a class="list-type__link">
                                        <div class="list-type__inner">
                                           <i class="icon auto16"></i>
                                           <div class="decor-1 center-block"></div>
