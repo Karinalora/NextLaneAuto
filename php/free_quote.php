@@ -27,12 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "Reply-To: $email\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-      
-
-            // Show alerts
-            alert("Name: " + $to);
-            alert("Email: " + $email_subject);
-            alert("Message: " + $email_body);
 
         if (mail($to, $subject, $message, $headers)) {
             header('Location: /success.html');
