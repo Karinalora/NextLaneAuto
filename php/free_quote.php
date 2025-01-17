@@ -1,10 +1,15 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; // Asegúrate de que PHPMailer esté instalado mediante Composer
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     // Recopilar y sanitizar los datos del formulario
     $first_name = htmlspecialchars(trim($_POST['firstName']));
     $last_name = htmlspecialchars(trim($_POST['lastName']));
