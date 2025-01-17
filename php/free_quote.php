@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        if (mail($to, $subject, $message)) {  
+        if (mail($to, $email_subject, $message_details, $email_body)) {  
             header('Location: /success.html');
             exit();
         } else {
