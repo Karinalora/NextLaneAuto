@@ -1,6 +1,7 @@
 <?php
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 ini_set('log_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,8 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "Reply-To: $email\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
-        error_log("Sending email to $to from $email with subject $subject.");
 
         if (mail($to, $subject, $message, $headers)) {
             header('Location: /success.html');
