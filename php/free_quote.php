@@ -37,12 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_subject = "New Contact Form Submission: " . $subject;
         $email_body = "
             <h2>Contact Form Details</h2>
-            <p><strong>Name:</strong> $first_name</p>
-            <p><strong>Project:</strong> $last_name</p>
+            <p><strong>First Name:</strong> $first_name</p>
+            <p><strong>Last Name:</strong> $last_name</p>
             <p><strong>Email:</strong> $email</p>
-            <p><strong>Phone:</strong> $phone_no</p> 
+            <p><strong>Phone No:</strong> $phone_no</p> 
             <p><strong>Subject:</strong> $subject</p>
-            <p><strong>Message:</strong> $message_details</p>
+            <p><strong>Message Details:</strong> $message_details</p>
         ";
 
         // Enviar el correo usando mail() de PHP
