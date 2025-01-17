@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message_details = htmlspecialchars(trim($_POST['message'] ?? ''));
 
     if (!empty($email) && !empty($message_details)) {
-        $to = "sales@nextlaneauto.com";
+        $to = "sales@nextlaneauto.net";
         $email_subject = "New Contact Form Submission: " . $subject;
         $email_body = "
             <h2>Contact Form Details</h2>
