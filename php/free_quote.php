@@ -44,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // Configuración del servidor SMTP
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = 'mail.nextlaneauto.net';
         $mail->SMTPAuth = true;
-        $mail->Username = 'sales@nextlaneauto.com'; // Tu correo de Gmail
+        $mail->Username = '_mainaccount@nextlaneauto.net'; // Tu correo de Gmail
         $mail->Password = 'Teslam440q60'; // Contraseña o contraseña de aplicación
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
