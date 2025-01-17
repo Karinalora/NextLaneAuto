@@ -1,6 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; // Asegúrate de que PHPMailer esté instalado mediante Composer
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect and sanitize form data
+    // Recopilar y sanitizar los datos del formulario
     $first_name = htmlspecialchars(trim($_POST['firstName']));
     $last_name = htmlspecialchars(trim($_POST['lastName']));
     $email = htmlspecialchars($_POST['email']);
@@ -8,36 +13,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = htmlspecialchars(trim($_POST['subject']));
     $message_details = htmlspecialchars(trim($_POST['message']));
 
-    // Validate required fields
-    if (empty($first_name) || empty($last_name) || empty($phone_no) || empty($subject) || empty($message_details) || empty($email)  ||!filter_var($email, FILTER_VALIDATE_EMAIL)  ||!preg_match('/^\d{10}$/', $phone_no)  ||!preg_match('/^[a-zA-Z ]+$/', $first_name)  ||!preg_match('/^[a-zA-Z ]+$/', $last_name)) {
-        die('All fields are required.');
+    // Validar los campos requeridos
+    if (
+        empty($first_name) || empty($last_name) || empty($phone_no) || 
+        empty($subject) || empty($message_details) || empty($email) ||
+        !filter_var($email, FILTER_VALIDATE_EMAIL) || 
+        !preg_match('/^\d{10}$/', $phone_no) || 
+        !preg_match('/^[a-zA-Z ]+$/', $first_name) || 
+        !preg_match('/^[a-zA-Z ]+$/', $last_name)
+    ) {
+        die('Todos los campos son obligatorios y deben estar correctamente llenos.');
     }
 
-    // Email recipient and subject
-    $to = "sales@nextlaneauto.com"; // Replace with your email address
-    $email_subject = "New Message from Contact Form: $subject";
+    // Configuración del correo
+    $to = "sales@nextlaneauto.com"; // Dirección de correo del destinatario
+    $email_subject = "Nuevo mensaje del formulario de contacto: $subject";
 
-    // Email body
+    // Cuerpo del correo
     $email_body = "
-        <strong>First Name:</strong> $first_name<br>
-        <strong>Last Name:</strong> $last_name<br>
-        <strong>Phone No.:</strong> $phone_no<br>
-        <strong>Subject:</strong> $subject<br>
-        <strong>Message:</strong><br>$message_details
+        <strong>Nombre:</strong> $first_name<br>
+        <strong>Apellido:</strong> $last_name<br>
+        <strong>Teléfono:</strong> $phone_no<br>
+        <strong>Asunto:</strong> $subject<br>
+        <strong>Mensaje:</strong><br>$message_details
     ";
 
-    // Email headers
-    $headers = "From: " . $email . "\r\n" .
-                   "Reply-To: " . $email . "\r\n" .
-                   "Content-Type: text/html; charset=UTF-8";
+    // Configuración de PHPMailer
+    $mail = new PHPMailer(true);
 
-    // Send the email
-    if (mail($to, $email_subject, $email_body, $headers)) {
-        // Redirect to a success page
+    try {
+        // Configuración del servidor SMTP
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'sales@nextlaneauto.com'; // Tu correo de Gmail
+        $mail->Password = 'Teslam440q60'; // Contraseña o contraseña de aplicación
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Configuración del remitente y destinatario
+        $mail->setFrom($emai, $first_name); // Dirección de envío
+        $mail->addAddress($to, 'NextLane Auto'); // Dirección del destinatario
+        $mail->addReplyTo($email, "$first_name $last_name"); // Responder al remitente
+
+        // Configuración del contenido del correo
+        $mail->isHTML(true);
+        $mail->Subject = $email_subject;
+        $mail->Body = $email_body;
+        $mail->AltBody = strip_tags($email_body);
+
+        // Enviar el correo
+        $mail->send();
+
+        // Redireccionar a la página de éxito
         header('Location: /success.html');
         exit();
-    } else {
-        // Redirect to a failure page
+    } catch (Exception $e) {
+        error_log("Error al enviar el correo: {$mail->ErrorInfo}");
+
+        // Redireccionar a la página de error
         header('Location: /failed.html');
         exit();
     }
