@@ -1,21 +1,23 @@
+
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-require_once __DIR__ . '/../vendor/autoload.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
-require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
+   // $recaptchaResponse = $_POST['g-recaptcha-response'];
+   // $secretKey = '6Lc3pUoqAAAAAJTyWRL1fsh0jXqTqaCrxmxdAr8U';
+   // $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+        // Verificar la respuesta de reCAPTCHA
+//    $response = file_get_contents($verifyURL . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+ //   $responseKeys = json_decode($response, true);
 
-//require 'vendor/autoload.php'; // Asegúrate de que PHPMailer esté instalado mediante Composer
+    // Obtener los datos del formulario
+//    $name = htmlspecialchars($_POST['name']);
+ //   $email = htmlspecialchars($_POST['email']);
+ //   $phone = htmlspecialchars($_POST['phone']);
+ //   $project = htmlspecialchars($_POST['project']);
+ //   $subject = htmlspecialchars($_POST['subject']);
+ //   $message = htmlspecialchars($_POST['message']);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Recopilar y sanitizar los datos del formulario
     $first_name = htmlspecialchars(trim($_POST['firstName']));
     $last_name = htmlspecialchars(trim($_POST['lastName']));
     $email = htmlspecialchars($_POST['email']);
@@ -23,67 +25,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = htmlspecialchars(trim($_POST['subject']));
     $message_details = htmlspecialchars(trim($_POST['message']));
 
-    // Validar los campos requeridos
-    if (
-        empty($first_name) || empty($last_name) || empty($phone_no) || 
-        empty($subject) || empty($message_details) || empty($email) ||
-        !filter_var($email, FILTER_VALIDATE_EMAIL) || 
-        !preg_match('/^\d{10}$/', $phone_no) || 
-        !preg_match('/^[a-zA-Z ]+$/', $first_name) || 
-        !preg_match('/^[a-zA-Z ]+$/', $last_name)
-    ) {
-        die('Todos los campos son obligatorios y deben estar correctamente llenos.');
-    }
+    // Verificar si los campos requeridos están llenos
+    if(!empty($email) && !empty($message_details)){ // && ($responseKeys["success"]
 
-    // Configuración del correo
-    $to = "sales@nextlaneauto.com"; // Dirección de correo del destinatario
-    $email_subject = "Nuevo mensaje del formulario de contacto: $subject";
+        // Configuración del servidor de correo SMTP
+        $to = "sales@nextlaneauto.com";  // Reemplaza con tu correo de recepción
+        $headers = "From: " . $email . "\r\n" .
+                   "Reply-To: " . $email . "\r\n" .
+                   "Content-Type: text/html; charset=UTF-8";
 
-    // Cuerpo del correo
-    $email_body = "
-        <strong>Nombre:</strong> $first_name<br>
-        <strong>Apellido:</strong> $last_name<br>
-        <strong>Teléfono:</strong> $phone_no<br>
-        <strong>Asunto:</strong> $subject<br>
-        <strong>Mensaje:</strong><br>$message_details
-    ";
+        $email_subject = "New Contact Form Submission: " . $subject;
+        $email_body = "
+            <h2>Contact Form Details</h2>
+            <p><strong>Name:</strong> $first_name</p>
+            <p><strong>Project:</strong> $last_name</p>
+            <p><strong>Email:</strong> $email</p>
+            <p><strong>Phone:</strong> $phone_no</p> 
+            <p><strong>Subject:</strong> $subject</p>
+            <p><strong>Message:</strong> $message_details</p>
+        ";
 
-    // Configuración de PHPMailer
-    $mail = new PHPMailer(true);
-
-    try {
-        // Configuración del servidor SMTP
-        $mail->isSMTP();
-        $mail->Host = 'mail.nextlaneauto.net';
-        $mail->SMTPAuth = true;
-        $mail->Username = '_mainaccount@nextlaneauto.net'; // Tu correo de Gmail
-        $mail->Password = 'Teslam440q60'; // Contraseña o contraseña de aplicación
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-
-        // Configuración del remitente y destinatario
-        $mail->setFrom('sales@nextlaneauto.com', 'Nextlane Auto'); // Dirección de envío
-        $mail->addAddress($to, 'NextLane Auto'); // Dirección del destinatario
-        $mail->addReplyTo($email, "$first_name $last_name"); // Responder al remitente
-
-        // Configuración del contenido del correo
-        $mail->isHTML(true);
-        $mail->Subject = $email_subject;
-        $mail->Body = $email_body;
-        $mail->AltBody = strip_tags($email_body);
-
-        // Enviar el correo
-        $mail->send();
-
-        // Redireccionar a la página de éxito
-        header('Location: /success.html');
-        exit();
-    } catch (Exception $e) {
-        error_log("Error al enviar el correo: {$mail->ErrorInfo}");
-
-        // Redireccionar a la página de error
-        header('Location: /failed.html');
-        exit();
+        // Enviar el correo usando mail() de PHP
+        if(mail($to, $email_subject, $email_body, $headers)) {
+           // echo "Message Sent Successfully!";
+           // Si todo es correcto, redireccionas a la página de agradecimiento
+           header('Location: /success.html');
+           exit();  // Asegúrate de terminar el script después de la redirección
+        } else {
+            //echo "Failed to Send Message.";
+             // Si todo es correcto, redireccionas a la página de agradecimiento
+           header('Location: /failed.html');
+           exit();  // Asegúrate de terminar el script después de la redirección
+            
+        }
+    } else {
+        echo "Please fill all required fields.";
     }
 }
 ?>
+
