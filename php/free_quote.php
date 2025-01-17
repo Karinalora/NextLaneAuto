@@ -28,13 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        echo "<div style='color: green; font-weight: bold;'>
-        ¡Correo enviado exitosamente!<br>
-        <strong>Destinatario:</strong> $to<br>
-        <strong>Asunto:</strong> $subject<br>
-        <strong>Mensaje:</strong> " . htmlspecialchars($message) . "<br>
-        <strong>Encabezados:</strong> " . nl2br(htmlspecialchars($headers)) . "
-    </div>";
+        error_log("Sending email to $to from $email with subject $subject.");
 
         if (mail($to, $subject, $message, $headers)) {
             header('Location: /success.html');
