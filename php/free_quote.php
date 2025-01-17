@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             alert("Email: " + $email_subject);
             alert("Message: " + $email_body);
 
-        if (mail($to, subject: $email_subject, $email_body, $headers)) {
+        if (mail($to, $subject, $message, $headers)) {
             header('Location: /success.html');
             exit();
         } else {
