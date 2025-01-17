@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Port = 587;
 
         // Configuración del remitente y destinatario
-        $mail->setFrom($emai, $first_name); // Dirección de envío
+        $mail->setFrom('sales@nextlaneauto.com', 'Nextlane Auto'); // Dirección de envío
         $mail->addAddress($to, 'NextLane Auto'); // Dirección del destinatario
         $mail->addReplyTo($email, "$first_name $last_name"); // Responder al remitente
 
