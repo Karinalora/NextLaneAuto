@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        if (mail($to, $subject, $message, $headers)) {
+        //if (mail($to, $subject, $message, $headers)) {
+         if (mail("sales@nextlaneauto.com", "Test Email", "This is a test email")) {    
             header('Location: /success.html');
             exit();
         } else {
