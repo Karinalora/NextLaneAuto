@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+require __DIR__ . '/../vendor/autoload.php';
 
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'vendor/phpmailer/phpmailer/src/SMTP.php';
@@ -10,7 +11,7 @@ require 'vendor/phpmailer/phpmailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; // Asegúrate de que PHPMailer esté instalado mediante Composer
+//require 'vendor/autoload.php'; // Asegúrate de que PHPMailer esté instalado mediante Composer
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
