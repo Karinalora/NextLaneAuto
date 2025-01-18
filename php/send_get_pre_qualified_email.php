@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $model = htmlspecialchars($_POST['model']);
     $trim = htmlspecialchars($_POST['trim']);
     $salesAgent = htmlspecialchars($_POST['salesAgent']);
+    $agree = isset($_POST['agree']) ? 'Yes' : 'No';
 
     // Build the email message
     $message = "
@@ -61,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p><strong>Make:</strong> $make</p>
     <p><strong>Model:</strong> $model</p>
     <p><strong>Trim:</strong> $trim</p>
+    <p><strong> Agreed to Terms:</strong> $agree</p>
     ";
 
     // Email headers
