@@ -1,10 +1,17 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+    $secretKey = '6LdcErsqAAAAAJhu0wLB3x8SGY0TDhCytZRIEIh1';
+    $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+
+         // Verificar la respuesta de reCAPTCHA
+    $response = file_get_contents($verifyURL . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+    $responseKeys = json_decode($response, true);
+
+
+
     $first_name = htmlspecialchars(trim($_POST['firstName'] ?? ''));
     $last_name = htmlspecialchars(trim($_POST['lastName'] ?? ''));
     $email = htmlspecialchars(trim($_POST['email'] ?? ''));
@@ -12,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
     $message_details = htmlspecialchars(trim($_POST['message'] ?? ''));
 
-    if (!empty($email) && !empty($message_details)) {
+    if (!empty($email) && !empty($message_details) && !empty($phone_no) && !empty($subject) && !empty($last_name) && !empty($first_name )  && ($recaptchaResponse["success"])) {
         $to = "sales@nextlaneauto.net";
         $headers = "From: " . $email . "\r\n" .
         "Reply-To: " . $email . "\r\n" .
