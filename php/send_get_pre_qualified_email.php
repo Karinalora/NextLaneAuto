@@ -1,6 +1,18 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $to = "contact@nextlaneauto.com"; // Replace with your email address
+        // CAPTCHA verification (optional)
+        $captcha = $_POST['g-recaptcha-response'];
+        $secret_key = '6LeDJrsqAAAAAOSnnGEdd8eTxPEfHYIhFEMUEbRe';
+    
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$captcha");
+        $response_keys = json_decode($response, true);
+    
+        if (!$response_keys['success']) {
+            die('CAPTCHA verification failed. Please try again.');
+        }
+
+
+    $to = "sales@nextlaneauto.net"; // Replace with your email address
     $subject = "New Credit Application Form Submission";
     
     // Collect form data
@@ -25,30 +37,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Build the email message
     $message = "
-    Credit Application Form Submission:
+    <h1>Credit Application Form Submission:</h1>
 
-    Personal Info:
-    First Name: $firstName
-    Middle Name: $middleName
-    Last Name: $lastName
-    Date of Birth: $dob
-    Driver's License: $driversLicense
+    <h3>Personal Info:</h3>
+    <p><strong>First Name:</strong> $firstName</p>
+    <p><strong>Middle Name:</strong> $middleName</p>
+    <p><strong>Last Name:</strong> $lastName</p>
+    <p><strong>Date of Birth:</strong> $dob</p>
+    <p><strong>Driver's License:</strong> $driversLicense</p>
 
-    Contact Info:
-    Phone: $phone
-    Email: $email
-    Address: $address
-    Apt/Unit: $apt
-    City: $city
-    State: $state
-    Zip Code: $zipCode
+    <h3>Contact Info:</h3>
+    <p><strong>Phone:</strong> $phone</p>
+    <p><strong>Email:</strong> $email</p>
+    <p><strong>Address:</strong> $address</p>
+    <p><strong>Apt/Unit:</strong> $apt</p>
+    <p><strong>City:</strong> $city</p>
+    <p><strong>State:</strong> $state</p>
+    <p><strong>Zip Code:</strong> $zipCode</p>
 
-    Vehicle Info:
-    Type: $type
-    Year: $year
-    Make: $make
-    Model: $model
-    Trim: $trim
+    <h3>Vehicle Info:</h3>
+    <p><strong>Type:</strong> $type</p>
+    <p><strong>Year:</strong> $year</p>
+    <p><strong>Make:</strong> $make</p>
+    <p><strong>Model:</strong> $model</p>
+    <p><strong>Trim:</strong> $trim</p>
     ";
 
     // Email headers
