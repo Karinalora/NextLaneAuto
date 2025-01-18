@@ -14,6 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($email) && !empty($message_details)) {
         $to = "sales@nextlaneauto.net";
+        $headers = "From: " . $email . "\r\n" .
+        "Reply-To: " . $email . "\r\n" .
+        "Content-Type: text/html; charset=UTF-8";
+
         $email_subject = "New Contact Form Submission: " . $subject;
         $email_body = "
             <h2>Contact Form Details</h2>
@@ -24,12 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p><strong>Subject:</strong> $subject</p>
             <p><strong>Message Details:</strong> $message_details</p>
         ";
-        $headers = "From: $email\r\n";
-        $headers .= "Reply-To: $email\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        if (mail($to, $email_subject, $message_details, $email_body)) {  
+        if (mail($to, $email_subject,  $email_body, $headers)) {  
             header('Location: /success.html');
             exit();
         } else {
