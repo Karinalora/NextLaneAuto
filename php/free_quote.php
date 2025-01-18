@@ -7,8 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
 
          // Verificar la respuesta de reCAPTCHA
-    $response = file_get_contents($verifyURL . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-    $responseKeys = json_decode($response, true);
+    //$response = file_get_contents($verifyURL . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+   // $responseKeys = json_decode($response, true);
 
 
 
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
     $message_details = htmlspecialchars(trim($_POST['message'] ?? ''));
 
-    if (!empty($email) && !empty($message_details) && !empty($phone_no) && !empty($subject) && !empty($last_name) && !empty($first_name )  && ($recaptchaResponse["success"])) {
+    if (!empty($email) && !empty($message_details) && !empty($phone_no) && !empty($subject) && !empty($last_name) && !empty($first_name ) ) { // && ($recaptchaResponse["success"])
         $to = "sales@nextlaneauto.net";
         $headers = "From: " . $email . "\r\n" .
         "Reply-To: " . $email . "\r\n" .

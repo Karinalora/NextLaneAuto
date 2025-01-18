@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // CAPTCHA verification (optional)
     $captcha = $_POST['g-recaptcha-response'];
-    $secret_key = '6LeaK7IqAAAAAEP3KFra7ujgwl8raAgyGyH0Z8i-';
+    $secret_key = '6LeDJrsqAAAAAOSnnGEdd8eTxPEfHYIhFEMUEbRe';
 
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$captcha");
     $response_keys = json_decode($response, true);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Process the data (e.g., save to database or send email)
-    $to = "sales@nextlaneauto.com";
+    $to = "sales@nextlaneauto.net";
     $subject = "New Claim Form Submission";
     $message = "
         First Name: $first_name\n
