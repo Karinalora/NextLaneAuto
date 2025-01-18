@@ -62,8 +62,6 @@
          <link href="assets/plugins/switcher/css/color3.css" rel="alternate stylesheet" title="color3" media="all">
          <link href="assets/plugins/switcher/css/color4.css" rel="alternate stylesheet" title="color4" media="all">
          <link href="assets/plugins/switcher/css/color5.css" rel="alternate stylesheet" title="color5" media="all"> -->
-
-      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
       <script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
    </head>
    <body>
@@ -241,9 +239,10 @@
                         <div class="row">
                            <div class="col-xs-12">
                               <textarea id="message" name="message" class="form-control" placeholder="Message Details ..." required rows="7"></textarea>
-                            <!--  <div class="col-12">
+                              <div class="captcha-container">
+                                 <!-- Include your CAPTCHA widget here -->
                                  <div class="g-recaptcha" data-sitekey="6LeDJrsqAAAAAOArFJw811iifNd0SKEjysX-gBw6"></div>
-                             </div> -->
+                              </div>
                               <div class="btn">
                                  <div class="wrap__btn-skew-r">
                                     <button class="btn-skew-r btn-effect "><span class="btn-skew-r__inner">send message</span></button>
@@ -261,6 +260,8 @@
          </section>
          <!-- end section_default -->
          <!-- end new block -->
+
+         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
          <footer class="footer">
             <div class="wrap-section-border">
                <section class="section_mod-h section-bg section-bg_second">
