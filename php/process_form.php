@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $to = "sales@nextlaneauto.net";
     $subject = "New Claim Form Submission";
     $message = "
-        First Name: $first_name\n
-        Last Name: $last_name\n
-        Phone: $phone\n
-        Email: $email\n
-        Vehicle: $vehicle\n
-        Comments: $comments\n
-        Lease or Finance: $lease_or_finance\n
-        Agreed to Terms: $agree
+    <h2>New Claim Form Submission</h2>
+    <p><strong>First Name:</strong> $first_name</p>
+    <p><strong>Last Name:</strong> $last_name</p>
+    <p><strong>Phone No:</strong> $phone</p> 
+    <p><strong>Email:</strong> $email</p> 
+    <p><strong>Comments:</strong> $comments</p>
+    <p><strong>Lease or Finance:</strong> $lease_or_finance</p>
+    <p><strong> Agreed to Terms:</strong> $agree</p>
     ";
     $headers = "From: " . $email . "\r\n" .
     "Reply-To: " . $email . "\r\n" .
