@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p><strong>Email:</strong> $email</p> 
     <p><strong>Comments:</strong> $comments</p>
     <p><strong>Lease or Finance:</strong> $lease_or_finance</p>
-    <p><strong> Agreed to Terms:</strong> $agree</p>
+    <p><strong> Agreed to Privacy Policy:</strong> $agree</p>
     ";
     $headers = "From: " . $email . "\r\n" .
     "Reply-To: " . $email . "\r\n" .
