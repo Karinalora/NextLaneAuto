@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
        // Process the data (e.g., save to database or send email)
        $to = "sales@nextlaneauto.net";
-       $subject = "New Claim Form Credit Application Submission";
+       $subject = "New Trade Or Sell Your Vehicle Submission";
     
     foreach ($_FILES as $fileKey => $file) {
         if ($file['error'] === UPLOAD_ERR_OK) {
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     "Reply-To: " . $email . "\r\n" .
     "Content-Type: text/html; charset=UTF-8";
 
-    if (mail($to, $subject, $fileKey, $headers)) {
+    if (mail($to, $subject, $filename, $headers)) {
         header('Location: /success.html');
         exit();  // Asegúrate de terminar el script después de la redirección
         echo "Thank you! Your submission has been received.";
