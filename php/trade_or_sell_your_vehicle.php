@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $uploadDir = 'uploads/';
     $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
     $uploadedFiles = [];
+
+       // Process the data (e.g., save to database or send email)
+       $to = "sales@nextlaneauto.net";
+       $subject = "New Claim Form Credit Application Submission";
     
     foreach ($_FILES as $fileKey => $file) {
         if ($file['error'] === UPLOAD_ERR_OK) {
@@ -38,6 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // You can add email sending or database storage here
-    echo "Form submitted successfully!";
+    $headers = "From: " . $email . "\r\n" .
+    "Reply-To: " . $email . "\r\n" .
+    "Content-Type: text/html; charset=UTF-8";
+
+    if (mail($to, $subject, $fileKey, $headers)) {
+        header('Location: /success.html');
+        exit();  // Asegúrate de terminar el script después de la redirección
+        echo "Thank you! Your submission has been received.";
+    } else {
+              //echo "Failed to Send Message.";
+             // Si todo es correcto, redireccionas a la página de agradecimiento
+        header('Location: /failed.html');
+        echo "Sorry, there was an error processing your form. Please try again.";
+    }
 }
 ?>
