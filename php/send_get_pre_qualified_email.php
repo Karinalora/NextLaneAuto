@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $to = "sales@nextlaneauto.net"; // Replace with your email address
-    $subject = "New Credit Application Form Submission";
+    $subject = "New Get pre-qualified Form Submission";
     
     // Collect form data
     $firstName = htmlspecialchars($_POST['firstName']);
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Build the email message
     $message = "
-    <h1>Credit Application Form Submission:</h1>
+    <h1>Get pre-qualified Form Submission:</h1>
 
     <h3>Personal Info:</h3>
     <p><strong>First Name:</strong> $firstName</p>

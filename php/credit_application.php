@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Process the data (e.g., save to database or send email)
     $to = "sales@nextlaneauto.net";
-    $subject = "New Claim Form Credit Application Submission";
+    $subject = "New Credit Application Submission Form";
     // Prepare email content
     $emailBody = "New Form Submission For Credit Application\n\n";
     foreach ($fields as $section => $data) {
