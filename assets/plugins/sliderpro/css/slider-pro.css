@@ -446,11 +446,12 @@
 }
 
 .sp-arrow {
-	position: absolute;
+	/*position: absolute;
 	display: block;
 	width: 20px;
 	height: 30px;
-	cursor: pointer;
+	cursor: pointer; */
+	display: none !important; /* Oculta completamente las flechas */
 }
 
 .sp-vertical .sp-arrow {
