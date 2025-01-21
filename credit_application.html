@@ -428,7 +428,7 @@
                   <div class="form-group">
                      <label for="cofirstName"> Co-Buyer First Name <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-user-md"></i>
-                     <input type="text" id="cofirstName" name="cofirstName" required>
+                     <input type="text" id="cofirstName" name="cofirstName" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="comiddleName"> Co-Buyer Middle Name</label>
@@ -438,12 +438,12 @@
                   <div class="form-group">
                      <label for="colastName"> Co-Buyer Last Name <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-arrows-h"></i>
-                     <input type="text" id="colastName" name="colastName" required>
+                     <input type="text" id="colastName" name="colastName" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="cossn"> Co-Buyer SSN / ITIN <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                     <input type="password" id="cossn" name="cossn" pattern="\d{3}-\d{2}-\d{4}" title="SSN must be in the format XXX-XX-XXXX" required>
+                     <input type="password" id="cossn" name="cossn" pattern="\d{3}-\d{2}-\d{4}" title="SSN must be in the format XXX-XX-XXXX" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="codob"> Co-Buyer Date of Birth</label>
@@ -458,12 +458,12 @@
                   <div class="form-group">
                      <label for="cophone"> Co-Buyer Phone <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-phone"></i>
-                     <input type="tel" id="cophone" name="cophone" placeholder="(123) 456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                     <input type="tel" id="cophone" name="cophone" placeholder="123-456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="coemail"> Co-Buyer Email Address <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-envelope"></i>
-                     <input type="email" id="coemail" name="coemail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+                     <input type="email" id="coemail" name="coemail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" data-required="true">
                   </div>
                </div>
                <div class="form-sectionco" id="yes-add">
@@ -471,7 +471,7 @@
                   <div class="form-group">
                      <label for="coaddress"> Co-Buyer Address <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-location-arrow"></i>
-                     <input type="text" id="coaddress" name="coaddress" required>
+                     <input type="text" id="coaddress" name="coaddress" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="coaptUnit"> Co-Buyer Apt/Unit</label>
@@ -481,7 +481,7 @@
                   <div class="form-group">
                      <label for="cocity"> Co-Buyer City <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-map-marker"></i> 
-                     <input type="text" id="cocity" name="cocity" required>
+                     <input type="text" id="cocity" name="cocity" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="cocounty"> Co-Buyer County</label>
@@ -491,22 +491,22 @@
                   <div class="form-group">
                      <label for="costate"> Co-Buyer State <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-flag"></i>
-                     <input type="text" id="costate" name="costate" required>
+                     <input type="text" id="costate" name="costate" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="cozipCode"> Co-Buyer Zip Code <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-map-marker"></i>
-                     <input type="text" id="cozipCode" name="cozipCode" required>
+                     <input type="text" id="cozipCode" name="cozipCode" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="cotimeAtAddress"> Co-Buyer Time At Current Address <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-clock-o"></i>
-                     <input type="text" id="cotimeAtAddress" name="cotimeAtAddress" required>
+                     <input type="text" id="cotimeAtAddress" name="cotimeAtAddress" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="ownership"> Co-Buyer Do you Own or Rent <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-question"></i>
-                     <select id="ownership" name="ownership" required>
+                     <select id="ownership" name="ownership" data-required="true">
                         <option value="">-- Select --</option>
                         <option value="Buying">Buying</option>
                         <option value="Own">Own</option>
@@ -517,7 +517,7 @@
                   <div class="form-group">
                      <label for="corentPayment"> Co-Buyer Rent/Mortgage Payment <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-money"></i>
-                     <input type="number" id="corentPayment" name="corentPayment" required>
+                     <input type="number" id="corentPayment" name="corentPayment" data-required="true">
                   </div>
                </div>
                <div class="form-sectionco" id="yes-empl">
@@ -583,7 +583,7 @@
                   <div class="form-group">
                      <label for="cogrossIncome"> Co-Buyer Gross Monthly Income <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-money"></i>
-                     <input type="number" id="cogrossIncome" name="cogrossIncome" required>
+                     <input type="number" id="cogrossIncome" name="cogrossIncome" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="cootherIncome"> Co-Buyer Other Monthly Income</label>
@@ -734,11 +734,8 @@
          		formSectionempl.style.display = 'none'; // Show the div
          		formSectioninc.style.display = 'none'; // Show the div
          	}
-         }
-      </script>
-      <script>
-         function toggleSection() {
-             const coBuyerSelection = document.getElementById("coBuyer").value;
+
+            const coBuyerSelection = document.getElementById("coBuyer").value;
              const coBuyerFields = document.querySelectorAll(".form-sectionco input, .form-sectionco select");
              
              if (coBuyerSelection === "no") {
@@ -760,7 +757,8 @@
      
          // Ejecutar la función al cargar la página para verificar el estado inicial
          document.addEventListener("DOMContentLoaded", toggleSection);
-     </script>
+         
+      </script>
      
    </body>
 </html>
