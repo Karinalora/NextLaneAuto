@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Check if Co-Buyer is selected
-    $isCoBuyer = isset($_POST['coBuyer']) && $_POST['coBuyer'] === 'yes';
+    // Check if Co-Buyer is selected as "no"
+    $isCoBuyer = isset($_POST['coBuyer']) && $_POST['coBuyer'] === 'no';
 
     // Collect form data
     $fields = [
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ];
 
     // Add Co-Buyer sections only if selected
-    if ($isCoBuyer) {
+    if (!$isCoBuyer) {
         $fields["Co-Buyer Information"] = [
             "First Name" => $_POST['cofirstName'] ?? '',
             "Middle Name" => $_POST['comiddleName'] ?? '',
@@ -89,22 +89,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
     }
 
-    // Process the data (e.g., send email)
+    // Prepare email content with HTML formatting
     $to = "sales@nextlaneauto.net";
     $subject = "New Credit Application Submission Form";
-    $emailBody = "New Form Submission For Credit Application\n\n";
+    $emailBody = "<html><body>";
+    $emailBody .= "<h1>New Credit Application Submission</h1>";
 
     foreach ($fields as $section => $data) {
-        $emailBody .= "$section:\n";
+        $emailBody .= "<h2 style='color: #e00e0e;'><strong>$section</strong></h2>";
+        $emailBody .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
         foreach ($data as $label => $value) {
-            $emailBody .= "  $label: $value\n";
+            $emailBody .= "<tr>";
+            $emailBody .= "<td style='font-weight: bold; background-color: #f2f2f2;'>$label</td>";
+            $emailBody .= "<td>" . htmlspecialchars($value) . "</td>";
+            $emailBody .= "</tr>";
         }
-        $emailBody .= "\n";
+        $emailBody .= "</table><br>";
     }
 
-    $headers = "From: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n" .
-               "Reply-To: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n" .
-               "Content-Type: text/plain; charset=UTF-8";
+    $emailBody .= "</body></html>";
+
+    $headers = "From: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
+    $headers .= "Reply-To: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8";
 
     // Send the email
     if (mail($to, $subject, $emailBody, $headers)) {
