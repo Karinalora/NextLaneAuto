@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Process the data (e.g., save to database or send email)
     $to = "sales@nextlaneauto.net";
-    $subject = "New Claim Form Submission";
+    $subject = "New Request a Free Quote Form Submission";
     $message = "
-    <h2>New Claim Form Submission</h2>
+    <h2>Request a Free Quote Form Submission</h2>
     <p><strong>First Name:</strong> $first_name</p>
     <p><strong>Last Name:</strong> $last_name</p>
     <p><strong>Phone No:</strong> $phone</p> 
