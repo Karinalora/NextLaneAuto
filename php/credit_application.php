@@ -1,9 +1,9 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Check if Co-Buyer is selected as "no"
-    $isCoBuyer = isset($_POST['coBuyer']) && $_POST['coBuyer'] === 'no';
+    // Determinar si hay un co-buyer
+    $isCoBuyer = isset($_POST['coBuyer']) && $_POST['coBuyer'] === 'yes';
 
-    // Collect form data
+    // Campos básicos (sin co-buyer)
     $fields = [
         "Primary Applicant" => [
             "First Name" => $_POST['firstName'] ?? '',
@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ],
     ];
 
-    // Add Co-Buyer sections only if selected
-    if (!$isCoBuyer) {
+    // Si hay un co-buyer, agregar datos adicionales
+    if ($isCoBuyer) {
         $fields["Co-Buyer Information"] = [
             "First Name" => $_POST['cofirstName'] ?? '',
             "Middle Name" => $_POST['comiddleName'] ?? '',
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
     }
 
-    // Prepare email content with HTML formatting
+    // Formatear el correo en HTML
     $to = "sales@nextlaneauto.net";
     $subject = "New Credit Application Submission Form";
     $emailBody = "<html><body>";
@@ -109,11 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $emailBody .= "</body></html>";
 
+    // Configurar encabezados del correo
     $headers = "From: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
     $headers .= "Reply-To: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8";
 
-    // Send the email
+    // Enviar el correo
     if (mail($to, $subject, $emailBody, $headers)) {
         header('Location: /success.html');
         exit();
