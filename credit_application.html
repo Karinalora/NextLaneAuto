@@ -736,5 +736,31 @@
          	}
          }
       </script>
+      <script>
+         function toggleSection() {
+             const coBuyerSelection = document.getElementById("coBuyer").value;
+             const coBuyerFields = document.querySelectorAll(".form-sectionco input, .form-sectionco select");
+             
+             if (coBuyerSelection === "no") {
+                 // Eliminar el atributo required de los campos del Co-Buyer
+                 coBuyerFields.forEach(field => {
+                     field.removeAttribute("required");
+                     field.closest(".form-sectionco").style.display = "none"; // Ocultar secciones
+                 });
+             } else if (coBuyerSelection === "yes") {
+                 // Agregar el atributo required a los campos del Co-Buyer
+                 coBuyerFields.forEach(field => {
+                     if (field.hasAttribute("data-required")) {
+                         field.setAttribute("required", "required");
+                     }
+                     field.closest(".form-sectionco").style.display = "block"; // Mostrar secciones
+                 });
+             }
+         }
+     
+         // Ejecutar la función al cargar la página para verificar el estado inicial
+         document.addEventListener("DOMContentLoaded", toggleSection);
+     </script>
+     
    </body>
 </html>
