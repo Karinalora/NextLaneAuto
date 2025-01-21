@@ -273,7 +273,7 @@
                   <div class="form-group">
                      <label for="phone"> Phone <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-phone"></i>
-                     <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                     <input type="tel" id="phone" name="phone" placeholder="000-000-0000"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="PHONE must be in the format 000-000-0000" required>
                   </div>
                   <div class="form-group">
                      <label for="email"> Email Address <span style="color: #e00e0e;">*</span></label>
@@ -355,7 +355,7 @@
                   <div class="form-group">
                      <label for="workPhone"> Work Phone</label>
                      <i class="fa fa-phone"></i>
-                     <input type="tel" id="workPhone" name="workPhone">
+                     <input type="tel" id="workPhone" placeholder="000-000-0000" name="workPhone" title="PHONE must be in the format 000-000-0000">
                   </div>
                   <div class="form-group">
                      <label for="extension"> Extension</label>
@@ -458,7 +458,7 @@
                   <div class="form-group">
                      <label for="cophone"> Co-Buyer Phone <span style="color: #e00e0e;">*</span></label>
                      <i class="fa fa-phone"></i>
-                     <input type="tel" id="cophone" name="cophone" placeholder="123-456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" data-required="true">
+                     <input type="tel" id="cophone" name="cophone" placeholder="123-456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="PHONE must be in the format 000-000-0000" data-required="true">
                   </div>
                   <div class="form-group">
                      <label for="coemail"> Co-Buyer Email Address <span style="color: #e00e0e;">*</span></label>
@@ -540,7 +540,7 @@
                   <div class="form-group">
                      <label for="coworkPhone"> Co-Buyer Work Phone</label>
                      <i class="fa fa-phone"></i>
-                     <input type="tel" id="coworkPhone" name="coworkPhone">
+                     <input type="tel" id="coworkPhone" name="coworkPhone" placeholder="000-000-0000"  title="PHONE must be in the format 000-000-0000">
                   </div>
                   <div class="form-group">
                      <label for="coextension"> Co-Buyer Extension</label>
@@ -715,7 +715,7 @@
       <script src="assets/js/cssua.min.js"></script>
       <script src="assets/js/wow.min.js"></script>
       <script src="assets/js/custom.js"></script>
-      <script>
+   <!--   <script>
          function toggleSection() {
          	const dropdown = document.getElementById('coBuyer');
          	const formSection = document.getElementById('yes');
@@ -736,29 +736,70 @@
          	}
 
             const coBuyerSelection = document.getElementById("coBuyer").value;
-             const coBuyerFields = document.querySelectorAll(".form-sectionco input, .form-sectionco select");
-             
-             if (coBuyerSelection === "no") {
-                 // Eliminar el atributo required de los campos del Co-Buyer
-                 coBuyerFields.forEach(field => {
-                     field.removeAttribute("required");
-                     field.closest(".form-sectionco").style.display = "none"; // Ocultar secciones
-                 });
-             } else if (coBuyerSelection === "yes") {
-                 // Agregar el atributo required a los campos del Co-Buyer
-                 coBuyerFields.forEach(field => {
-                     if (field.hasAttribute("data-required")) {
-                         field.setAttribute("required", "required");
-                     }
-                     field.closest(".form-sectionco").style.display = "block"; // Mostrar secciones
-                 });
-             }
-         }
-     
-         // Ejecutar la función al cargar la página para verificar el estado inicial
-         document.addEventListener("DOMContentLoaded", toggleSection);
+            const coBuyerFields = document.querySelectorAll("[data-co-buyer='true']");
+
+        if (coBuyerSelection === "no") {
+            // Ocultar campos del Co-Buyer y eliminar "required"
+            coBuyerFields.forEach(field => {
+                field.removeAttribute("required");
+                field.closest(".form-group").style.display = "none";
+            });
+        } else if (coBuyerSelection === "yes") {
+            // Mostrar campos del Co-Buyer y agregar "required"
+            coBuyerFields.forEach(field => {
+                field.setAttribute("required", "required");
+                field.closest(".form-group").style.display = "block";
+            });
+        }
+    }
+
+    // Ejecutar la función al cargar la página para aplicar el estado inicial
+    document.addEventListener("DOMContentLoaded", toggleSection);
          
-      </script>
-     
+      </script> -->
+     <script>
+      function toggleSection() {
+    const dropdown = document.getElementById('coBuyer');
+    const coBuyerValue = dropdown.value;
+
+    // Obtener las secciones del Co-Buyer
+    const formSections = [
+        document.getElementById('yes'),
+        document.getElementById('yes-add'),
+        document.getElementById('yes-empl'),
+        document.getElementById('yes-inc')
+    ];
+
+    // Obtener todos los campos relacionados con Co-Buyer
+    const coBuyerFields = document.querySelectorAll("[data-co-buyer='true']");
+
+    if (coBuyerValue === 'yes') {
+        // Mostrar secciones del Co-Buyer y establecer campos como obligatorios
+        formSections.forEach(section => {
+            section.style.display = 'block';
+        });
+        coBuyerFields.forEach(field => {
+            field.setAttribute("required", "required");
+            field.closest(".form-group").style.display = "block";
+        });
+    } else {
+        // Ocultar secciones del Co-Buyer y quitar el atributo required
+        formSections.forEach(section => {
+            section.style.display = 'none';
+        });
+        coBuyerFields.forEach(field => {
+            field.removeAttribute("required");
+            field.closest(".form-group").style.display = "none";
+        });
+    }
+}
+
+// Ejecutar la función al cargar la página para aplicar el estado inicial
+document.addEventListener("DOMContentLoaded", toggleSection);
+
+// Agregar el evento onchange al dropdown
+document.getElementById('coBuyer').addEventListener('change', toggleSection);
+
+     </script>
    </body>
 </html>
