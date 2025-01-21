@@ -1,5 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Check if Co-Buyer is selected
+    $isCoBuyer = isset($_POST['coBuyer']) && $_POST['coBuyer'] === 'yes';
+
     // Collect form data
     $fields = [
         "Primary Applicant" => [
@@ -41,7 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "Other Monthly Income" => $_POST['otherIncome'] ?? '',
             "Description" => $_POST['incomeDescription'] ?? '',
         ],
-        "Co-Buyer Information" => [
+    ];
+
+    // Add Co-Buyer sections only if selected
+    if ($isCoBuyer) {
+        $fields["Co-Buyer Information"] = [
             "First Name" => $_POST['cofirstName'] ?? '',
             "Middle Name" => $_POST['comiddleName'] ?? '',
             "Last Name" => $_POST['colastName'] ?? '',
@@ -50,8 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "Driver License #" => $_POST['codriverLicense'] ?? '',
             "Phone" => $_POST['cophone'] ?? '',
             "Email Address" => $_POST['coemail'] ?? '',
-        ],
-        "Co-Buyer Address" => [
+        ];
+        $fields["Co-Buyer Address"] = [
             "Address" => $_POST['coaddress'] ?? '',
             "Apt/Unit" => $_POST['coaptUnit'] ?? '',
             "City" => $_POST['cocity'] ?? '',
@@ -61,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "Time At Current Address" => $_POST['cotimeAtAddress'] ?? '',
             "Ownership" => $_POST['ownership'] ?? '',
             "Rent/Mortgage Payment" => $_POST['corentPayment'] ?? '',
-        ],
-        "Co-Buyer Employment" => [
+        ];
+        $fields["Co-Buyer Employment"] = [
             "Type of Employment" => $_POST['coemploymentType'] ?? '',
             "Employer Name" => $_POST['coemployer'] ?? '',
             "Occupation or Rank" => $_POST['cooccupation'] ?? '',
@@ -74,30 +81,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             "City" => $_POST['coemploymentCity'] ?? '',
             "State" => $_POST['coemploymentState'] ?? '',
             "Zip Code" => $_POST['coemploymentZipCode'] ?? '',
-        ],
-        "Co-Buyer Income" => [
+        ];
+        $fields["Co-Buyer Income"] = [
             "Gross Monthly Income" => $_POST['cogrossIncome'] ?? '',
             "Other Monthly Income" => $_POST['cootherIncome'] ?? '',
             "Description" => $_POST['coincomeDescription'] ?? '',
-        ],
-    ];
+        ];
+    }
 
-    // CAPTCHA verification (optional)
-   // $captcha = $_POST['g-recaptcha-response'];
-   // $secret_key = '6LeDJrsqAAAAAOSnnGEdd8eTxPEfHYIhFEMUEbRe';
-
-   // $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$captcha");
-   // $response_keys = json_decode($response, true);
-
-   // if (!$response_keys['success']) {
-   //     die('CAPTCHA verification failed. Please try again.');
-   // }
-
-    // Process the data (e.g., save to database or send email)
+    // Process the data (e.g., send email)
     $to = "sales@nextlaneauto.net";
     $subject = "New Credit Application Submission Form";
-    // Prepare email content
     $emailBody = "New Form Submission For Credit Application\n\n";
+
     foreach ($fields as $section => $data) {
         $emailBody .= "$section:\n";
         foreach ($data as $label => $value) {
@@ -106,19 +102,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $emailBody .= "\n";
     }
 
-    $headers = "From: " . $email . "\r\n" .
-    "Reply-To: " . $email . "\r\n" .
-    "Content-Type: text/html; charset=UTF-8";
+    $headers = "From: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n" .
+               "Reply-To: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n" .
+               "Content-Type: text/plain; charset=UTF-8";
 
+    // Send the email
     if (mail($to, $subject, $emailBody, $headers)) {
         header('Location: /success.html');
-        exit();  // Asegúrate de terminar el script después de la redirección
-        echo "Thank you! Your submission has been received.";
+        exit();
     } else {
-              //echo "Failed to Send Message.";
-             // Si todo es correcto, redireccionas a la página de agradecimiento
         header('Location: /failed.html');
-        echo "Sorry, there was an error processing your form. Please try again.";
+        exit();
     }
 }
 ?>
