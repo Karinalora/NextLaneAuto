@@ -41,7 +41,33 @@
          color: #e00e0e; /* Highlighted text in red */
          font-weight: bold; /* Make highlights stand out */
       }
-     </style>
+      .slider-container {
+         position: relative;
+         width: 100%; /* Asegura que el slider ocupe todo el ancho */
+         background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+         z-index: 1000; /* Aparece encima de otros elementos */
+         margin: 0; /* Elimina márgenes */
+         padding: 0; /* Elimina relleno */
+      }
+      .header__inner {
+        position: relative;
+        top: 0; /* Evita que se superponga con el video */
+        z-index: 1100; /* Asegura que el menú esté visible sobre el video */
+      }
+     .video-container video {
+      display: block; /* Evita espacios extra del video */
+      width: 100%; /* El video ocupa todo el ancho del contenedor */
+      margin: 0; /* Sin márgenes */
+      padding: 0; /* Sin relleno */
+      background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+     }
+     .navbar-collapse {
+       margin: 0; /* Elimina márgenes del menú */
+       padding: 0; /* Elimina relleno del menú */
+     }
+   </style>
       
       <link href="favicon.png" type="image/x-icon" rel="shortcut icon">
       <link href="assets/css/master.css" rel="stylesheet">
@@ -141,29 +167,13 @@
          <!-- end header -->
          <div class="slider-container">
             <!-- Slider Section -->
-            <div id="sliderpro1" class="slider-pro main-slider">
+            <div class="slider-pro main-slider" id="sliderpro1" >
                <div class="sp-slides">
                   <div class="sp-slide">
                      <video class="sp-image" autoplay muted loop>
                         <source src="assets/mov/Nextlane.mov" type="video/mp4" />
                         Your browser does not support the video tag.
                      </video>
-                    <!-- <img class="sp-image" src="assets/media/main-slider/1.jpg" data-src="assets/media/main-slider/1.jpg" data-retina="assets/media/main-slider/1.jpg" alt="img" />
-                     <div class="item-wrap sp-layer sp-padding" data-horizontal="100" data-vertical="300" data-show-transition="left" data-hide-transition="up" data-show-delay="400" data-hide-delay="200">
-                        <div class="main-slider__inner text-left">
-                           <div class="custom-caption">
-                              <a class="main-slider__btn btn-effect" href="trade_or_sell_your_vehicle.html"><span class="main-slider__btn_inner">the all new</span></a>
-                              <div class="main-slider__title">2025 ACURA INTEGRA</div>
-                              <div class="main-slider__subtitle">High Performance & Outstanding Technology Combined</div>
-                              <div class="decor-1"></div>
-                              <div class="main-slider__text">Starts from</div>
-                              <div>
-                                 <span class="main-slider__price">$</span>
-                                 <a class="main-slider__link" href="request_a_free_quote.html"><i class="icon fa fa-caret-right"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                     </div> -->
                   </div>
                </div>
             </div>
@@ -735,7 +745,7 @@
                  <span class="highlight">Any Make,</span> Any Model
                </h2>
                <h2 class="subtitle">
-                 Including <span class="highlight">Cars not listed on site</span>
+                 Including Cars<span class="highlight"> not listed on site</span>
                </h2>
              </div>
             </ul>
