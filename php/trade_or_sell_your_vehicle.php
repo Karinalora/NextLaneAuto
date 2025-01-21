@@ -71,30 +71,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <tr><td>Damages</td><td>{$damages}</td></tr>
             <tr><td>Source</td><td>{$source}</td></tr>
         </table>
-        <h2>Uploaded Files</h2>
-        <ul>
-    ";
-
-    // Add uploaded file links to the email
-    foreach ($uploadedFiles as $key => $filePath) {
-        $message .= "<li><a href='" . htmlspecialchars($filePath) . "'>View {$key}</a></li>";
-    }
-
-    $message .= "
-        </ul>
     </body>
     </html>
     ";
 
-    // Set up email headers
+    // Email headers for attachments
     $to = "sales@nextlaneauto.net";
     $subject = "New Trade Or Sell Your Vehicle Submission";
-    $headers = "From: " . $email . "\r\n" .
-        "Reply-To: " . $email . "\r\n" .
-        "Content-Type: text/html; charset=UTF-8";
+    $boundary = md5(time());
+    $headers = "From: " . $email . "\r\n";
+    $headers .= "Reply-To: " . $email . "\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
 
-    // Send the email and handle the response
-    if (mail($to, $subject, $message, $headers)) {
+    // Email body with attachments
+    $emailBody = "--$boundary\r\n";
+    $emailBody .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $emailBody .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+    $emailBody .= $message . "\r\n";
+
+    // Add attachments
+    foreach ($uploadedFiles as $filePath) {
+        $fileContent = file_get_contents($filePath);
+        $fileName = basename($filePath);
+        $emailBody .= "--$boundary\r\n";
+        $emailBody .= "Content-Type: application/octet-stream; name=\"$fileName\"\r\n";
+        $emailBody .= "Content-Transfer-Encoding: base64\r\n";
+        $emailBody .= "Content-Disposition: attachment; filename=\"$fileName\"\r\n\r\n";
+        $emailBody .= chunk_split(base64_encode($fileContent)) . "\r\n";
+    }
+
+    $emailBody .= "--$boundary--";
+
+    // Send the email
+    if (mail($to, $subject, $emailBody, $headers)) {
         header('Location: /success.html');
         exit();
     } else {
