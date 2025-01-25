@@ -35,6 +35,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $trim = htmlspecialchars($_POST['trim']);
     $salesAgent = htmlspecialchars($_POST['salesAgent']);
     $agree = isset($_POST['agree']) ? 'Yes' : 'No';
+    
+    // Check if "Make" is "Other" and retrieve the additional input
+    if ($make === 'OTHER') {
+        $otherMake = htmlspecialchars($_POST['other-make']);
+        $make = "Other ($otherMake)";
+    }
+    // Check if "Make" is "Other" and retrieve the additional input
+    if ($model === 'OTHER') {
+        $otherModel = htmlspecialchars($_POST['other-model']);
+        $model = "Other ($otherModel)";
+    }
+    // Check if "Make" is "Other" and retrieve the additional input
+    if ($trim === 'OTHER') {
+        $otherTrim = htmlspecialchars($_POST['other-trim']);
+        $trim = "Other ($otherTrim)";
+    }
+
+
+    
 
     // Build the email message
     $message = "
