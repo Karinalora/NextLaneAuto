@@ -504,12 +504,16 @@
             const otherMakeGroup = document.getElementById("other-make-group");
             const otherModelGroup = document.getElementById("other-model-group");
             const otherTrimGroup = document.getElementById("other-trim-group");
+            const otherMakeInput = document.getElementById("other-make");
+            const otherModeInput = document.getElementById("other-model");
+            const otherTrimInput = document.getElementById("other-trim");
             if (makeSelect.value === "OTHER") {
                otherMakeGroup.style.display = "block";
                document.getElementById("other-make").required = true;
             } else {
                otherMakeGroup.style.display = "none";
                document.getElementById("other-make").required = false;
+               otherMakeInput.value = ""; // Clear the input field when "Other" is deselected
             }
             if (modelSelect.value === "OTHER") {
                otherModelGroup.style.display = "block";
@@ -517,6 +521,7 @@
             } else {
                otherModelGroup.style.display = "none";
                document.getElementById("other-model").required = false;
+               otherModeInput.value = ""; // Clear the input field when "Other" is deselected
             }
             if (trimSelect.value === "OTHER") {
                otherTrimGroup.style.display = "block";
@@ -524,6 +529,7 @@
             } else {
                otherTrimGroup.style.display = "none";
                document.getElementById("other-trim").required = false;
+               otherTrimInput.value = ""; // Clear the input field when "Other" is deselected
             }
          }
       </script>
