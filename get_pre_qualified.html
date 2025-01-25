@@ -296,7 +296,7 @@
                </div>
                <div class="form-group">
                   <label for="make">Make <span style="color: #e00e0e;">*</span></label>
-                  <select id="make" name="make" required>
+                  <select id="make" name="make" required  onchange="toggleOtherField()"></select>>
                      <option value="" disabled selected>Select Make</option>
                      <option value="ACURA">ACURA</option>
                      <option value="HONDA">HONDA</option>
@@ -308,12 +308,17 @@
                      <option value="NISSAN">NISSAN</option>
                      <option value="INFINITI">INFINITI</option>
                      <option value="BMW">BMW</option>
+                     <option value="OTHER">Other</option>
                      <!-- Add more makes as needed -->
                   </select>
                </div>
+               <div class="form-group" id="other-make-group" style="display: none;">
+                  <label for="other-make">Please specify:</label>
+                  <input type="text" id="other-make" name="other-make" placeholder="Enter make" />
+               </div>
                <div class="form-group">
                   <label for="model">Model <span style="color: #e00e0e;">*</span></label>
-                  <select id="model" name="model" required>
+                  <select id="model" name="model" required  onchange="toggleOtherField()"></select>>
                      <option value="" disabled selected>Select Model</option>
                      <option value="Model1">Available Models</option>
                      <option value="Model2">INTEGRA</option>
@@ -373,17 +378,26 @@
                      <option value="Model2">4 SERIES</option>
                      <option value="Model2">5 SERIES</option>
                      <option value="Model2">7 SERIES</option>
+                     <option value="OTHER">Other</option>
                      <!-- Add more models dynamically or as needed -->
                   </select>
                </div>
+               <div class="form-group" id="other-model-group" style="display: none;">
+                  <label for="other-model">Please specify:</label>
+                  <input type="text" id="other-model" name="other-model" placeholder="Enter model" />
+               </div>
                <div class="form-group">
                   <label for="trim">Trim <span style="color: #e00e0e;">*</span></label>
-                  <select id="trim" name="trim" required>
+                  <select id="trim" name="trim" required  onchange="toggleOtherField()"></select>>
                      <option value="" disabled selected>Select Trim</option>
                      <option value="Trim1">Available Trims</option>
                      <!-- <option value="Trim2">Trim 2</option> -->
                      <!-- Add more trims dynamically or as needed -->
                   </select>
+               </div>
+               <div class="form-group" id="other-trim-group" style="display: none;">
+                  <label for="other-trim">Please specify:</label>
+                  <input type="text" id="other-trim" name="other-trim" placeholder="Enter trim" />
                </div>
                <div class="consent-text">
                   You understand that by clicking on the I AGREE button immediately following this notice, you are providing 'written instructions' to NextLane Auto under the Fair Credit Reporting Act authorizing NextLane Auto to obtain your personal consumer report from one or more credit reporting agencies. You authorize NextLane Auto to obtain such information solely to conduct a prequalification for credit.
@@ -482,6 +496,40 @@
       <!-- end #wrapper -->
       </div><!-- end layout-theme -->
       <span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
+      <script>
+         function toggleOtherField() {
+            const makeSelect = document.getElementById("make");
+            const modelSelect = document.getElementById("model");
+            const trimSelect = document.getElementById("trim");
+            const otherMakeGroup = document.getElementById("other-make-group");
+            const otherModelGroup = document.getElementById("other-model-group");
+            const otherTrimGroup = document.getElementById("other-trim-group");
+            if (makeSelect.value === "OTHER") {
+               otherMakeGroup.style.display = "block";
+               document.getElementById("other-make").required = true;
+            } else {
+               otherMakeGroup.style.display = "none";
+               document.getElementById("other-make").required = false;
+            }
+            if (modelSelect.value === "OTHER") {
+               otherModelGroup.style.display = "block";
+               document.getElementById("other-model").required = true;
+            } else {
+               otherModelGroup.style.display = "none";
+               document.getElementById("other-model").required = false;
+            }
+            if (trimSelect.value === "OTHER") {
+               otherTrimGroup.style.display = "block";
+               document.getElementById("other-trim").required = true;
+            } else {
+               otherTrimGroup.style.display = "none";
+               document.getElementById("other-trim").required = false;
+            }
+         }
+      </script>
+      
+
+
       <!-- SCRIPTS -->
       <script src="assets/js/jquery-migrate-1.2.1.js"></script>
       <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
