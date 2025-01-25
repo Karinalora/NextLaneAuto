@@ -296,7 +296,7 @@
                </div>
                <div class="form-group">
                   <label for="make">Make <span style="color: #e00e0e;">*</span></label>
-                  <select id="make" name="make" required  onchange="toggleOtherField()"></select>>
+                  <select id="make" name="make" required  onchange="toggleOtherField()">
                      <option value="" disabled selected>Select Make</option>
                      <option value="ACURA">ACURA</option>
                      <option value="HONDA">HONDA</option>
@@ -308,7 +308,7 @@
                      <option value="NISSAN">NISSAN</option>
                      <option value="INFINITI">INFINITI</option>
                      <option value="BMW">BMW</option>
-                     <option value="OTHER">Other</option>
+                     <option value="OTHER">OTHER</option>
                      <!-- Add more makes as needed -->
                   </select>
                </div>
@@ -318,7 +318,7 @@
                </div>
                <div class="form-group">
                   <label for="model">Model <span style="color: #e00e0e;">*</span></label>
-                  <select id="model" name="model" required  onchange="toggleOtherField()"></select>>
+                  <select id="model" name="model" required  onchange="toggleOtherField()">
                      <option value="" disabled selected>Select Model</option>
                      <option value="Model1">Available Models</option>
                      <option value="Model2">INTEGRA</option>
@@ -378,7 +378,7 @@
                      <option value="Model2">4 SERIES</option>
                      <option value="Model2">5 SERIES</option>
                      <option value="Model2">7 SERIES</option>
-                     <option value="OTHER">Other</option>
+                     <option value="OTHER">OTHER</option>
                      <!-- Add more models dynamically or as needed -->
                   </select>
                </div>
@@ -388,9 +388,10 @@
                </div>
                <div class="form-group">
                   <label for="trim">Trim <span style="color: #e00e0e;">*</span></label>
-                  <select id="trim" name="trim" required  onchange="toggleOtherField()"></select>>
+                  <select id="trim" name="trim" required  onchange="toggleOtherField()">
                      <option value="" disabled selected>Select Trim</option>
                      <option value="Trim1">Available Trims</option>
+                     <option value="OTHER">OTHER</option>
                      <!-- <option value="Trim2">Trim 2</option> -->
                      <!-- Add more trims dynamically or as needed -->
                   </select>
