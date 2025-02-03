@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 date_default_timezone_set('America/New_York');
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
             $mail->Password   = 'Teslam440q60'; // Contraseña de la aplicación
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
+            $mail->Port       = 465;
 
             // Configuración del remitente y destinatario
             $mail->setFrom($email, $first_name . ' ' . $last_name);
