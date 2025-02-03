@@ -53,6 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Timeout    = 30; // Limitar el tiempo de espera a 15 segundos
 
             echo "Conexión SMTP configurada.<br>";
+            $mail->SMTPOptions = [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true,
+                ],
+            ];
+            
 
             // Configuración del remitente y destinatario
             $mail->setFrom($email, $first_name . ' ' . $last_name);
