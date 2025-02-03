@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $uploadedFiles = [];
     $errors = [];
 
-    // Ensure upload directory exists
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
@@ -45,37 +44,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Format the email body with all form data
-    $message = "
-    <html>
-    <head>
-        <title>New Trade or Sell Your Vehicle Submission</title>
-    </head>
-    <body>
-        <h2>Submission Details</h2>
-        <table border='1' cellpadding='5' cellspacing='0'>
-            <tr><th>Field</th><th>Value</th></tr>
-            <tr><td>First Name</td><td>{$firstName}</td></tr>
-            <tr><td>Last Name</td><td>{$lastName}</td></tr>
-            <tr><td>Email</td><td>{$email}</td></tr>
-            <tr><td>Phone</td><td>{$phone}</td></tr>
-            <tr><td>Color</td><td>{$color}</td></tr>
-            <tr><td>Odometer</td><td>{$odometer}</td></tr>
-            <tr><td>Year</td><td>{$year}</td></tr>
-            <tr><td>Make</td><td>{$make}</td></tr>
-            <tr><td>Model</td><td>{$model}</td></tr>
-            <tr><td>Trim</td><td>{$trim}</td></tr>
-            <tr><td>Cylinders</td><td>{$cylinders}</td></tr>
-            <tr><td>Transmission</td><td>{$transmission}</td></tr>
-            <tr><td>VIN</td><td>{$vin}</td></tr>
-            <tr><td>Damages</td><td>{$damages}</td></tr>
-            <tr><td>Source</td><td>{$source}</td></tr>
-        </table>
-    </body>
-    </html>
-    ";
+    $message = "<html><body>";
+    $message .= "<h2>Submission Details</h2>";
+    $message .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
+    $fields = [
+        'First Name' => $firstName,
+        'Last Name' => $lastName,
+        'Email' => $email,
+        'Phone' => $phone,
+        'Color' => $color,
+        'Odometer' => $odometer,
+        'Year' => $year,
+        'Make' => $make,
+        'Model' => $model,
+        'Trim' => $trim,
+        'Cylinders' => $cylinders,
+        'Transmission' => $transmission,
+        'VIN' => $vin,
+        'Damages' => $damages,
+        'Source' => $source
+    ];
 
-    // Email headers for attachments
+    foreach ($fields as $label => $value) {
+        $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>$label</td><td>$value</td></tr>";
+    }
+    $message .= "</table></body></html>";
+
     $to = "sales@nextlaneauto.net";
     $subject = "New Trade Or Sell Your Vehicle Submission";
     $boundary = md5(time());
@@ -84,13 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
 
-    // Email body with attachments
     $emailBody = "--$boundary\r\n";
     $emailBody .= "Content-Type: text/html; charset=UTF-8\r\n";
     $emailBody .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
     $emailBody .= $message . "\r\n";
 
-    // Add attachments
     foreach ($uploadedFiles as $filePath) {
         $fileContent = file_get_contents($filePath);
         $fileName = basename($filePath);
@@ -103,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $emailBody .= "--$boundary--";
 
-    // Send the email
     if (mail($to, $subject, $emailBody, $headers)) {
         header('Location: /success.html');
         exit();
