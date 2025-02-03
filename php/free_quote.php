@@ -12,8 +12,11 @@ require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
+echo "Iniciando el envío de correo...<br>";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 
     // CAPTCHA verification
     $captcha = $_POST['g-recaptcha-response'];
@@ -31,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($email) && !empty($message_details) && !empty($phone_no) && !empty($subject) && !empty($last_name) && !empty($first_name) && ($response_keys["success"])) {
         $mail = new PHPMailer(true);
+        echo "PHPMailer inicializado.<br>";
 
         try {
              // Habilitar depuración SMTP para ver el proceso en detalle
@@ -44,12 +48,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Password   = 'mszq fjnu adbb wygb'; // Contraseña de la aplicación
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port       = 465;
-            $mail->Timeout    = 15; // Limitar el tiempo de espera a 15 segundos
+            $mail->Timeout    = 30; // Limitar el tiempo de espera a 15 segundos
+
+            echo "Conexión SMTP configurada.<br>";
 
             // Configuración del remitente y destinatario
             $mail->setFrom($email, $first_name . ' ' . $last_name);
             $mail->addAddress('sales@nextlaneauto.net');  // Destinatario
             $mail->addReplyTo($email, $first_name);
+
+            echo "Direcciones de correo configuradas.<br>";
 
             // Contenido del correo
             $mail->isHTML(true);
@@ -69,12 +77,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $mail->Body = $email_body;
 
+
+           echo "Cuerpo del correo configurado.<br>";
+
             $mail->send();
+            echo 'El mensaje ha sido enviado correctamente.<br>';
             header('Location: /success.html');
             exit();
         } catch (Exception $e) {
-            error_log("Error al enviar el correo: {$mail->ErrorInfo}");
-            echo "Error al enviar el correo: {$mail->ErrorInfo}";
+            echo "Error al enviar el correo: " . $e->getMessage() . "<br>";
+            echo "Detalles adicionales: " . $mail->ErrorInfo . "<br>";
             header('Location: /failed.html');
             exit();
         }
