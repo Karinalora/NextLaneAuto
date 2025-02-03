@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
              // Habilitar depuración SMTP para ver el proceso en detalle
-             $mail->SMTPDebug = 2;  // Cambiar a 4 si necesitas más detalles
+             $mail->SMTPDebug = 4;  // Cambiar a 4 si necesitas más detalles
              $mail->Debugoutput = 'html';
             // Configuración del servidor SMTP
             $mail->isSMTP();
@@ -43,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
             $mail->Password   = 'mszq fjnu adbb wygb'; // Contraseña de la aplicación
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 587;
-            $mail->Timeout    = 30; // Limitar el tiempo de espera a 15 segundos
+            $mail->Port       = 465;
+            $mail->Timeout    = 15; // Limitar el tiempo de espera a 15 segundos
 
             // Configuración del remitente y destinatario
             $mail->setFrom($email, $first_name . ' ' . $last_name);
@@ -74,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } catch (Exception $e) {
             error_log("Error al enviar el correo: {$mail->ErrorInfo}");
+            echo "Error al enviar el correo: {$mail->ErrorInfo}";
             header('Location: /failed.html');
             exit();
         }
