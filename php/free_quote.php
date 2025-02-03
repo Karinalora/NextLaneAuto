@@ -53,13 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Conexión SMTP configurada.<br>";
 
             // Configuración del remitente y destinatario
-            //$mail->setFrom($email, $first_name . ' ' . $last_name);
-           // $mail->addAddress('sales@nextlaneauto.net');  // Destinatario
-           // $mail->addReplyTo($email, $first_name);
+            $mail->setFrom($email, $first_name . ' ' . $last_name);
+            $mail->addAddress('sales@nextlaneauto.net');  // Destinatario
+            $mail->addReplyTo($email, $first_name);
              // Configuración del remitente y destinatario
-            $mail->setFrom('sales@nextlaneauto.net', 'Next Lane Auto');
-            $mail->addAddress('sales@nextlaneauto.net');
-            $mail->addReplyTo('sales@nextlaneauto.net');
+           // $mail->setFrom('sales@nextlaneauto.net', 'Next Lane Auto');
+           // $mail->addAddress('sales@nextlaneauto.net');
+           // $mail->addReplyTo('sales@nextlaneauto.net');
 
             echo "Direcciones de correo configuradas.<br>";
 
@@ -91,7 +91,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } catch (Exception $e) {
             echo "Error al enviar el correo: " . $e->getMessage() . "<br>";
             echo "Detalles adicionales: " . $mail->ErrorInfo . "<br>";
-            header('Location: /failed.html');
+            echo "❌ Error al enviar el correo:<br>";
+            echo "<strong>Mensaje de excepción:</strong> " . $e->getMessage() . "<br>";
+            echo "<strong>Detalles de PHPMailer:</strong> " . $mail->ErrorInfo . "<br>";
+            echo "<strong>Trace:</strong> <pre>" . $e->getTraceAsString() . "</pre>";
+           // header('Location: /failed.html');
             exit();
         }
     } else {
