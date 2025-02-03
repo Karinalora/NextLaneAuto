@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lease_or_finance = htmlspecialchars($_POST['lease_or_finance']);
     $agree = isset($_POST['agree']) ? 'Yes' : 'No';
 
-    // CAPTCHA verification (optional)
+    // CAPTCHA verification
     $captcha = $_POST['g-recaptcha-response'];
     $secret_key = '6LeDJrsqAAAAAOSnnGEdd8eTxPEfHYIhFEMUEbRe';
 
@@ -21,32 +21,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die('CAPTCHA verification failed. Please try again.');
     }
 
-    // Process the data (e.g., save to database or send email)
+    // Format the email in HTML
     $to = "sales@nextlaneauto.net";
     $subject = "New Request a Free Quote Form Submission";
-    $message = "
-    <h2>Request a Free Quote Form Submission</h2>
-    <p><strong>First Name:</strong> $first_name</p>
-    <p><strong>Last Name:</strong> $last_name</p>
-    <p><strong>Phone No:</strong> $phone</p> 
-    <p><strong>Email:</strong> $email</p> 
-    <p><strong>Comments:</strong> $comments</p>
-    <p><strong>Lease or Finance:</strong> $lease_or_finance</p>
-    <p><strong> Agreed to Privacy Policy:</strong> $agree</p>
-    ";
+    $message = "<html><body>";
+    $message .= "<h1>Request a Free Quote Form Submission</h1>";
+    $message .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>First Name</td><td>$first_name</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Last Name</td><td>$last_name</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Phone No</td><td>$phone</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$email</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Vehicle</td><td>$vehicle</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Comments</td><td>$comments</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Lease or Finance</td><td>$lease_or_finance</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Agreed to Privacy Policy</td><td>$agree</td></tr>";
+    $message .= "</table>";
+    $message .= "</body></html>";
+
     $headers = "From: " . $email . "\r\n" .
     "Reply-To: " . $email . "\r\n" .
     "Content-Type: text/html; charset=UTF-8";
 
     if (mail($to, $subject, $message, $headers)) {
         header('Location: /success.html');
-        exit();  // Asegúrate de terminar el script después de la redirección
-        echo "Thank you! Your submission has been received.";
+        exit();
     } else {
-              //echo "Failed to Send Message.";
-             // Si todo es correcto, redireccionas a la página de agradecimiento
         header('Location: /failed.html');
-        echo "Sorry, there was an error processing your form. Please try again.";
+        exit();
     }
 }
 ?>
