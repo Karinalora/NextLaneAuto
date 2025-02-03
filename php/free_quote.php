@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Host       = 'smtp.gmail.com';       // Servidor SMTP de Gmail
             $mail->SMTPAuth   = true;
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
-            $mail->Password   = 'Teslam440q60'; // Contraseña de la aplicación
+            $mail->AppPassword   = 'lzag pmlp ypxf ijid'; // Contraseña de la aplicación
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 465;
 
