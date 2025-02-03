@@ -14,6 +14,7 @@ require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // CAPTCHA verification
     $captcha = $_POST['g-recaptcha-response'];
     $secret_key = '6LeDJrsqAAAAAOSnnGEdd8eTxPEfHYIhFEMUEbRe';
@@ -32,14 +33,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail = new PHPMailer(true);
 
         try {
+             // Habilitar depuración SMTP para ver el proceso en detalle
+             $mail->SMTPDebug = 2;  // Cambiar a 4 si necesitas más detalles
+             $mail->Debugoutput = 'html';
             // Configuración del servidor SMTP
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';       // Servidor SMTP de Gmail
             $mail->SMTPAuth   = true;
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
-            $mail->AppPassword   = 'lzag pmlp ypxf ijid'; // Contraseña de la aplicación
-           // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 465;
+            $mail->Password   = 'mszq fjnu adbb wygb'; // Contraseña de la aplicación
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port       = 587;
+            $mail->Timeout    = 30; // Limitar el tiempo de espera a 15 segundos
 
             // Configuración del remitente y destinatario
             $mail->setFrom($email, $first_name . ' ' . $last_name);
