@@ -48,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->SMTPAuth   = true;
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
             $mail->Password   = 'mszq fjnu adbb wygb'; // Contraseña de la aplicación
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 587;
+            $mail->SMTPSecure = 'SSL';
+            $mail->Port       = 465;
             $mail->Timeout    = 30; // Limitar el tiempo de espera a 15 segundos
 
             echo "Conexión SMTP configurada.<br>";
