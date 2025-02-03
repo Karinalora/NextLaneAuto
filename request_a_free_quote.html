@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+      <title>NextLane Auto</title>
+      <style>
+         body {
+         font-family: Arial, sans-serif;
+         margin: 20px;
+         }
+         h1 {
+         background-color: #e00e0e;
+         color: #ffffff;
+         text-align: center;
+         padding: 10px;
+         border-radius: 4px;
+         margin-bottom: 20px;
+         }
+         h3 {
+         color: #000000 !important;;
+         text-align: center;
+         padding: 10px;
+         border-radius: 4px;
+         margin-bottom: 20px;
+         }
+         p {
+         color: #000000;
+         text-align: center;
+         padding: 10px;
+         border-radius: 4px;
+         margin-bottom: 20px;
+         }
+         form {
+         max-width: 500px;
+         margin: 0 auto;
+         padding: 20px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         background-color: #f9f9f9;
+         }
+         form input, form textarea, form button {
+         width: 100%;
+         padding: 10px;
+         margin-bottom: 15px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         }
+         form textarea {
+         resize: vertical;
+         height: 100px;
+         }
+         form label {
+         display: block;
+         margin-bottom: 5px;
+         font-weight: bold;
+         }
+         form .checkbox-label {
+         display: flex;
+         align-items: center;
+         }
+         form .checkbox-label input {
+         width: auto;
+         margin-right: 10px;
+         }
+         .captcha-container {
+         text-align: center;
+         }
+         .form-footer button {
+         width: 100%;
+         padding: 10px 20px;
+         background-color: #e00e0e;
+         color: #fff;
+         border: none;
+         border-radius: 3px;
+         cursor: pointer;
+         }
+         .form-footer button:hover {
+         background-color: #000000;;
+         }
+      </style>
+      <link href="favicon.png" type="image/x-icon" rel="shortcut icon">
+      <link href="assets/css/master.css" rel="stylesheet">
+      <link href="assets/plugins/iview/css/iview.css" rel="stylesheet">
+      <link href="assets/plugins/iview/css/skin/style.css" rel="stylesheet">
+      <!-- SWITCHER -->
+      <!--	<link href="assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
+         <link href="assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
+         <link href="assets/plugins/switcher/css/color2.css" rel="alternate stylesheet" title="color2" media="all">
+         <link href="assets/plugins/switcher/css/color3.css" rel="alternate stylesheet" title="color3" media="all">
+         <link href="assets/plugins/switcher/css/color4.css" rel="alternate stylesheet" title="color4" media="all">
+         <link href="assets/plugins/switcher/css/color5.css" rel="alternate stylesheet" title="color5" media="all"> -->
+      <script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+   </head>
+   <body>
+      <!--	<div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
+         Start Switcher 
+         <div class="switcher-wrapper">
+         <div class="demo_changer">
+         	<div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+         	<div class="form_holder">
+         		<div class="row">
+         			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         				<div class="predefined_styles">
+         					<div class="skin-theme-switcher">
+         						<h4>Color</h4>
+         						<a href="javascript:void(0);" data-switchcolor="color1" class="styleswitch" style="background-color:#fe5656;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color2" class="styleswitch" style="background-color:#4fb0fd;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color3" class="styleswitch" style="background-color:#ffc73c;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color4" class="styleswitch" style="background-color:#ff8300;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color5" class="styleswitch" style="background-color:#02cc8b;"> </a>
+         					</div>
+         				</div>
+         			</div>
+         		</div>
+         	</div>
+         </div>
+         
+         <script src="assets/plugins/switcher/js/bootstrap-select.js"></script>
+         <script src="assets/plugins/switcher/js/evol.colorpicker.min.js"></script>
+         <script src="assets/plugins/switcher/js/dmss.js"></script>
+         </div> -->
+      <!-- End Switcher -->
+      <div id="wrapper">
+         <!-- HEADER -->
+         <div class="header">
+            <div class="top-header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xs-12">
+                       <!-- <div class="header-contacts">
+                           <span class="header-contacts__item"><i class="icon fa fa-phone"></i>(516) 912-6413 </span>
+                           <a class="header-contacts__item" href="mailto:sales@nextlaneauto.com"><i class="icon fa fa-envelope"></i>sales@nextlaneauto.com</a>
+                        </div> -->
+                        <ul class="social-links list-inline">
+                           <li><a class="icon fa fa-facebook" href="https://www.facebook.com/share/1BQfSxZhQk/?mibextid=wwXIfr"></a></li>
+                          <!-- <li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li> -->
+                           <li><a class="icon fa fa-youtube-play" href="https://www.youtube.com/@NextLaneAuto"></a></li>
+                           <li><a class="icon fa fa-instagram" href="https://www.instagram.com/nextlaneauto/?igsh=MXhvZGxnMDh4dW1wYQ%3D%3D&utm_source=qr"></a></li>
+                         <!--  <li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li> -->
+                        </ul>
+                     </div>
+                     <!-- end col -->
+                  </div>
+                  <!-- end row -->
+               </div>
+               <!-- end container -->
+            </div>
+            <!-- end top-header -->
+            <div class="header__inner">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12 col-xs-12">
+                        <a href="home.html" class="logo"> <img class="logo__img img-responsive" src="assets/nlaw.png" height="50" width="111" alt="Logo"> </a>
+                        <div class="navbar yamm">
+                           <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                              <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                              <a href="javascript:void(0);" class="navbar-brand"></a> 
+                           </div>
+                           <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                              <ul class="nav navbar-nav">
+                                 <li><a href="new_vehicle.html">Vehicles</a></li>
+                                 <li><a href="trade_or_sell_your_vehicle.html">Trade or Sell Your Vehicle</a> </li>
+                                 <li><a href="credit_application.html">Credit Application</a></li>
+                                 <li><a href="get_pre_qualified.html">Get Pre-Qualified in Seconds</a></li>
+                                 <li class="dropdown" >
+                                    <a href="request_a_free_quote.html">Request a Free Quote</a>
+                                    <!--  <ul role="menu" class="dropdown-menu">
+                                       <li> <a href="news-grid.html">DROPDOWN</a> </li>
+                                       <li> <a href="news-details.html">DROPDOWN</a> </li>
+                                       </ul> -->
+                                 </li>
+                                 <li><a href="about-us.html">About Us</a></li>
+                                 <li><a href="contact_us.html">Contact Us</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- end container --> 
+            </div>
+            <!-- end header__inner -->
+         </div>
+         <!-- end header -->
+         <div class="block-title">
+            <div class="block-title__inner section-bg section-bg_second">
+               <div class="bg-inner">
+                  <h1 class="ui-title-page">Request a Free Quote</h1>
+                  <div class="decor-1 center-block"></div>
+                  <ol class="breadcrumb">
+                     <li><a href="home.html">HOME</a></li>
+                     <li class="active">Request a Free Quote</li>
+                  </ol>
+               </div>
+               <!-- end bg-inner -->
+            </div>
+            <!-- end block-title__inner -->
+         </div>
+         <!-- end block-title -->
+         <!-- starts new block -->
+         <h3><span style="color: #e00e0e;">CLAIM</span> THIS OFFER!</h3>
+         <p>FILL OUT THE FORM BELOW AND ONE OF OUR TEAM MEMBERS WILL CONTACT YOU SHORTLY!</p>
+         <form action="php/process_form.php" method="POST">
+            <label for="first_name">First Name <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+            <label for="last_name">Last Name <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+            <label for="phone">Phone<span style="color: #e00e0e;">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+            <label for="email">Email <span style="color: #e00e0e;">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <label for="vehicle">Vehicle Make/Model/Year <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="vehicle" name="vehicle" placeholder="Vehicle Make/Model/Year" required>
+            <label for="comments">Additional Comments</label>
+            <textarea id="comments" name="comments" placeholder="Additional Comments"></textarea>
+            <label for="lease_or_finance">Lease or Finance? <span style="color: #e00e0e;">*</span></label>
+            <input type="text" id="lease_or_finance" name="lease_or_finance" placeholder="Lease or Finance?" required>
+            <div class="checkbox-label">
+               <input type="checkbox" id="agree" name="agree" required>
+               <label for="agree">I agree to receiving future communications from NextLane Auto and/or NextLane Auto, terms of use, & privacy policy. <a href="#" target="_blank">View Privacy Policy</a></label>
+            </div>
+            <div class="captcha-container">
+               <!-- Include your CAPTCHA widget here -->
+               <div class="g-recaptcha" data-sitekey="6LeDJrsqAAAAAOArFJw811iifNd0SKEjysX-gBw6"></div>
+            </div>
+            <div class="form-footer">
+               <button type="submit">SUBMIT</button>
+            </div>
+         </form>
+         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+         <!-- end new block -->
+         <footer class="footer">
+            <div class="wrap-section-border">
+               <section class="section_mod-h section-bg section-bg_second">
+                  <div class="bg-inner border-section-top border-section-top_mod-b">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <h2 class="footer-title">NextLane <span class="footer-title__inner">Auto</span></h2>
+                              <div class="decor-1 decor-1_mod-b"></div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <div class="footer__name">LOCATION:</div>
+                              <div class="footer__text">1430 Broadway STE 1200, New York, NY 10018</div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <div class="footer__item">
+                                 <span class="footer__name">Phone:</span>
+                                 <span class="footer__text">(516) 912-6413 </span>
+                              </div>
+                             <!-- <div class="footer__item">
+                                 <span class="footer__name">Fax:</span>
+                                 <span class="footer__text">+1 (234) 567 8998</span>
+                              </div> -->
+                              <div class="footer__item">
+                                 <span class="footer__name">email:</span>
+                                 <span class="footer__text">sales@nextlaneauto.net</span>
+                              </div>
+                              <div class="footer__item">
+                                 <span class="footer__name">Hours:</span>
+                                 <span class="footer__text">Mon - Fri : 9am - 5pm</span>
+                              </div>
+                              <div class="footer__item">
+                                 <span class="footer__name">Hours:</span>
+                                 <span class="footer__text">Sat - Sun : 10am - 4pm</span>
+                              </div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <ul class="social-links list-inline">
+                                 <li><a class="icon fa fa-facebook" href="https://www.facebook.com/share/1BQfSxZhQk/?mibextid=wwXIfr"></a></li>
+                                <!-- <li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li> -->
+                                 <li><a class="icon fa fa-youtube-play" href="https://www.youtube.com/@NextLaneAuto"></a></li>
+                                 <li><a class="icon fa fa-instagram" href="https://www.instagram.com/nextlaneauto/?igsh=MXhvZGxnMDh4dW1wYQ%3D%3D&utm_source=qr"></a></li>
+                               <!-- <li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li> -->
+                              </ul>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                     </div>
+                     <!-- end container -->
+                  </div>
+                  <!-- end bg-inner -->
+               </section>
+               <!-- end section_mod-b -->
+            </div>
+            <span id="siteseal"><script async type="text/javascript" src="https://seal.starfieldtech.com/getSeal?sealID=KJ0iSRH7hjg5Sp35DLilv3FvDBFbPn05fabJNnAeyIffkwJfczYauHG6rr81"></script></span>
+            <!-- end wrap-section-border -->
+            <div class="footer__wrap-btn"> <a class="footer__btn scroll" href="#this-top">top</a> </div>
+            <div class="copyright">Copyrights 2024 - 2025 <a class="copyright__link" href="#">NextLane Auto</a> : All rights reserved</div>
+         </footer>
+      </div>
+      <!-- end #wrapper -->
+      </div><!-- end layout-theme -->
+      <span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
+      <!-- SCRIPTS -->
+      <script src="assets/js/jquery-migrate-1.2.1.js"></script>
+      <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/js/modernizr.custom.js"></script>
+      <script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+      <script src="assets/js/waypoints.min.js"></script>
+      <script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+      <script src="assets/plugins/jelect/jquery.jelect.js"></script>
+      <script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
+      <script src="assets/plugins/flexslider/jquery.flexslider.js"></script>
+      <!--THEME-->
+      <script src="assets/js/cssua.min.js"></script>
+      <script src="assets/js/wow.min.js"></script>
+      <script src="assets/js/custom.js"></script>
+   </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "nextlaneauto",
+  "version": "1.0.0",
+  "description": "At NextLane, our story begins in the hallways of Hillcrest high school, where three friends bonded over a shared passion for cars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -53,19 +53,21 @@ img.pull-left {
 	margin-bottom: 30px;
 	padding-right: 10px;
 	padding-left: 10px;
-	font-family: Ubuntu;
+	font-family: 'Nexa Heavy Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Ubuntu; */ 
 	font-size: 34px;
 	font-weight: 700;
 	color: #fff;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 
 .ui-title-block {
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 40px;
 	font-weight: 700;
 	color: #222;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .ui-title-block_mod-a {
 	color: #fff;
@@ -88,11 +90,12 @@ img.pull-left {
 
 .ui-title-inner {
 	margin-bottom: 12px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */
 	font-size: 16px;
 	font-weight: 700;
 	color: #222;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .ui-title-inner_mod-a {
 	font-size: 20px;
@@ -257,10 +260,11 @@ img.pull-left {
 
 .brand-link {
 	display: block;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 1;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .brand-link .icon {
 	display: inline-block;
@@ -451,11 +455,12 @@ img.pull-left {
 }
 .card__label {
 	display: block;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 11px;
 	font-weight: 700;
 	color: #fff;
 	transform: skewX(18deg);
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .card__inner {
 	margin-left: 270px;
@@ -570,14 +575,187 @@ img.pull-left {
 	color: #fff;
 }
 
-.header__inner {
-	margin-top: 3px;
-	border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+.slider-container {
+	position: relative; /* Establish a relative context for the slider */
+  }
+  
+  #sliderpro1 {
+	position: relative;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+ /* Common Styles */
+.floating-buttons {
+    position: relative;
+    bottom: 43px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
-.header .logo {
+
+.button-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+	gap: 16px; /* Espacio entre los botones */
+}
+
+.button-list li {
+    flex: 1 1 auto;
+    max-width: 200px;
+}
+
+.button-list li a {
+    display: block;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #e00e0e;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.button-list li a:hover {
+    background-color: #e58b8b;
+    transform: scale(1.05);
+}
+/* Hide both menus by default */
+.mobile-menu,
+.desktop-menu {
+    display: none !important;
+}
+
+/* Show the mobile menu only on screens smaller than 784px */
+@media screen and (max-width: 780px) {
+    .mobile-menu {
+        display: none !important; /* Force show the mobile menu */
+    }
+	.mobile-menu.collapse.in {
+        display: block !important; /* Show when toggled */
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .desktop-menu {
+        display: none !important; /* Ensure desktop menu is hidden */
+    }
+}
+
+/* Show the desktop menu only on screens 784px or larger */
+@media screen and (min-width: 784px) {
+    .desktop-menu {
+        display: block !important; /* Force show the desktop menu */
+    }
+
+    #navbar-collapse-1.mobile-menu {
+        display: none !important; /* Ensure mobile menu is hidden */
+    }
+}
+
+/* Safari-specific Fix: Add fallback for Safari handling */
+@supports (-webkit-touch-callout: none) {
+    @media screen and (min-width: 784px) {
+        .desktop-menu {
+            display: block !important;
+        }
+
+        .mobile-menu {
+            display: none !important;
+        }
+    }
+
+    @media screen and (max-width: 783px) {
+        .mobile-menu {
+            display: none !important;
+        }
+
+        .desktop-menu {
+            display: none !important;
+        }
+    }
+}
+  
+  /* Header Static */
+.header__static {
+	position: fixed; /* Fijo en la parte superior */
+	top: 0;
+	left: 0;
+	width: 100%; /* Ancho completo */
+	background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+	z-index: 1000; /* Asegura que esté encima de otros elementos */
+	padding: 10px 0;
+  }
+  
+  .header__static .container {
+	display: flex;
+	justify-content: space-between; /* Espacio entre logo y botones */
+	align-items: center; /* Centra el contenido verticalmente */
+  }
+  
+  .header__content {
+	display: flex;
+	align-items: center;
+	gap: 20px; /* Espaciado entre logo y navegación */
+  }
+  
+  .logo {
 	display: inline-block;
-	margin-top: 30px;
-}
+  }
+  
+  .logo__img {
+	height: 50px;
+	width: auto;
+  }
+  
+  /* Navigation Buttons */
+  .nav-buttons {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 15px; /* Espaciado entre botones */
+  }
+  
+  .nav-btn {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #e00e0e; /* Color del botón */
+	color: #fff; /* Color del texto */
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: 12;
+	border-radius: 25px; /* Botones redondeados */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+	transition: all 0.3s ease; /* Animación de hover */
+  }
+  
+  .nav-btn:hover {
+	background-color: #a26565; /* Sombra más oscura al pasar el ratón */
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Evitar que el contenido quede detrás del header */
+  body {
+	/* margin-top: 80px; /* Ajustar según la altura del header */
+  }
+  
 
 
 
@@ -594,11 +772,12 @@ img.pull-left {
 .footer-title {
 	margin-top: 10px;
 	margin-bottom: 0;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 30px;
 	font-weight: 700;
 	color: #fff;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .footer__item {
 	display: inline-block;
@@ -806,9 +985,10 @@ img.pull-left {
 
 .main-block {
 	margin: 40px 350px 86px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	color: #555;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .main-block__label {
 	margin-bottom: 16px;
@@ -855,9 +1035,10 @@ img.pull-left {
 }
 .list-services__title {
 	margin-bottom: 15px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 18px;
 	color: #fff;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .list-services__title strong {
 	display: block;
@@ -964,10 +1145,11 @@ img.pull-left {
 
 .list-progress__name {
 	display: block;
-	font-family: Raleway;
+	ffont-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 15px;
 	font-weight: 600;
 	color: #999;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 
 
@@ -1010,13 +1192,14 @@ img.pull-left {
 	display: block;
 	width: 360px;
 	height: 210px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	color: #fff;
 	border-top: 1px solid #333;
 	border-bottom: 1px solid #333;
 	background-color: rgba(0, 0, 0, 0.4);
 	transition: all 0.3s;
 	transform: skewX(6deg);
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .list-type__link:hover {
 	color: #fff;
@@ -1133,11 +1316,12 @@ img.pull-left {
 	box-shadow: -5px 0 0 0 #999;
 }
 .list-staff__name {
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 15px;
 	font-weight: 700;
 	color: #222;
 	transition: all 0.3s;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .list-staff__item:hover .list-staff__name,
 .list-staff__item:hover .list-staff__categories,
@@ -1209,10 +1393,11 @@ img.pull-left {
 }
 .staff-progress__title {
 	margin-bottom: 22px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 12px;
 	font-weight: 700;
 	color: #555;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 
 
@@ -1249,7 +1434,7 @@ img.pull-left {
 	padding-top: 4px;
 	padding-bottom: 4px;
 	padding-left: 40px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 16px;
 	font-weight: 700;
 	color: #222;
@@ -1257,6 +1442,7 @@ img.pull-left {
 	transition: all 0.3s;
 	text-align: left;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .reviews:hover .reviews__title {
 	color: #fff;
@@ -1280,11 +1466,12 @@ img.pull-left {
 	margin-left: 115px;
 }
 .reviews__name {
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-weight: 700;
 	color: #555;
 	transition: all 0.3s;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .reviews__category {
 	font-size: 10px;
@@ -1360,10 +1547,11 @@ img.pull-left {
 	padding-top: 7px;
 	padding-bottom: 9px;
 	padding-left: 26px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 26px;
 	font-weight: 700;
 	color: #222;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .car-details__wrap-price {
 	float: right;
@@ -1398,20 +1586,22 @@ img.pull-left {
 }
 .letter__title {
 	margin-bottom: 14px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 24px;
 	font-weight: 600;
 	line-height: 1.16;
 	color: #fefefe;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .letter__btn {
 	float: right;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 14px;
 	font-weight: 700;
 	color: #fff;
 	border-right: 2px solid #fff;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .letter__inner {
 	float: left;
@@ -1511,7 +1701,7 @@ img.pull-left {
 	bottom: -3vw;
 	width: 50%;
 	height: 8vw;
-	background-color: #f5f5f5;
+	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 101;
 	content: '';
 }
@@ -1544,9 +1734,10 @@ img.pull-left {
 }
 .main-slider__subtitle {
 	margin-bottom: 25px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 26px;
 	font-weight: 500;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .main-slider__text {
 	font-size: 16px;
@@ -1583,11 +1774,12 @@ img.pull-left {
 .main-slider__btn_inner {
 	display: inline-block;
 	width: 120px;
-	font-family: Ubuntu;
+	font-family: 'Nexa Heavy Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Ubuntu; */ 
 	color: #fff;
 	transform: skewX(-16deg);
 	text-align: center;
 	text-transform: uppercase;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 
 .slider-services {
@@ -1608,10 +1800,11 @@ img.pull-left {
 }
 .slider-grid__name {
 	display: inline-block;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-weight: 600;
 	background-color: rgba(0, 0, 0, 0.7);
 	transition: all 0.3s;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .slider-grid__inner_mod-b .slider-grid__name {
 	position: absolute;
@@ -1723,9 +1916,10 @@ img.pull-left {
 }
 .slider-gallery__title {
 	margin-top: 16px;
-	font-family: Raleway;
+	font-family: 'Nexa Bold Italic', sans-serif; /* Replace Ubuntu with Nexa Heavy Italic font-family: Raleway; */ 
 	font-size: 15px;
 	font-weight: 600;
+	font-style: italic; /* Italic style to align with Nexa's design */
 }
 .slider-gallery__link {
 	position: relative;
@@ -1865,4 +2059,6 @@ transform: rotate(360deg);
 }
 }
 
+
+/* ======= NEW IMPLEMENTATION ======= */
 

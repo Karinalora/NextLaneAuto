@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+      <title>NextLane Auto</title>
+      <style>	
+         h1 {
+         background-color: #e00e0e;
+         color: #ffffff;
+         text-align: center;
+         padding: 10px;
+         border-radius: 4px;
+         margin-bottom: 20px;
+         }
+         h2 {
+         color: #000000 !important;;
+         text-align: center;
+         padding: 10px;
+         border-radius: 4px;
+         margin-bottom: 20px;
+         }
+         p {
+         color: #000000;
+         text-align: center;
+         padding: 10px;
+         border-radius: 4px;
+         margin-bottom: 20px;
+         }
+         body {
+         font-family: Arial, sans-serif;
+         background-color: #f9f9f9;
+         margin: 0;
+         padding: 0;
+         }
+         .text-center {
+         text-align: center;
+         }
+         .text-red-600 {
+         color: #ff0000;
+         }
+         .container {
+         max-width: 1200px;
+         margin: auto;
+         }
+         .filter-bar {
+         background-color: #fff;
+         border-radius: 8px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         padding: 20px;
+         max-width: 900px;
+         margin: 0 auto;
+         }
+         .dropdown {
+         padding: 10px 15px;
+         border: 1px solid #ddd;
+         border-radius: 5px;
+         font-size: 16px;
+         width: auto;
+         }
+         .grid {
+         display: grid;
+         gap: 1.5rem;
+         }
+         .car-card {
+         background-color: #fff;
+         border-radius: 8px;
+         overflow: hidden;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         text-align: center;
+         padding: 16px;
+         }
+         .car-card img {
+         width: 100%;
+         height: auto;
+         }
+         .car-card .details {
+         padding: 10px;
+         }
+         .car-card h3 {
+         font-size: 1.2rem;
+         font-weight: bold;
+         margin: 10px 0;
+         }
+         .car-card p {
+         font-size: 0.9rem;
+         color: #555;
+         }
+         .car-card .btn-primary,
+         .car-card .btn-secondary {
+         display: block;
+         width: 100%;
+         padding: 10px;
+         margin: 10px 0;
+         font-size: 0.9rem;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         }
+         .car-card .btn-primary {
+         background-color: #e00e0e;
+         color: white;
+         text-decoration: none;
+         font-style: italic;
+         font-style: normal;
+         font-weight: 1 1000;
+         }
+         .car-card .btn-secondary {
+         background-color: #000000;
+         color: white;
+         text-decoration: none;
+         font-style: italic;
+         font-style: normal;
+         font-weight: 1 1000;
+         }
+         .btn-primary {
+          display: inline-block;
+          background-color: #e00e0e;
+          color: white;
+          text-align: center;
+          text-decoration: none;
+         font-style: italic;
+         font-style: normal;
+         font-weight: 1 1000;
+          padding: 10px 15px;
+          margin: 5px 0;
+          border-radius: 5px;
+          cursor: pointer;
+         }
+         .btn-secondary {
+         display: inline-block;
+         background-color: #000000;
+         color: white;
+         text-align: center;
+         text-decoration: none;
+         font-style: italic;
+         font-style: normal;
+         font-weight: 1 1000;
+         padding: 10px 15px;
+         margin: 5px 0;
+         border-radius: 5px;
+         cursor: pointer;
+        }
+       .btn-primary:hover,
+       .btn-secondary:hover {
+        opacity: 0.9;
+       }
+      </style>
+      <link href="favicon.png" type="image/x-icon" rel="shortcut icon">
+      <link href="assets/css/master.css" rel="stylesheet">
+      <link href="assets/plugins/iview/css/iview.css" rel="stylesheet">
+      <link href="assets/plugins/iview/css/skin/style.css" rel="stylesheet">
+      <!-- SWITCHER -->
+      <!--	<link href="assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
+         <link href="assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
+         <link href="assets/plugins/switcher/css/color2.css" rel="alternate stylesheet" title="color2" media="all">
+         <link href="assets/plugins/switcher/css/color3.css" rel="alternate stylesheet" title="color3" media="all">
+         <link href="assets/plugins/switcher/css/color4.css" rel="alternate stylesheet" title="color4" media="all">
+         <link href="assets/plugins/switcher/css/color5.css" rel="alternate stylesheet" title="color5" media="all"> -->
+      <script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   </head>
+   <body>
+      <!--	<div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
+         Start Switcher 
+         <div class="switcher-wrapper">
+         <div class="demo_changer">
+         	<div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+         	<div class="form_holder">
+         		<div class="row">
+         			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         				<div class="predefined_styles">
+         					<div class="skin-theme-switcher">
+         						<h4>Color</h4>
+         						<a href="javascript:void(0);" data-switchcolor="color1" class="styleswitch" style="background-color:#fe5656;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color2" class="styleswitch" style="background-color:#4fb0fd;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color3" class="styleswitch" style="background-color:#ffc73c;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color4" class="styleswitch" style="background-color:#ff8300;"> </a>
+         						<a href="javascript:void(0);" data-switchcolor="color5" class="styleswitch" style="background-color:#02cc8b;"> </a>
+         					</div>
+         				</div>
+         			</div>
+         		</div>
+         	</div>
+         </div>
+         
+         <script src="assets/plugins/switcher/js/bootstrap-select.js"></script>
+         <script src="assets/plugins/switcher/js/evol.colorpicker.min.js"></script>
+         <script src="assets/plugins/switcher/js/dmss.js"></script>
+         </div> -->
+      <!-- End Switcher -->
+      <div id="wrapper">
+         <!-- HEADER -->
+         <div class="header">
+            <div class="top-header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xs-12">
+                      <!--  <div class="header-contacts">
+                           <span class="header-contacts__item"><i class="icon fa fa-phone"></i>(516) 912-6413</span>
+                           <a class="header-contacts__item" href="mailto:sales@nextlaneauto.com"><i class="icon fa fa-envelope"></i>sales@nextlaneauto.com</a>
+                        </div> -->
+                        <ul class="social-links list-inline">
+                           <li><a class="icon fa fa-facebook" href="https://www.facebook.com/share/1BQfSxZhQk/?mibextid=wwXIfr"></a></li>
+                         <!--  <li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li> -->
+                           <li><a class="icon fa fa-youtube-play" href="https://www.youtube.com/@NextLaneAuto"></a></li>
+                           <li><a class="icon fa fa-instagram" href="https://www.instagram.com/nextlaneauto/?igsh=MXhvZGxnMDh4dW1wYQ%3D%3D&utm_source=q"></a></li>
+                          <!-- <li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li> -->
+                        </ul>
+                     </div>
+                     <!-- end col -->
+                  </div>
+                  <!-- end row -->
+               </div>
+               <!-- end container -->
+            </div>
+            <!-- end top-header -->
+            <div class="header__inner">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12 col-xs-12">
+                        <a href="home.html" class="logo"> <img class="logo__img img-responsive" src="assets/nlaw.png" height="50" width="111" alt="Logo"> </a>
+                        <div class="navbar yamm">
+                           <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                              <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                              <a href="javascript:void(0);" class="navbar-brand"></a> 
+                           </div>
+                           <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                              <ul class="nav navbar-nav">
+                                 <li><a href="new_vehicle.html">Vehicles</a></li>
+                                 <li><a href="trade_or_sell_your_vehicle.html">Trade or Sell Your Vehicle</a> </li>
+                                 <li><a href="credit_application.html">Credit Application</a></li>
+                                 <li><a href="get_pre_qualified.html">Get Pre-Qualified in Seconds</a></li>
+                                 <li>
+                                    <a href="request_a_free_quote.html">Request a Free Quote</a>
+                                    <!--  <ul role="menu" class="dropdown-menu">
+                                       <li> <a href="news-grid.html">DROPDOWN</a> </li>
+                                       <li> <a href="news-details.html">DROPDOWN</a> </li>
+                                       </ul> -->
+                                 </li>
+                                 <li><a href="about-us.html">About Us</a></li>
+                                 <li><a href="contact_us.html">Contact Us</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- end container --> 
+            </div>
+            <!-- end header__inner -->
+         </div>
+         <!-- end header -->
+         <div class="block-title">
+            <div class="block-title__inner section-bg section-bg_second">
+               <div class="bg-inner">
+                  <h1 class="ui-title-page">Vehicles</h1>
+                  <div class="decor-1 center-block"></div>
+                  <ol class="breadcrumb">
+                     <li><a href="home.html">HOME</a></li>
+                     <li class="active">Your Vehicles</li>
+                  </ol>
+               </div>
+               <!-- end bg-inner -->
+            </div>
+            <!-- end block-title__inner -->
+         </div>
+         <!-- end block-title -->
+         <!-- starts new block -->
+         <section id="car-listing-section" class="container mx-auto px-4 py-8">
+            <!-- Header Section -->
+            <div class="text-center mb-8">
+               <h2 class="text-4xl font-bold">
+                  FIND YOUR <span class="text-red-600">DREAM</span> CAR TODAY
+               </h2>
+               <p class="text-xl mt-4">
+                  WE <span class="text-red-600 font-bold">TRANSFORMED</span> THE CAR BUYING EXPERIENCE!
+               </p>
+            </div>
+            <!-- Filter Bar -->
+            <div class="filter-bar flex flex-wrap items-center justify-center gap-4 bg-white p-4 rounded-lg shadow-md mb-8">
+               <select id="filter-make" class="dropdown">
+                  <option value="">Select Vehicle Make</option>
+                  <option value="ACURA">Acura</option>
+                  <option value="HONDA">Honda</option>
+                  <option value="HYUNDAI">Hyundai</option>
+                  <option value="KIA">Kia</option>
+                  <option value="TOYOTA">Toyota</option>
+                  <option value="LEXUS">Lexus</option>
+                  <option value="MERCEDES">Mercedes</option>
+                  <option value="NISSAN">Nissan</option>
+                  <option value="INFINITI">Infiniti</option>
+                  <option value="BMW">BMW</option>
+               </select>
+               <select id="filter-model" class="dropdown">
+                  <option value="">Select Vehicle Model</option>
+                  <option value="INTEGRA">Integra</option>
+                  <option value="TLX">TLX</option>
+                  <option value="RDX">RDX</option>
+                  <option value="MDX">MDX</option>
+                  <option value="CIVIC">Civic</option>
+                  <option value="ACCORD">Accord</option>
+                  <option value="HR-V">HR-V</option>
+                  <option value="CR-V">CR-V</option>
+                  <option value="PASSPORT">Passport</option>
+                  <option value="PILOT">Pilot</option>
+                  <option value="ODYSSEY">Odyssey</option>
+                  <option value="TUCSON">Tucson</option>
+                  <option value="SANTA FE">Santa Fe</option>
+                  <option value="PALISADE">Palisade</option>
+                  <option value="ELANTRA">Elantra</option>
+                  <option value="SONATA">Sonata</option>
+                  <option value="SPORTAGE">Sportage</option>
+                  <option value="TELLURIDE">Telluride</option>
+                  <option value="K4">K4</option>
+                  <option value="K5">K5</option>
+                  <option value="COROLLA">Corolla</option>
+                  <option value="CAMRY">Camry</option>
+                  <option value="RAV 4">RAV 4</option>
+                  <option value="SIENNA">Sienna</option>
+                  <option value="HIGHLANDER">Highlander</option>
+                  <option value="NX">NX</option>
+                  <option value="RX">RX</option>
+                  <option value="GX">GX</option>
+                  <option value="IS">IS</option>
+                  <option value="ES">ES</option>
+                  <option value="GLA">GLA</option>
+                  <option value="GLB">GLB</option>
+                  <option value="GLC">GLC</option>
+                  <option value="GLE">GLE</option>
+                  <option value="GLS">GLS</option>
+                  <option value="C CLASS">C Class</option>
+                  <option value="E CLASS">E Class</option>
+                  <option value="S CLASS">S Class</option>
+                  <option value="MURANO">Murano</option>
+                  <option value="ROGUE">Rogue</option>
+                  <option value="PATHFINDER">Pathfinder</option>
+                  <option value="SENTRA">Sentra</option>
+                  <option value="ALTIMA">Altima</option>
+                  <option value="QX60">QX60</option>
+                  <option value="QX50">QX50</option>
+                  <option value="QX80">QX80</option>
+                  <option value="Q50">Q50</option>
+                  <option value="X3">X3</option>
+                  <option value="X4">X4</option>
+                  <option value="X5">X5</option>
+                  <option value="X6">X6</option>
+                  <option value="X7">X7</option>
+                  <option value="2 SERIES">2 Series</option>
+                  <option value="3 SERIES">3 Series</option>
+                  <option value="4 SERIES">4 Series</option>
+                  <option value="5 SERIES">5 Series</option>
+                  <option value="7 SERIES">7 Series</option>
+                  <!-- Add models dynamically -->
+               </select>
+               <select id="filter-year" class="dropdown">
+                  <option value="">Select Year</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+               </select>
+            </div>
+            <!-- Car Grid -->
+            <div id="car-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+               <!-- Example Car Cards -->
+            </div>
+         </section>
+         <!-- end new block -->
+         <footer class="footer">
+            <div class="wrap-section-border">
+               <section class="section_mod-h section-bg section-bg_second">
+                  <div class="bg-inner border-section-top border-section-top_mod-b">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <h2 class="footer-title">NextLane <span class="footer-title__inner">Auto</span></h2>
+                              <div class="decor-1 decor-1_mod-b"></div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <div class="footer__name">LOCATION :</div>
+                              <div class="footer__text">1430 Broadway STE 1200, New York, NY 10018</div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <div class="footer__item">
+                                 <span class="footer__name">Phone:</span>
+                                 <span class="footer__text">(516) 912-6413</span>
+                              </div>
+                             <!-- <div class="footer__item">
+                                 <span class="footer__name">Fax:</span>
+                                 <span class="footer__text">+1 (234) 567 8998</span>
+                              </div> -->
+                              <div class="footer__item">
+                                 <span class="footer__name">email:</span>
+                                 <span class="footer__text">sales@nextlaneauto.net</span>
+                              </div>
+                              <div class="footer__item">
+                                 <span class="footer__name">Hours:</span>
+                                 <span class="footer__text">Mon - Fri : 9am - 5pm</span>
+                              </div>
+                              <div class="footer__item">
+                                 <span class="footer__name">Hours:</span>
+                                 <span class="footer__text">Sat - Sun : 10am - 4pm</span>
+                              </div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <ul class="social-links list-inline">
+                                 <li><a class="icon fa fa-facebook" href="https://www.facebook.com/share/1BQfSxZhQk/?mibextid=wwXIfr"></a></li>
+                                <!-- <li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li> -->
+                                 <li><a class="icon fa fa-youtube-play" href="https://www.youtube.com/@NextLaneAuto"></a></li>
+                                 <li><a class="icon fa fa-instagram" href="https://www.instagram.com/nextlaneauto/?igsh=MXhvZGxnMDh4dW1wYQ%3D%3D&utm_source=qr"></a></li>
+                               <!--  <li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li> -->
+                              </ul>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                     </div>
+                     <!-- end container -->
+                  </div>
+                  <!-- end bg-inner -->
+               </section>
+               <!-- end section_mod-b -->
+            </div>
+            <span id="siteseal"><script async type="text/javascript" src="https://seal.starfieldtech.com/getSeal?sealID=KJ0iSRH7hjg5Sp35DLilv3FvDBFbPn05fabJNnAeyIffkwJfczYauHG6rr81"></script></span>
+            <!-- end wrap-section-border -->
+            <div class="footer__wrap-btn"> <a class="footer__btn scroll" href="#this-top">top</a> </div>
+            <div class="copyright">Copyrights 2024 - 2025 <a class="copyright__link" href="#">NextLane Auto</a> : All rights reserved</div>
+         </footer>
+      </div>
+      <!-- end #wrapper -->
+      </div><!-- end layout-theme -->
+      <span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
+      <script>
+         const carGrid = document.getElementById("car-grid");
+         const makeFilter = document.getElementById("filter-make");
+         const modelFilter = document.getElementById("filter-model");
+         const yearFilter = document.getElementById("filter-year");
+         
+         // Example car data
+         const cars = [
+         { make: "ACURA", model: "INTEGRA", year: "2025", price: "", image: "./assets/extracted_images/integra.png" },
+         { make: "ACURA", model: "TLX", year: "2025", price: "", image: "./assets/extracted_images/tlx.png" },
+         { make: "ACURA", model: "RDX", year: "2025", price: "", image: "./assets/extracted_images/rdx.png" },
+         { make: "ACURA", model: "MDX", year: "2025", price: "", image: "./assets/extracted_images/mdx.png" },
+         { make: "HONDA", model: "CIVIC", year: "2025", price: "", image: "./assets/extracted_images/civic.png" },
+         { make: "HONDA", model: "ACCORD", year: "2025", price: "", image: "./assets/extracted_images/accord.png" },
+         { make: "HONDA", model: "HR-V", year: "2025", price: "", image: "./assets/extracted_images/hr-v.png" },
+         { make: "HONDA", model: "CR-V", year: "2025", price: "", image: "./assets/extracted_images/cr-v.png" },
+         { make: "HONDA", model: "PASSPORT", year: "2025", price: "", image: "./assets/extracted_images/passport.png" },
+         { make: "HONDA", model: "PILOT", year: "2025", price: "", image: "./assets/extracted_images/pilot.png" },
+         { make: "HONDA", model: "ODYSSEY", year: "2025", price: "", image: "./assets/extracted_images/odyssey.png" },
+         { make: "HYUNDAI", model: "TUCSON", year: "2025", price: "", image: "./assets/extracted_images/tucson.png" },
+         { make: "HYUNDAI", model: "SANTA FE", year: "2025", price: "", image: "./assets/extracted_images/santafe.png" },
+         { make: "HYUNDAI", model: "PALISADE", year: "2025", price: "", image: "./assets/extracted_images/palisade.png" },
+         { make: "HYUNDAI", model: "ELANTRA", year: "2025", price: "", image: "./assets/extracted_images/elantra.png" },
+         { make: "HYUNDAI", model: "SONATA", year: "2025", price: "", image: "./assets/extracted_images/sonata.png" },
+         { make: "KIA", model: "SPORTAGE", year: "2025", price: "", image: "./assets/extracted_images/sportage.png" },
+         { make: "KIA", model: "TELLURIDE", year: "2025", price: "", image: "./assets/extracted_images/telluride.png" },
+         { make: "KIA", model: "K4", year: "2025", price: "", image: "./assets/extracted_images/k4.png" },
+         { make: "KIA", model: "K5", year: "2025", price: "", image: "./assets/extracted_images/k5.png" },
+         { make: "TOYOTA", model: "COROLLA", year: "2025", price: "", image: "./assets/extracted_images/corolla.png" },
+         { make: "TOYOTA", model: "CAMRY", year: "2025", price: "", image: "./assets/extracted_images/camry.png" },
+         { make: "TOYOTA", model: "RAV 4", year: "2025", price: "", image: "./assets/extracted_images/rav4.png" },
+         { make: "TOYOTA", model: "SIENNA", year: "2025", price: "", image: "./assets/extracted_images/sienna.png" },
+         { make: "TOYOTA", model: "HIGHLANDER", year: "2025", price: "", image: "./assets/extracted_images/highlander.png" },
+         { make: "LEXUS", model: "NX", year: "2025", price: "", image: "./assets/extracted_images/nx.png" },
+         { make: "LEXUS", model: "RX", year: "2025", price: "", image: "./assets/extracted_images/rx.png" },
+         { make: "LEXUS", model: "GX", year: "2025", price: "", image: "./assets/extracted_images/gx.png" },
+         { make: "LEXUS", model: "IS", year: "2025", price: "", image: "./assets/extracted_images/is.png" },
+         { make: "LEXUS", model: "ES", year: "2025", price: "", image: "./assets/extracted_images/es.png" },
+         { make: "MERCEDES", model: "GLA", year: "2025", price: "", image: "./assets/extracted_images/gla.png" },
+         { make: "MERCEDES", model: "GLB", year: "2025", price: "", image: "./assets/extracted_images/glb.png" },
+         { make: "MERCEDES", model: "GLC", year: "2025", price: "", image: "./assets/extracted_images/glc.png" },
+         { make: "MERCEDES", model: "GLE", year: "2025", price: "", image: "./assets/extracted_images/gle.png" },
+         { make: "MERCEDES", model: "GLS", year: "2025", price: "", image: "./assets/extracted_images/gls.png" },
+         { make: "MERCEDES", model: "C CLASS", year: "2025", price: "", image: "./assets/extracted_images/cclass.png" },
+         { make: "MERCEDES", model: "E CLASS", year: "2025", price: "", image: "./assets/extracted_images/eclass.png" },
+         { make: "MERCEDES", model: "S CLASS", year: "2025", price: "", image: "./assets/extracted_images/sclass.png" },
+         { make: "NISSAN", model: "MURANO", year: "2025", price: "", image: "./assets/extracted_images/murano.png" },
+         { make: "NISSAN", model: "ROGUE", year: "2025", price: "", image: "./assets/extracted_images/rogue.png" },
+         { make: "NISSAN", model: "PATHFINDER", year: "2025", price: "", image: "./assets/extracted_images/pathfinder.png" },
+         { make: "NISSAN", model: "SENTRA", year: "2025", price: "", image: "./assets/extracted_images/sentra.png" },
+         { make: "NISSAN", model: "ALTIMA", year: "2025", price: "", image: "./assets/extracted_images/altima.png" },
+         { make: "INFINITI", model: "QX60", year: "2025", price: "", image: "./assets/extracted_images/qx60.png" },
+         { make: "INFINITI", model: "QX50", year: "2025", price: "", image: "./assets/extracted_images/qx50.png" },
+         { make: "INFINITI", model: "QX80", year: "2025", price: "", image: "./assets/extracted_images/qx80.png" },
+         { make: "INFINITI", model: "Q50", year: "2025", price: "", image: "./assets/extracted_images/q50.png" },
+         { make: "BMW", model: "X3", year: "2025", price: "", image: "./assets/extracted_images/x3.png" },
+         { make: "BMW", model: "X4", year: "2025", price: "", image: "./assets/extracted_images/x4.png" },
+         { make: "BMW", model: "X5", year: "2025", price: "", image: "./assets/extracted_images/x5.png" },
+         { make: "BMW", model: "X6", year: "2025", price: "", image: "./assets/extracted_images/x6.png" },
+         { make: "BMW", model: "X7", year: "2025", price: "", image: "./assets/extracted_images/x7.png" },
+         { make: "BMW", model: "2 SERIES", year: "2025", price: "", image: "./assets/extracted_images/2series.png" },
+         { make: "BMW", model: "3 SERIES", year: "2025", price: "", image: "./assets/extracted_images/3series.png" },
+         { make: "BMW", model: "4 SERIES", year: "2025", price: "", image: "./assets/extracted_images/4series.png" },
+         { make: "BMW", model: "5 SERIES", year: "2025", price: "", image: "./assets/extracted_images/5series.png" },
+         { make: "BMW", model: "7 SERIES", year: "2025", price: "", image: "./assets/extracted_images/7series.png" }
+         ];
+         
+         // Render car cards
+         function displayCars(carsToDisplay) {
+         carGrid.innerHTML = carsToDisplay
+         .map(
+         (car) => `
+         <div class="car-card">
+         <img src="${car.image}" alt="${car.make} ${car.model}">
+         <div class="details">
+          <h3>${car.make} ${car.model}</h3>
+          <p>${car.year}</p>
+          <p>${car.price}</p>
+          <button class="btn-primary" onclick="navigateTo('request_a_free_quote.html')">Request a Quote</button>
+          <button class="btn-secondary" onclick="navigateTo('get_pre_qualified.html')">Get Pre-Qualified in Seconds</button>
+         </div>
+         </div>
+         `
+         )
+         .join("");
+         }
+
+         function navigateTo(url) {
+            window.location.href = url; // Navigate to the specified URL
+         }
+         
+         // Filter cars based on user selection
+         function filterCars() {
+         const make = makeFilter.value;
+         const model = modelFilter.value;
+         const year = yearFilter.value;
+         
+         const filteredCars = cars.filter((car) => {
+         return (
+         (!make || car.make === make) &&
+         (!model || car.model === model) &&
+         (!year || car.year === year)
+         );
+         });
+         
+         displayCars(filteredCars);
+         }
+         
+         // Populate the model dropdown dynamically based on selected make
+         function updateModelDropdown() {
+         const selectedMake = makeFilter.value;
+         
+         // Get unique models for the selected make
+         const models = [...new Set(cars.filter((car) => car.make === selectedMake).map((car) => car.model))];
+         
+         // Clear existing options
+         //modelFilter.innerHTML = '<option value="">Select Vehicle Model</option>';
+         
+         // Add models to the dropdown
+         models.forEach((model) => {
+         const option = document.createElement("option");
+         option.value = model;
+         option.textContent = model;
+         modelFilter.appendChild(option);
+         });
+         }
+         
+         // Event Listeners
+         makeFilter.addEventListener("change", () => {
+         updateModelDropdown();
+         filterCars();
+         });
+         modelFilter.addEventListener("change", filterCars);
+         yearFilter.addEventListener("change", filterCars);
+         
+         // Initialize with all cars displayed
+         displayCars(cars);
+         
+         
+         
+      </script>
+      <!-- SCRIPTS -->
+      <script src="assets/js/jquery-migrate-1.2.1.js"></script>
+      <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/js/modernizr.custom.js"></script>
+      <script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+      <script src="assets/js/waypoints.min.js"></script>
+      <script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+      <script src="assets/plugins/jelect/jquery.jelect.js"></script>
+      <script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
+      <script src="assets/plugins/flexslider/jquery.flexslider.js"></script>
+      <!--THEME-->
+      <script src="assets/js/cssua.min.js"></script>
+      <script src="assets/js/wow.min.js"></script>
+      <script src="assets/js/custom.js"></script>
+   </body>
+</html>

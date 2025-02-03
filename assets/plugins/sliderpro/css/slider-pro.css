@@ -11,35 +11,42 @@
 	margin: 0 auto;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .sp-slides-container {
 	position: relative;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .sp-mask {
 	position: relative;
 	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .sp-slides {
 	position: relative;
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .sp-slide {
 	position: absolute;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .sp-image-container {
 	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .sp-image {
 	position: relative;
 	display: block;
 	border: none;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .sp-no-js {
@@ -439,11 +446,12 @@
 }
 
 .sp-arrow {
-	position: absolute;
+	/*position: absolute;
 	display: block;
 	width: 20px;
 	height: 30px;
-	cursor: pointer;
+	cursor: pointer; */
+	display: none !important; /* Oculta completamente las flechas */
 }
 
 .sp-vertical .sp-arrow {
@@ -774,6 +782,7 @@ a.sp-video:after {
 .slider-pro canvas {
 	max-width: none;
 	max-height: none;
+	background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
 
 .slider-pro p.sp-layer {
