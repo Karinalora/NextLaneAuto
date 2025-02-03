@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->SMTPAuth   = true;
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
             $mail->AppPassword   = 'lzag pmlp ypxf ijid'; // Contraseña de la aplicación
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+           // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 465;
 
             // Configuración del remitente y destinatario
