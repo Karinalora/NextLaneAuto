@@ -7,9 +7,10 @@ date_default_timezone_set('America/New_York');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/vendor/phpmailer/phpmailer/src/Exception.php';
-require '/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '/vendor/phpmailer/phpmailer/src/SMTP.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // CAPTCHA verification
