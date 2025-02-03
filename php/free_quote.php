@@ -53,9 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Conexión SMTP configurada.<br>";
 
             // Configuración del remitente y destinatario
-            $mail->setFrom($email, $first_name . ' ' . $last_name);
-            $mail->addAddress('sales@nextlaneauto.net');  // Destinatario
-            $mail->addReplyTo($email, $first_name);
+            //$mail->setFrom($email, $first_name . ' ' . $last_name);
+           // $mail->addAddress('sales@nextlaneauto.net');  // Destinatario
+           // $mail->addReplyTo($email, $first_name);
+             // Configuración del remitente y destinatario
+            $mail->setFrom('sales@nextlaneauto.net', 'Next Lane Auto');
+            $mail->addAddress('sales@nextlaneauto.net');
+            $mail->addReplyTo('sales@nextlaneauto.net');
 
             echo "Direcciones de correo configuradas.<br>";
 
