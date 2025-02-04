@@ -1,6 +1,6 @@
 <?php
 $host = 'smtp.gmail.com';
-$port = 587; // Puedes probar también con 465 o 25
+$port = 465; // Puedes probar también con 465 o 25
 
 echo "Probando conexión SMTP a $host:$port...<br>";
 
