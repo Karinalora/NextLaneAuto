@@ -43,24 +43,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
              $mail->SMTPDebug = 4;  // Cambiar a 4 si necesitas más detalles
              $mail->Debugoutput = 'html';
             // Configuración del servidor SMTP
+            $mail = new PHPMailer\PHPMailer\PHPMailer();
+
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';       // Servidor SMTP de Gmail
             $mail->SMTPAuth   = true;
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
             $mail->Password   = 'mszq fjnu adbb wygb'; // Contraseña de la aplicación
-            $mail->SMTPSecure = 'SSL';
-            $mail->Port       = 465;
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
             $mail->Timeout    = 30; // Limitar el tiempo de espera a 15 segundos
 
             echo "Conexión SMTP configurada.<br>";
-            $mail->SMTPOptions = [
-                'ssl' => [
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true,
-                ],
-            ];
-            
 
             // Configuración del remitente y destinatario
             $mail->setFrom($email, $first_name . ' ' . $last_name);
