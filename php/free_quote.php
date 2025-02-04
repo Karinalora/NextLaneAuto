@@ -43,8 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
              $mail->SMTPDebug = 4;  // Cambiar a 4 si necesitas más detalles
              $mail->Debugoutput = 'html';
             // Configuración del servidor SMTP
-            $mail = new PHPMailer\PHPMailer\PHPMailer();
-
+          
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';       // Servidor SMTP de Gmail
             $mail->SMTPAuth   = true;
