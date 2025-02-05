@@ -1,4 +1,11 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // CAPTCHA verification
     $captcha = $_POST['g-recaptcha-response'];
@@ -18,31 +25,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die('CAPTCHA verification failed. Please try again.');
     }
 
-    // Format the email in HTML
-    $to = "main@nextlaneauto.net";
-    $subject = "New Contact Form Submission: " . $subject;
-    $message = "<html><body>";
-    $message .= "<h1>New Contact Form Submission</h1>";
-    $message .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
-    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>First Name</td><td>$first_name</td></tr>";
-    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Last Name</td><td>$last_name</td></tr>";
-    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$email</td></tr>";
-    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Phone No</td><td>$phone_no</td></tr>";
-    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Subject</td><td>$subject</td></tr>";
-    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Message Details</td><td>$message_details</td></tr>";
-    $message .= "</table>";
-    $message .= "</body></html>";
+    $mail = new PHPMailer(true);
+    try {
+        // GoDaddy SMTP Configuration
+        $mail->isSMTP();
+        $mail->Host = 'localhost'; // GoDaddy relay server
+        $mail->Port = 25;
+        $mail->SMTPAuth = false; // No authentication
+        $mail->SMTPSecure = false; // No encryption
+        
+        // Sender must be an email hosted on GoDaddy
+        $mail->setFrom("sales@nextlaneauto.net", "$first_name $last_name");
+        $mail->addAddress("sales@nextlaneauto.net");
+        $mail->addReplyTo($email, $first_name);
 
-    $headers = "From: " . $email . "\r\n" .
-    "Reply-To: " . $email . "\r\n" .
-    "Content-Type: text/html; charset=UTF-8";
-
-    if (mail($to, $subject, $message, $headers)) {
+        // Email content
+        $mail->isHTML(true);
+        $mail->Subject = "New Contact Form Submission: " . $subject;
+        $mail->Body = "<html><body>";
+        $mail->Body .= "<h1>New Contact Form Submission</h1>";
+        $mail->Body .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
+        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>First Name</td><td>$first_name</td></tr>";
+        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Last Name</td><td>$last_name</td></tr>";
+        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$email</td></tr>";
+        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Phone No</td><td>$phone_no</td></tr>";
+        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Subject</td><td>$subject</td></tr>";
+        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Message Details</td><td>$message_details</td></tr>";
+        $mail->Body .= "</table>";
+        $mail->Body .= "</body></html>";
+        
+        $mail->send();
         header('Location: /success.html');
         exit();
-    } else {
+    } catch (Exception $e) {
         header('Location: /failed.html');
         exit();
     }
 }
 ?>
+
