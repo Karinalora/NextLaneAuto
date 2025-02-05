@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die('CAPTCHA verification failed. Please try again.');
     }
 
-    $to = "sales@nextlaneauto.net";
+    $to = "main@nextlaneauto.net";
     $subject = "New Get pre-qualified Form Submission";
 
     // Collect form data
