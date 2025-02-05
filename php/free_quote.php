@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Format the email in HTML
-    $to = "sales@nextlaneauto.net";
+    $to = "main@nextlaneauto.net";
     $subject = "New Contact Form Submission: " . $subject;
     $message = "<html><body>";
     $message .= "<h1>New Contact Form Submission</h1>";

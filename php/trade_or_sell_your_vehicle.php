@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $message .= "</table></body></html>";
 
-    $to = "sales@nextlaneauto.net";
+    $to = "main@nextlaneauto.net";
     $subject = "New Trade Or Sell Your Vehicle Submission";
     $boundary = md5(time());
     $headers = "From: " . $email . "\r\n";
