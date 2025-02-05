@@ -45,12 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Configuración del servidor SMTP
           
             $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';       // Servidor SMTP de Gmail
-            $mail->SMTPAuth   = true;
+            $mail->Host       = 'relay-hosting.secureserver.net';       // Servidor SMTP de Gmail
+            $mail->SMTPAuth   = false;
             $mail->Username   = 'sales@nextlaneauto.net';    // Tu correo de Gmail
             $mail->Password   = 'mszq fjnu adbb wygb'; // Contraseña de la aplicación
-            $mail->SMTPSecure = 'tls';
-            $mail->Port       = 587;
+            $mail->SMTPSecure = false;
+            $mail->Port       = 25;
             $mail->Timeout    = 30; // Limitar el tiempo de espera a 15 segundos
 
             echo "Conexión SMTP configurada.<br>";
