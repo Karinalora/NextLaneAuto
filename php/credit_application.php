@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Formatear el correo en HTML
-    $to = "sales@nextlaneauto.net";
+    $to = "main@nextlaneauto.net";
     $subject = "New Credit Application Submission Form";
     $emailBody = "<html><body>";
     $emailBody .= "<h1>New Credit Application Submission</h1>";

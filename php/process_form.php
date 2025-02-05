@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Format the email in HTML
-    $to = "sales@nextlaneauto.net";
+    $to = "main@nextlaneauto.net";
     $subject = "New Request a Free Quote Form Submission";
     $message = "<html><body>";
     $message .= "<h1>Request a Free Quote Form Submission</h1>";
