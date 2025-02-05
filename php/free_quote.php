@@ -1,10 +1,14 @@
 <?php
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+ini_set('error_log', 'error_log.txt'); // Log errors to a file
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // CAPTCHA verification
@@ -27,6 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $mail = new PHPMailer(true);
     try {
+        // Enable SMTP debugging
+        $mail->SMTPDebug = 2;
+        $mail->Debugoutput = 'html';
+        
         // GoDaddy SMTP Configuration
         $mail->isSMTP();
         $mail->Host = 'localhost'; // GoDaddy relay server
@@ -55,12 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->Body .= "</body></html>";
         
         $mail->send();
+        echo 'Message sent successfully';
         header('Location: /success.html');
         exit();
     } catch (Exception $e) {
-        header('Location: /failed.html');
+        error_log("Mail Error: " . $mail->ErrorInfo);
+        echo "Mailer Error: " . $mail->ErrorInfo;
         exit();
     }
 }
 ?>
-
