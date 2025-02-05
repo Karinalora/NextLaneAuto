@@ -1,15 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/autoload.php';
-
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-ini_set('error_log', 'error_log.txt'); // Log errors to a file
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // CAPTCHA verification
     $captcha = $_POST['g-recaptcha-response'];
@@ -29,46 +18,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die('CAPTCHA verification failed. Please try again.');
     }
 
-    $mail = new PHPMailer(true);
-    try {
-        // Enable SMTP debugging
-        $mail->SMTPDebug = 2;
-        $mail->Debugoutput = 'html';
-        
-        // GoDaddy SMTP Configuration
-        $mail->isSMTP();
-        $mail->Host = 'localhost'; // GoDaddy relay server
-        $mail->Port = 25;
-        $mail->SMTPAuth = false; // No authentication
-        $mail->SMTPSecure = false; // No encryption
-        
-        // Sender must be an email hosted on GoDaddy
-        $mail->setFrom("sales@nextlaneauto.net", "$first_name $last_name");
-        $mail->addAddress("sales@nextlaneauto.net");
-        $mail->addReplyTo($email, $first_name);
+    // Format the email in HTML
+    $to = "main@nextlaneauto.net";
+    $subject = "New Contact Form Submission:" . $subject;
+    $message = "<html><body>";
+    $message .= "<h1>New Contact Form Submission</h1>";
+    $message .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>First Name</td><td>$first_name</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Last Name</td><td>$last_name</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$email</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Phone No</td><td>$phone_no</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Subject</td><td>$subject</td></tr>";
+    $message .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Message Details</td><td>$message_details</td></tr>";
+    $message .= "</table>";
+    $message .= "</body></html>";
 
-        // Email content
-        $mail->isHTML(true);
-        $mail->Subject = "New Contact Form Submission: " . $subject;
-        $mail->Body = "<html><body>";
-        $mail->Body .= "<h1>New Contact Form Submission</h1>";
-        $mail->Body .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
-        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>First Name</td><td>$first_name</td></tr>";
-        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Last Name</td><td>$last_name</td></tr>";
-        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$email</td></tr>";
-        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Phone No</td><td>$phone_no</td></tr>";
-        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Subject</td><td>$subject</td></tr>";
-        $mail->Body .= "<tr><td style='font-weight: bold; background-color: #f2f2f2;'>Message Details</td><td>$message_details</td></tr>";
-        $mail->Body .= "</table>";
-        $mail->Body .= "</body></html>";
-        
-        $mail->send();
-        echo 'Message sent successfully';
+    $headers = "From: " . $email . "\r\n" .
+    "Reply-To: " . $email . "\r\n" .
+    "Content-Type: text/html; charset=UTF-8";
+
+    if (mail($to, $subject, $message, $headers)) {
         header('Location: /success.html');
         exit();
-    } catch (Exception $e) {
-        error_log("Mail Error: " . $mail->ErrorInfo);
-        echo "Mailer Error: " . $mail->ErrorInfo;
+    } else {
+        header('Location: /failed.html');
         exit();
     }
 }
