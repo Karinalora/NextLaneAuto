@@ -1,5 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require 'vendor/autoload.php';
+// Your SendGrid API Key
+$sendgrid_api_key = 'YOUR_SENDGRID_API_KEY';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // CAPTCHA verification
     $captcha = $_POST['g-recaptcha-response'];
@@ -36,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </body></html>"
     );
 
-    $sendgrid = new \SendGrid\SendGrid(getenv('SENDGRID_API_KEY'));
+    $sendgrid = new \SendGrid\SendGrid(getenv($sendgrid_api_key));
 
     try {
         $response = $sendgrid->send($email);
