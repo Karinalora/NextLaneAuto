@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = new \SendGrid\Mail\Mail();
     $email->setFrom("sales@nextlaneauto.net");
-    $email->setSubject("New Trade Or Sell Your Vehicle Submission:" . $subject);
+    $email->setSubject("New Trade Or Sell Your Vehicle Submission:");
     $email->addTo("sales@nextlaneauto.net");
 
     $emailBody = "--$boundary\r\n";
