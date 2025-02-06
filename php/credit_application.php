@@ -1,4 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require '../vendor/autoload.php';
+
+// Your SendGrid API Key
+$sendgrid_api_key = 'YOUR_SENDGRID_API_KEY';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Determinar si hay un co-buyer
     $isCoBuyer = isset($_POST['coBuyer']) && $_POST['coBuyer'] === 'yes';
@@ -89,38 +98,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
     }
 
+    $email = new \SendGrid\Mail\Mail();
+    $email->setFrom("sales@nextlaneauto.net");
+    $email->setSubject("New Credit Application Submission Form:" . $subject);
+    $email->addTo("sales@nextlaneauto.net");
+    $email->addContent(
+        "text/html",
+        $emailBody = "<html><body>
+            <h1>New Credit Application Submission</h1>"
+            . 
+            implode('', array_map(function($section, $data) {
+                $sectionContent = "<h2 style='color: #e00e0e;'><strong>$section</strong></h2>";
+                $sectionContent .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
+                
+                foreach ($data as $label => $value) {
+                    $sectionContent .= "<tr>";
+                    $sectionContent .= "<td style='font-weight: bold; background-color: #f2f2f2;'>$label</td>";
+                    $sectionContent .= "<td>" . htmlspecialchars($value) . "</td>";
+                    $sectionContent .= "</tr>";
+                }
+                
+                $sectionContent .= "</table><br>";
+                return $sectionContent;
+            }, array_keys($fields), $fields))
+            .
+        "</body></html>"
+    );
+
+          //$sendgrid = new \SendGrid\SendGrid(getenv($sendgrid_api_key));
+     // ✅ Correct SendGrid Initialization
+     $sendgrid = new \SendGrid($sendgrid_api_key);
+
+     try {
+         $response = $sendgrid->send($email);
+         echo 'Email sent successfully!';
+         header('Location: /success.html');
+         exit();        
+     } catch (\SendGrid\Exception $e) {
+         echo 'Caught exception: '. $e->getMessage() ."\n";
+         header('Location: /failed.html');
+         exit();
+     }
+
     // Formatear el correo en HTML
-    $to = "main@nextlaneauto.net";
-    $subject = "New Credit Application Submission Form";
-    $emailBody = "<html><body>";
-    $emailBody .= "<h1>New Credit Application Submission</h1>";
+   // $to = "main@nextlaneauto.net";
+   // $subject = "New Credit Application Submission Form";
+   // $emailBody = "<html><body>";
+   // $emailBody .= "<h1>New Credit Application Submission</h1>";
 
-    foreach ($fields as $section => $data) {
-        $emailBody .= "<h2 style='color: #e00e0e;'><strong>$section</strong></h2>";
-        $emailBody .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
-        foreach ($data as $label => $value) {
-            $emailBody .= "<tr>";
-            $emailBody .= "<td style='font-weight: bold; background-color: #f2f2f2;'>$label</td>";
-            $emailBody .= "<td>" . htmlspecialchars($value) . "</td>";
-            $emailBody .= "</tr>";
-        }
-        $emailBody .= "</table><br>";
-    }
+   // foreach ($fields as $section => $data) {
+   //     $emailBody .= "<h2 style='color: #e00e0e;'><strong>$section</strong></h2>";
+   //     $emailBody .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
+   //     foreach ($data as $label => $value) {
+   //         $emailBody .= "<tr>";
+   //         $emailBody .= "<td style='font-weight: bold; background-color: #f2f2f2;'>$label</td>";
+   //         $emailBody .= "<td>" . htmlspecialchars($value) . "</td>";
+   //         $emailBody .= "</tr>";
+   //     }
+   //     $emailBody .= "</table><br>";
+   // }
 
-    $emailBody .= "</body></html>";
+//    $emailBody .= "</body></html>";
 
     // Configurar encabezados del correo
-    $headers = "From: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
-    $headers .= "Reply-To: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8";
+//    $headers = "From: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
+//    $headers .= "Reply-To: " . ($_POST['email'] ?? 'noreply@nextlaneauto.net') . "\r\n";
+//    $headers .= "Content-Type: text/html; charset=UTF-8";
 
     // Enviar el correo
-    if (mail($to, $subject, $emailBody, $headers)) {
-        header('Location: /success.html');
-        exit();
-    } else {
-        header('Location: /failed.html');
-        exit();
-    }
+//    if (mail($to, $subject, $emailBody, $headers)) {
+//        header('Location: /success.html');
+ //       exit();
+ //   } else {
+ //       header('Location: /failed.html');
+ //       exit();
+ //   }
 }
 ?>
