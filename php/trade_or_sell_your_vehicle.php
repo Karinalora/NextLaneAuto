@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize and retrieve input data
     $firstName = htmlspecialchars($_POST['first_name']);
     $lastName = htmlspecialchars($_POST['last_name']);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $emailfromform = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $phone = htmlspecialchars($_POST['phone']);
     $color = htmlspecialchars($_POST['color']);
     $odometer = htmlspecialchars($_POST['odometer']);
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fields = [
         'First Name' => $firstName,
         'Last Name' => $lastName,
-        'Email' => $email,
+        'Email' => $emailfromform,
         'Phone' => $phone,
         'Color' => $color,
         'Odometer' => $odometer,
