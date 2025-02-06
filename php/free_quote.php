@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = new \SendGrid\Mail\Mail();
     $email->setFrom("sales@nextlaneauto.net");
     $email->setSubject("New Contact Form Submission:" . $subject);
-    $email->addTo("main@nextlaneauto.net");
+    $email->addTo("sales@nextlaneauto.net");
     $email->addContent(
         "text/html", "<html><body>
         <h1>New Contact Form Submission</h1>
