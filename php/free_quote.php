@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $first_name = htmlspecialchars(trim($_POST['firstName'] ?? ''));
     $last_name = htmlspecialchars(trim($_POST['lastName'] ?? ''));
-    $email = htmlspecialchars(trim($_POST['email'] ?? ''));
+    $emailfromform = htmlspecialchars(trim($_POST['email'] ?? ''));
     $phone_no = htmlspecialchars(trim($_POST['phoneNo'] ?? ''));
     $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
     $message_details = htmlspecialchars(trim($_POST['message'] ?? ''));
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>
         <tr><td style='font-weight: bold; background-color: #f2f2f2;'>First Name</td><td>$first_name</td></tr>
         <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Last Name</td><td>$last_name</td></tr>
-        <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$email</td></tr>
+        <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$emailfromform</td></tr>
         <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Phone No</td><td>$phone_no</td></tr>
         <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Subject</td><td>$subject</td></tr>
         <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Message Details</td><td>$message_details</td></tr>
