@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 require '../vendor/autoload.php';
 
 // Your SendGrid API Key
-$sendgrid_api_key = 'YOUR_SENDGRID_API_KEY';
+$sendgrid_api_key = getenv('SENDGRID_API_KEY'); // ✅ Use environment variable
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize and retrieve input data
@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    // Prepare Email Content
     $message = "<html><body>";
     $message .= "<h2>Submission Details</h2>";
     $message .= "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
@@ -79,59 +80,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $message .= "</table></body></html>";
 
-   // $to = "main@nextlaneauto.net";
-   // $subject = "New Trade Or Sell Your Vehicle Submission";
-    $boundary = md5(time());
-  //  $headers = "From: " . $email . "\r\n";
-  //  $headers .= "Reply-To: " . $email . "\r\n";
-  //  $headers .= "MIME-Version: 1.0\r\n";
-  //  $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
-
+    // Send Email with SendGrid
     $email = new \SendGrid\Mail\Mail();
-    $email->setFrom("sales@nextlaneauto.net");
+    $email->setFrom("sales@nextlaneauto.net", "NextLane Auto Sales");
     $email->setSubject("New Trade Or Sell Your Vehicle Submission:");
     $email->addTo("sales@nextlaneauto.net");
+    $email->addContent("text/html", $message); // ✅ Correct content type
 
-    $emailBody = "--$boundary\r\n";
-    $emailBody .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $emailBody .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-    $emailBody .= $message . "\r\n";
-
+    // Add attachments
     foreach ($uploadedFiles as $filePath) {
         $fileContent = file_get_contents($filePath);
         $fileName = basename($filePath);
-        $emailBody .= "--$boundary\r\n";
-        $emailBody .= "Content-Type: application/octet-stream; name=\"$fileName\"\r\n";
-        $emailBody .= "Content-Transfer-Encoding: base64\r\n";
-        $emailBody .= "Content-Disposition: attachment; filename=\"$fileName\"\r\n\r\n";
-        $emailBody .= chunk_split(base64_encode($fileContent)) . "\r\n";
+        $email->addAttachment(
+            base64_encode($fileContent),
+            mime_content_type($filePath),
+            $fileName,
+            "attachment"
+        );
     }
 
-    $emailBody .= "--$boundary--";
+    $sendgrid = new \SendGrid($sendgrid_api_key);
 
-    // Add the multipart content to the email
-    $email->addContent("multipart/mixed; boundary=\"$boundary\"", $emailBody);
-          //$sendgrid = new \SendGrid\SendGrid(getenv($sendgrid_api_key));
-     // ✅ Correct SendGrid Initialization
-     $sendgrid = new \SendGrid($sendgrid_api_key);
-
-     try {
-         $response = $sendgrid->send($email);
-         echo 'Email sent successfully!';
-         header('Location: /success.html');
-         exit();        
-     } catch (\SendGrid\Exception $e) {
-         echo 'Caught exception: '. $e->getMessage() ."\n";
-         header('Location: /failed.html');
-         exit();
-     }
-
-   // if (mail($to, $subject, $emailBody, $headers)) {
-   //     header('Location: /success.html');
-   //     exit();
-   // } else {
-   //     header('Location: /failed.html');
-   //     exit();
-   // }
+    try {
+        $response = $sendgrid->send($email);
+        if ($response->statusCode() == 202) {
+            header('Location: /success.html');
+            exit();
+        } else {
+            throw new Exception("SendGrid API error: " . $response->body());
+        }
+    } catch (\Exception $e) {
+        error_log('Email Error: ' . $e->getMessage());
+        header('Location: /failed.html');
+        exit();
+    }
 }
 ?>
