@@ -1,4 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require '../vendor/autoload.php';
+
+// Your SendGrid API Key
+$sendgrid_api_key = 'YOUR_SENDGRID_API_KEY';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize and retrieve input data
     $firstName = htmlspecialchars($_POST['first_name']);
@@ -70,13 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $message .= "</table></body></html>";
 
-    $to = "main@nextlaneauto.net";
-    $subject = "New Trade Or Sell Your Vehicle Submission";
+   // $to = "main@nextlaneauto.net";
+   // $subject = "New Trade Or Sell Your Vehicle Submission";
     $boundary = md5(time());
-    $headers = "From: " . $email . "\r\n";
-    $headers .= "Reply-To: " . $email . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+  //  $headers = "From: " . $email . "\r\n";
+  //  $headers .= "Reply-To: " . $email . "\r\n";
+  //  $headers .= "MIME-Version: 1.0\r\n";
+  //  $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+
+    $email = new \SendGrid\Mail\Mail();
+    $email->setFrom("sales@nextlaneauto.net");
+    $email->setSubject("New Trade Or Sell Your Vehicle Submission:" . $subject);
+    $email->addTo("sales@nextlaneauto.net");
 
     $emailBody = "--$boundary\r\n";
     $emailBody .= "Content-Type: text/html; charset=UTF-8\r\n";
@@ -95,12 +109,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $emailBody .= "--$boundary--";
 
-    if (mail($to, $subject, $emailBody, $headers)) {
-        header('Location: /success.html');
-        exit();
-    } else {
-        header('Location: /failed.html');
-        exit();
-    }
+    // Add the multipart content to the email
+    $email->addContent("multipart/mixed; boundary=\"$boundary\"", $emailBody);
+          //$sendgrid = new \SendGrid\SendGrid(getenv($sendgrid_api_key));
+     // ✅ Correct SendGrid Initialization
+     $sendgrid = new \SendGrid($sendgrid_api_key);
+
+     try {
+         $response = $sendgrid->send($email);
+         echo 'Email sent successfully!';
+         header('Location: /success.html');
+         exit();        
+     } catch (\SendGrid\Exception $e) {
+         echo 'Caught exception: '. $e->getMessage() ."\n";
+         header('Location: /failed.html');
+         exit();
+     }
+
+   // if (mail($to, $subject, $emailBody, $headers)) {
+   //     header('Location: /success.html');
+   //     exit();
+   // } else {
+   //     header('Location: /failed.html');
+   //     exit();
+   // }
 }
 ?>
