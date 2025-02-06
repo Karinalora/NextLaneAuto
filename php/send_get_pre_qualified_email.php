@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dob = htmlspecialchars($_POST['dob']);
     $driversLicense = htmlspecialchars($_POST['driversLicense']);
     $phone = htmlspecialchars($_POST['phone']);
-    $email = htmlspecialchars($_POST['email']);
+    $emailfromform = htmlspecialchars($_POST['email']);
     $address = htmlspecialchars($_POST['address']);
     $apt = htmlspecialchars($_POST['apt']);
     $city = htmlspecialchars($_POST['city']);
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $make = htmlspecialchars($_POST['make']);
     $model = htmlspecialchars($_POST['model']);
     $trim = htmlspecialchars($_POST['trim']);
-    $salesAgent = htmlspecialchars($_POST['salesAgent']);
+    //$salesAgent = htmlspecialchars($_POST['salesAgent']);
     $agree = isset($_POST['agree']) ? 'Yes' : 'No';
 
     if ($make === 'OTHER') {
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Contact Info:</h2>
             <table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%;'>
                 <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Phone</td><td>$phone</td></tr>
-                <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$email</td></tr>
+                <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Email</td><td>$emailfromform</td></tr>
                 <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Address</td><td>$address</td></tr>
                 <tr><td style='font-weight: bold; background-color: #f2f2f2;'>Apt/Unit</td><td>$apt</td></tr>
                 <tr><td style='font-weight: bold; background-color: #f2f2f2;'>City</td><td>$city</td></tr>
