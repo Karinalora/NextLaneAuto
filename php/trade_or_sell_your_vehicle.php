@@ -28,7 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // File upload handling
     $uploadDir = 'uploads/';
-    $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+   // $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+   $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/heic', 'image/heif'];
+
     $uploadedFiles = [];
     $errors = [];
 
