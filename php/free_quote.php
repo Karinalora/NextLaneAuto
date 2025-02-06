@@ -42,7 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </body></html>"
     );
 
-    $sendgrid = new \SendGrid\SendGrid(getenv($sendgrid_api_key));
+    //$sendgrid = new \SendGrid\SendGrid(getenv($sendgrid_api_key));
+     // ✅ Correct SendGrid Initialization
+      $sendgrid = new \SendGrid($sendgrid_api_key);
 
     try {
         $response = $sendgrid->send($email);
