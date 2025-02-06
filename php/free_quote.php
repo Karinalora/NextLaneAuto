@@ -5,7 +5,9 @@ error_reporting(E_ALL);
 
 require '../vendor/autoload.php';
 // Your SendGrid API Key
-$sendgrid_api_key = 'YOUR_SENDGRID_API_KEY';
+//$sendgrid_api_key = 'YOUR_SENDGRID_API_KEY';
+  $sendgrid_api_key = getenv('SENDGRID_API_KEY');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // CAPTCHA verification
     $captcha = $_POST['g-recaptcha-response'];
